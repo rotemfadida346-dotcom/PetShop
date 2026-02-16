@@ -44,13 +44,15 @@ export default function AdminDashboard() {
   }
 
   const cards = [
-    { label: "הכנסות כוללות", value: formatPrice(stats.overview.totalRevenue), icon: DollarSign, change: "+18.2%" },
-    { label: "הזמנות", value: String(stats.overview.totalOrders), icon: ShoppingCart, change: "+12.5%" },
-    { label: "מנויים פעילים", value: String(stats.overview.activeSubscriptions), icon: RefreshCw, change: "+23%" },
-    { label: "הכנסה חוזרת חודשית", value: formatPrice(stats.overview.monthlyRecurring), icon: TrendingUp, change: "+8.4%" },
-    { label: "מוצרים פעילים", value: String(stats.overview.activeProducts), icon: Package, change: "" },
-    { label: "משלוח חינם / בתשלום", value: `${stats.overview.freeShippingOrders} / ${stats.overview.paidShippingOrders}`, icon: Truck, change: "" },
+    { label: "הכנסות כוללות", value: formatPrice(stats.overview.totalRevenue), icon: DollarSign },
+    { label: "הזמנות", value: String(stats.overview.totalOrders), icon: ShoppingCart },
+    { label: "מנויים פעילים", value: String(stats.overview.activeSubscriptions), icon: RefreshCw },
+    { label: "הכנסה חוזרת חודשית", value: formatPrice(stats.overview.monthlyRecurring), icon: TrendingUp },
+    { label: "מוצרים פעילים", value: String(stats.overview.activeProducts), icon: Package },
+    { label: "משלוח חינם / בתשלום", value: `${stats.overview.freeShippingOrders} / ${stats.overview.paidShippingOrders}`, icon: Truck },
   ];
+
+  const hasRevenue = stats.monthlyRevenue.some((m) => m.revenue > 0);
 
   return (
     <div>
@@ -65,11 +67,6 @@ export default function AdminDashboard() {
               <card.icon className="h-5 w-5 text-muted" />
             </div>
             <p className="text-2xl font-bold text-black">{card.value}</p>
-            {card.change && (
-              <p className="text-xs text-emerald-600 font-medium mt-1">
-                {card.change} מול חודש קודם
-              </p>
-            )}
           </div>
         ))}
       </div>
@@ -77,39 +74,49 @@ export default function AdminDashboard() {
       {/* Revenue Chart */}
       <div className="bg-white rounded-xl border border-border p-6 mb-8">
         <h2 className="font-semibold text-black mb-4">הכנסות חודשיות (₪)</h2>
-        <RevenueChart data={stats.monthlyRevenue} />
+        {hasRevenue ? (
+          <RevenueChart data={stats.monthlyRevenue} />
+        ) : (
+          <div className="h-48 flex items-center justify-center text-muted text-sm">
+            אין נתוני הכנסות עדיין. ההכנסות יופיעו כאן לאחר הזמנות.
+          </div>
+        )}
       </div>
 
-      {/* Two columns: Categories + Top Products */}
+      {/* Two columns */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Category Breakdown */}
         <div className="bg-white rounded-xl border border-border p-6">
           <h2 className="font-semibold text-black mb-4">פירוט לפי קטגוריה</h2>
-          <div className="space-y-3">
-            {stats.categoryBreakdown.map((cat) => (
-              <div key={cat.category} className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-black">{cat.category}</p>
-                  <p className="text-xs text-muted">{cat.count} מוצרים</p>
+          {stats.categoryBreakdown.length > 0 ? (
+            <div className="space-y-3">
+              {stats.categoryBreakdown.map((cat) => (
+                <div key={cat.category} className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-black">{cat.category}</p>
+                    <p className="text-xs text-muted">{cat.count} מוצרים</p>
+                  </div>
+                  <p className="text-sm font-bold text-black">{formatPrice(cat.revenue)}</p>
                 </div>
-                <p className="text-sm font-bold text-black">{formatPrice(cat.revenue)}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-muted">אין נתונים עדיין.</p>
+          )}
         </div>
 
-        {/* Low Stock Alert */}
+        {/* Stock Overview */}
         <div className="bg-white rounded-xl border border-border p-6">
-          <h2 className="font-semibold text-black mb-4">מלאי נמוך</h2>
-          <div className="space-y-3">
-            {stats.topProducts
-              .filter((p) => p.stock < 150)
-              .map((product) => (
+          <h2 className="font-semibold text-black mb-4">סקירת מלאי</h2>
+          {stats.topProducts.length > 0 ? (
+            <div className="space-y-3">
+              {stats.topProducts.map((product) => (
                 <div key={product.id} className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-black">{product.name}</p>
                     <p className="text-xs text-muted">
-                      {product.petType === "DOG" ? "🐕" : "🐈"} {product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : "חול"}
+                      {product.petType === "DOG" ? "🐕" : "🐈"}{" "}
+                      {product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category}
                     </p>
                   </div>
                   <span className={`text-sm font-bold ${product.stock < 50 ? "text-red-600" : product.stock < 100 ? "text-amber-600" : "text-black"}`}>
@@ -117,7 +124,10 @@ export default function AdminDashboard() {
                   </span>
                 </div>
               ))}
-          </div>
+            </div>
+          ) : (
+            <p className="text-sm text-muted">אין מוצרים עדיין.</p>
+          )}
         </div>
       </div>
     </div>
