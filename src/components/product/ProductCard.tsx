@@ -50,9 +50,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="absolute top-3 right-3 flex flex-col gap-1.5">
           {product.isFeatured && <Badge variant="warning">רב מכר</Badge>}
           {hasDiscount && <Badge variant="danger">-{discountPercent}%</Badge>}
-          {product.subscriptionDiscount > 0 && (
-            <Badge variant="success">חסכו {product.subscriptionDiscount}% במנוי</Badge>
-          )}
         </div>
         <div className="absolute top-3 left-3">
           <span className="text-lg">{product.petType === "DOG" ? "🐕" : "🐈"}</span>
