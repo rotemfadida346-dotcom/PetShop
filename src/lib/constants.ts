@@ -31,6 +31,7 @@ export const NAV_LINKS = [
   { href: "/shop", label: "חנות" },
   { href: "/shop?pet=DOG", label: "כלבים" },
   { href: "/shop?pet=CAT", label: "חתולים" },
+  { href: "/subscriptions", label: "מנויים" },
   { href: "/quiz", label: "מצא את ההתאמה" },
   { href: "/about", label: "אודות" },
 ] as const;
