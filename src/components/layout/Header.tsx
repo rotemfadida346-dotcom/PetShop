@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useCartStore } from "@/store/cart";
 import Container from "@/components/ui/Container";
-import { ShoppingBag, Menu, X, Search, User } from "lucide-react";
+import { ShoppingBag, Menu, X, Search, User, Shield } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 
 export default function Header() {
@@ -52,6 +52,10 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-1">
+            <Link href="/admin" className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-400 hover:text-brand-600 hover:bg-brand-50 rounded-xl transition-all" aria-label="ניהול">
+              <Shield className="h-4 w-4" />
+              <span className="hidden md:inline">ניהול</span>
+            </Link>
             <button className="hidden sm:flex p-2.5 text-gray-400 hover:text-brand-600 hover:bg-brand-50 rounded-xl transition-all" aria-label="חיפוש">
               <Search className="h-5 w-5" />
             </button>
