@@ -2,7 +2,9 @@ import { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import ProductGrid from "@/components/product/ProductGrid";
 import ShopFilters from "@/components/shop/ShopFilters";
-import { filterProducts } from "@/lib/mock-data";
+import Pagination from "@/components/shop/Pagination";
+import { getProducts } from "@/lib/db/products";
+import { filterProducts as filterMock } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
   title: "Shop All Products",
@@ -14,13 +16,39 @@ interface ShopPageProps {
   searchParams: {
     pet?: string;
     category?: string;
+    subscription?: string;
     search?: string;
     sort?: string;
+    page?: string;
   };
 }
 
-export default function ShopPage({ searchParams }: ShopPageProps) {
-  const products = filterProducts(searchParams);
+export default async function ShopPage({ searchParams }: ShopPageProps) {
+  const page = Math.max(1, parseInt(searchParams.page || "1", 10));
+
+  let products: Parameters<typeof ProductGrid>[0]["products"] = [];
+  let totalPages = 1;
+  let total = 0;
+
+  try {
+    const result = await getProducts({
+      pet: searchParams.pet,
+      category: searchParams.category,
+      subscription: searchParams.subscription,
+      search: searchParams.search,
+      sort: searchParams.sort || "featured",
+      page,
+      limit: 12,
+    });
+    products = result.products;
+    totalPages = result.totalPages;
+    total = result.total;
+  } catch {
+    // Fallback to mock data if DB is unavailable
+    const mockProducts = filterMock(searchParams);
+    products = mockProducts;
+    total = mockProducts.length;
+  }
 
   const title = searchParams.pet
     ? searchParams.pet === "DOG"
@@ -38,7 +66,7 @@ export default function ShopPage({ searchParams }: ShopPageProps) {
               {title}
             </h1>
             <p className="mt-2 text-stone-500">
-              {products.length} product{products.length !== 1 ? "s" : ""}
+              {total} product{total !== 1 ? "s" : ""}
             </p>
           </div>
         </Container>
@@ -50,12 +78,21 @@ export default function ShopPage({ searchParams }: ShopPageProps) {
           <ShopFilters
             currentPet={searchParams.pet}
             currentCategory={searchParams.category}
+            currentSubscription={searchParams.subscription}
             currentSort={searchParams.sort}
           />
 
           {/* Products */}
           {products.length > 0 ? (
-            <ProductGrid products={products} />
+            <>
+              <ProductGrid products={products} />
+              {totalPages > 1 && (
+                <Pagination
+                  currentPage={page}
+                  totalPages={totalPages}
+                />
+              )}
+            </>
           ) : (
             <div className="text-center py-20">
               <p className="text-5xl mb-4">🔍</p>

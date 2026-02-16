@@ -3,14 +3,27 @@ import { notFound } from "next/navigation";
 import Container from "@/components/ui/Container";
 import ProductDetails from "@/components/product/ProductDetails";
 import ProductGrid from "@/components/product/ProductGrid";
-import { getProductBySlug, MOCK_PRODUCTS } from "@/lib/mock-data";
+import { getProductBySlug, getRelatedProducts, ProductDetail } from "@/lib/db/products";
+import {
+  getProductBySlug as getMockProduct,
+  MOCK_PRODUCTS,
+} from "@/lib/mock-data";
 
 interface ProductPageProps {
   params: { slug: string };
 }
 
-export function generateMetadata({ params }: ProductPageProps): Metadata {
-  const product = getProductBySlug(params.slug);
+type ProductLike = ProductDetail | ReturnType<typeof getMockProduct>;
+
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  let product: ProductLike;
+  try {
+    product = await getProductBySlug(params.slug);
+  } catch {
+    product = getMockProduct(params.slug);
+  }
 
   if (!product) {
     return { title: "Product Not Found" };
@@ -18,30 +31,40 @@ export function generateMetadata({ params }: ProductPageProps): Metadata {
 
   return {
     title: product.name,
-    description: product.shortDesc || product.description.slice(0, 160),
+    description: product.shortDesc || product.description?.slice(0, 160),
     openGraph: {
       title: product.name,
-      description: product.shortDesc || product.description.slice(0, 160),
-      images: product.images[0] ? [{ url: product.images[0].url }] : [],
+      description: product.shortDesc || product.description?.slice(0, 160),
+      images: product.images?.[0] ? [{ url: product.images[0].url }] : [],
     },
   };
 }
 
-export function generateStaticParams() {
-  return MOCK_PRODUCTS.map((p) => ({ slug: p.slug }));
-}
+export default async function ProductPage({ params }: ProductPageProps) {
+  let product: ProductLike;
+  let relatedProducts: Parameters<typeof ProductGrid>[0]["products"] = [];
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = getProductBySlug(params.slug);
+  try {
+    product = await getProductBySlug(params.slug);
+    if (product) {
+      relatedProducts = await getRelatedProducts(
+        product.id,
+        product.petType,
+        4
+      );
+    }
+  } catch {
+    product = getMockProduct(params.slug);
+    if (product) {
+      relatedProducts = MOCK_PRODUCTS.filter(
+        (p) => p.petType === product!.petType && p.id !== product!.id
+      ).slice(0, 4);
+    }
+  }
 
   if (!product) {
     notFound();
   }
-
-  // Related products: same pet type, different product
-  const relatedProducts = MOCK_PRODUCTS.filter(
-    (p) => p.petType === product.petType && p.id !== product.id
-  ).slice(0, 4);
 
   return (
     <div className="bg-white">

@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import { formatPrice, calculateSubscriptionPrice, cn } from "@/lib/utils";
 import { SUBSCRIPTION_INTERVALS } from "@/lib/constants";
+import Toast from "@/components/ui/Toast";
 import {
   ShoppingBag,
   Star,
@@ -18,6 +19,7 @@ import {
   ChevronUp,
   Minus,
   Plus,
+  CircleAlert,
 } from "lucide-react";
 
 interface ProductDetailsProps {
@@ -49,8 +51,12 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   const [intervalWeeks, setIntervalWeeks] = useState(4);
   const [quantity, setQuantity] = useState(1);
   const [openFaq, setOpenFaq] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
 
   const addItem = useCartStore((s) => s.addItem);
+
+  const inStock = product.stock > 0;
+  const lowStock = product.stock > 0 && product.stock <= 10;
 
   const subscriptionPrice = calculateSubscriptionPrice(
     product.price,
@@ -62,6 +68,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     product.compareAt && product.compareAt > product.price;
 
   function handleAddToCart() {
+    if (!inStock) return;
     addItem({
       id: `${product.id}-${purchaseType}-${intervalWeeks}`,
       productId: product.id,
@@ -73,6 +80,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       intervalWeeks: purchaseType === "subscription" ? intervalWeeks : undefined,
       subscriptionDiscount: product.subscriptionDiscount,
     });
+    setShowToast(true);
   }
 
   const benefitsList = product.benefits?.split("\n").filter(Boolean) || [];
@@ -140,6 +148,20 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             </span>
           </div>
         </div>
+
+        {/* Stock indicator */}
+        {lowStock && (
+          <div className="flex items-center gap-2 text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-sm">
+            <CircleAlert className="h-4 w-4 shrink-0" />
+            <span>Only {product.stock} left in stock — order soon!</span>
+          </div>
+        )}
+        {!inStock && (
+          <div className="flex items-center gap-2 text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-sm">
+            <CircleAlert className="h-4 w-4 shrink-0" />
+            <span>Currently out of stock</span>
+          </div>
+        )}
 
         {/* Description */}
         <p className="text-stone-600 leading-relaxed">{product.description}</p>
@@ -281,9 +303,16 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             </button>
           </div>
 
-          <Button onClick={handleAddToCart} size="lg" className="flex-1">
+          <Button
+            onClick={handleAddToCart}
+            size="lg"
+            className="flex-1"
+            disabled={!inStock}
+          >
             <ShoppingBag className="h-5 w-5" />
-            Add to Cart — {formatPrice(currentPrice * quantity)}
+            {inStock
+              ? `Add to Cart — ${formatPrice(currentPrice * quantity)}`
+              : "Out of Stock"}
           </Button>
         </div>
 
@@ -382,6 +411,13 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </div>
         )}
       </div>
+
+      {/* Toast notification */}
+      <Toast
+        message={`${product.name} added to cart!`}
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
     </div>
   );
 }
