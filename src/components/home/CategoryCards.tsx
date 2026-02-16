@@ -4,95 +4,26 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 const CATEGORIES = [
-  {
-    title: "מזון",
-    icon: "🍖",
-    description: "מזון איכותי ובריא לחיות המחמד שלכם",
-    href: "/shop?category=FOOD",
-    bg: "bg-gradient-to-br from-[#2ABAA0] to-[#22A08A]",
-    textColor: "text-white",
-    btnClass: "bg-white/20 hover:bg-white/30 text-white",
-  },
-  {
-    title: "חטיפים",
-    icon: "🦴",
-    description: "חטיפים טעימים לאילוף ולפינוק יומיומי",
-    href: "/shop?category=TREATS",
-    bg: "bg-gradient-to-br from-[#F08080] to-[#D96C6C]",
-    textColor: "text-white",
-    btnClass: "bg-white/20 hover:bg-white/30 text-white",
-  },
-  {
-    title: "צעצועים",
-    icon: "🎾",
-    description: "משחקים שיעשו את החברים שלכם מאושרים",
-    href: "/shop?category=TOYS",
-    bg: "bg-gradient-to-br from-[#FFD966] to-[#F0C84D]",
-    textColor: "text-gray-900",
-    btnClass: "bg-black/10 hover:bg-black/20 text-gray-900",
-  },
-  {
-    title: "מיטות",
-    icon: "🛏️",
-    description: "מיטה נוחה ומעוצבת לכל חיית מחמד",
-    href: "/shop?category=ACCESSORIES",
-    bg: "bg-gradient-to-br from-[#8B7EC8] to-[#7468B0]",
-    textColor: "text-white",
-    btnClass: "bg-white/20 hover:bg-white/30 text-white",
-  },
-  {
-    title: "חול לחתולים",
-    icon: "🧹",
-    description: "חול טבעי עם שליטה מעולה בריחות",
-    href: "/shop?category=LITTER",
-    bg: "bg-gradient-to-br from-[#5DADE2] to-[#4A9BD9]",
-    textColor: "text-white",
-    btnClass: "bg-white/20 hover:bg-white/30 text-white",
-  },
-  {
-    title: "מגרדות",
-    icon: "🐾",
-    description: "מגרדות ועמדות טיפוס לחתולים שאוהבים לגרד",
-    href: "/shop?category=ACCESSORIES",
-    bg: "bg-gradient-to-br from-[#E8A87C] to-[#D4956A]",
-    textColor: "text-white",
-    btnClass: "bg-white/20 hover:bg-white/30 text-white",
-  },
+  { title: "מזון", icon: "🍖", desc: "מזון איכותי ובריא לכלבים ולחתולים", href: "/shop?category=FOOD", bg: "from-[#1A3330] to-[#0F2220]", accent: "text-[#5CB8A4]", btn: "bg-[#5CB8A4]/15 hover:bg-[#5CB8A4]/25 text-[#5CB8A4]" },
+  { title: "חטיפים", icon: "🦴", desc: "חטיפים טעימים לאילוף ולפינוק", href: "/shop?category=TREATS", bg: "from-[#2D1C1C] to-[#1E1212]", accent: "text-[#E88080]", btn: "bg-[#E88080]/15 hover:bg-[#E88080]/25 text-[#E88080]" },
+  { title: "צעצועים", icon: "🎾", desc: "משחקים שישמחו כל חיית מחמד", href: "/shop?category=TOYS", bg: "from-[#2A2610] to-[#1C1A0A]", accent: "text-[#E8C84A]", btn: "bg-[#E8C84A]/15 hover:bg-[#E8C84A]/25 text-[#E8C84A]" },
+  { title: "מיטות", icon: "🛏️", desc: "מיטות נוחות ומעוצבות", href: "/shop?category=ACCESSORIES", bg: "from-[#1F1A2D] to-[#141020]", accent: "text-[#B48AE8]", btn: "bg-[#B48AE8]/15 hover:bg-[#B48AE8]/25 text-[#B48AE8]" },
+  { title: "חול לחתולים", icon: "🧹", desc: "חול טבעי עם שליטה בריחות", href: "/shop?category=LITTER", bg: "from-[#152530] to-[#0D1820]", accent: "text-[#5DADE2]", btn: "bg-[#5DADE2]/15 hover:bg-[#5DADE2]/25 text-[#5DADE2]" },
+  { title: "מגרדות", icon: "🐾", desc: "מגרדות ועמדות טיפוס לחתולים", href: "/shop?category=ACCESSORIES", bg: "from-[#2A2018] to-[#1C1610]", accent: "text-[#E8A87C]", btn: "bg-[#E8A87C]/15 hover:bg-[#E8A87C]/25 text-[#E8A87C]" },
 ];
 
 export default function CategoryCards() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-      {CATEGORIES.map((cat) => (
-        <Link
-          key={cat.title}
-          href={cat.href}
-          className={`group relative ${cat.bg} rounded-xl p-6 md:p-7 shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 overflow-hidden`}
-        >
-          {/* Decorative circle */}
-          <div className="absolute -top-6 -left-6 w-28 h-28 bg-white/10 rounded-full blur-xl" />
-          <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-black/5 rounded-full blur-xl" />
-
-          <div className="relative">
-            {/* Icon */}
-            <span className="text-4xl block mb-3 group-hover:scale-110 transition-transform duration-300">
-              {cat.icon}
-            </span>
-
-            {/* Title */}
-            <h3 className={`text-xl md:text-2xl font-extrabold ${cat.textColor} mb-1.5`}>
-              {cat.title}
-            </h3>
-
-            {/* Description */}
-            <p className={`text-sm ${cat.textColor} opacity-85 leading-relaxed mb-4`}>
-              {cat.description}
-            </p>
-
-            {/* CTA Button */}
-            <span className={`inline-flex items-center gap-1.5 ${cat.btnClass} px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200`}>
-              לצפייה
-              <ArrowLeft className="h-3.5 w-3.5 group-hover:translate-x-[-3px] transition-transform" />
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+      {CATEGORIES.map((c) => (
+        <Link key={c.title} href={c.href} className={`group bg-gradient-to-br ${c.bg} rounded-2xl p-6 border border-white/5 hover:border-white/10 hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 overflow-hidden relative`}>
+          <div className="absolute -top-8 -left-8 w-24 h-24 bg-white/[0.03] rounded-full blur-2xl" />
+          <div className="relative space-y-3">
+            <span className="text-3xl block group-hover:scale-110 transition-transform duration-300">{c.icon}</span>
+            <h3 className={`text-lg font-extrabold ${c.accent}`}>{c.title}</h3>
+            <p className="text-body-sm text-text-secondary leading-relaxed">{c.desc}</p>
+            <span className={`inline-flex items-center gap-1.5 ${c.btn} px-3.5 py-1.5 rounded-lg text-body-sm font-bold transition-all`}>
+              לצפייה <ArrowLeft className="h-3.5 w-3.5 group-hover:translate-x-[-2px] transition-transform" />
             </span>
           </div>
         </Link>

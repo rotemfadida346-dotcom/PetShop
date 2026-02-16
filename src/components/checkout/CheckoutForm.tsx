@@ -52,9 +52,9 @@ export default function CheckoutForm() {
   if (items.length === 0) {
     return (
       <div className="text-center py-20">
-        <ShoppingBag className="h-16 w-16 text-textMuted mx-auto mb-4" />
-        <h2 className="text-xl font-semibold text-textPrimary mb-2">העגלה ריקה</h2>
-        <p className="text-textSecondary mb-8">הוסיפו מוצרים לפני שתמשיכו לתשלום.</p>
+        <ShoppingBag className="h-16 w-16 text-text-text-secondary mx-auto mb-4" />
+        <h2 className="text-xl font-semibold text-text-primary mb-2">העגלה ריקה</h2>
+        <p className="text-text-secondary mb-8">הוסיפו מוצרים לפני שתמשיכו לתשלום.</p>
         <Link href="/shop"><Button size="lg">לחנות</Button></Link>
       </div>
     );
@@ -66,7 +66,7 @@ export default function CheckoutForm() {
         <div className="lg:col-span-3 space-y-8">
           {/* Contact */}
           <div className="bg-card rounded-2xl p-6 border border-border">
-            <h2 className="text-lg font-semibold text-textPrimary mb-4">פרטי התקשרות</h2>
+            <h2 className="text-lg font-semibold text-text-primary mb-4">פרטי התקשרות</h2>
             <div className="space-y-4">
               <Input id="email" label="אימייל" type="email" placeholder="you@email.com" required />
               <Input id="phone" label="טלפון" type="tel" placeholder="050-1234567" required />
@@ -75,8 +75,8 @@ export default function CheckoutForm() {
 
           {/* Shipping */}
           <div className="bg-card rounded-2xl p-6 border border-border">
-            <h2 className="text-lg font-semibold text-textPrimary mb-4">כתובת למשלוח</h2>
-            <p className="text-sm text-textSecondary mb-4">📦 משלוחים בכל רחבי ישראל בלבד</p>
+            <h2 className="text-lg font-semibold text-text-primary mb-4">כתובת למשלוח</h2>
+            <p className="text-sm text-text-secondary mb-4">📦 משלוחים בכל רחבי ישראל בלבד</p>
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <Input id="firstName" label="שם פרטי" placeholder="ישראל" required />
@@ -93,28 +93,28 @@ export default function CheckoutForm() {
 
           {/* Payment */}
           <div className="bg-card rounded-2xl p-6 border border-border">
-            <h2 className="text-lg font-semibold text-textPrimary mb-4">אמצעי תשלום</h2>
+            <h2 className="text-lg font-semibold text-text-primary mb-4">אמצעי תשלום</h2>
             <div className="space-y-3">
               <button type="button" onClick={() => setPaymentMethod("tranzila")}
-                className={cn("w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-right", paymentMethod === "tranzila" ? "border-accent bg-background" : "border-border hover:border-gray-300")}>
+                className={cn("w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-right", paymentMethod === "tranzila" ? "border-accent bg-bg" : "border-border hover:border-gray-300")}>
                 <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0", paymentMethod === "tranzila" ? "border-accent" : "border-gray-300")}>
                   {paymentMethod === "tranzila" && <div className="w-2.5 h-2.5 rounded-full bg-black" />}
                 </div>
                 <div>
-                  <p className="font-medium text-textPrimary">כרטיס אשראי (Tranzila)</p>
-                  <p className="text-sm text-textSecondary">ויזה, מאסטרקארד, אמריקן אקספרס</p>
+                  <p className="font-medium text-text-primary">כרטיס אשראי (Tranzila)</p>
+                  <p className="text-sm text-text-secondary">ויזה, מאסטרקארד, אמריקן אקספרס</p>
                 </div>
-                <CreditCard className="h-5 w-5 text-textSecondary mr-auto" />
+                <CreditCard className="h-5 w-5 text-text-secondary mr-auto" />
               </button>
 
               <button type="button" onClick={() => setPaymentMethod("paypal")}
-                className={cn("w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-right", paymentMethod === "paypal" ? "border-accent bg-background" : "border-border hover:border-gray-300")}>
+                className={cn("w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-right", paymentMethod === "paypal" ? "border-accent bg-bg" : "border-border hover:border-gray-300")}>
                 <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0", paymentMethod === "paypal" ? "border-accent" : "border-gray-300")}>
                   {paymentMethod === "paypal" && <div className="w-2.5 h-2.5 rounded-full bg-black" />}
                 </div>
                 <div>
-                  <p className="font-medium text-textPrimary">PayPal</p>
-                  <p className="text-sm text-textSecondary">תשלום מאובטח דרך PayPal</p>
+                  <p className="font-medium text-text-primary">PayPal</p>
+                  <p className="text-sm text-text-secondary">תשלום מאובטח דרך PayPal</p>
                 </div>
                 <span className="font-bold text-blue-600 text-sm mr-auto">PayPal</span>
               </button>
@@ -135,26 +135,26 @@ export default function CheckoutForm() {
         {/* Summary */}
         <div className="lg:col-span-2">
           <div className="sticky top-32 bg-card rounded-2xl p-6 border border-border">
-            <h2 className="text-lg font-semibold text-textPrimary mb-4">סיכום הזמנה</h2>
+            <h2 className="text-lg font-semibold text-text-primary mb-4">סיכום הזמנה</h2>
             <div className="space-y-3 mb-6">
               {items.map((item) => {
                 const price = item.isSubscription ? calculateSubscriptionPrice(item.price, item.subscriptionDiscount) : item.price;
                 return (
                   <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-textSecondary line-clamp-1 pl-2">{item.name} x{item.quantity}</span>
-                    <span className="text-textPrimary font-medium shrink-0">{formatPrice(price * item.quantity)}</span>
+                    <span className="text-text-secondary line-clamp-1 pl-2">{item.name} x{item.quantity}</span>
+                    <span className="text-text-primary font-medium shrink-0">{formatPrice(price * item.quantity)}</span>
                   </div>
                 );
               })}
             </div>
             <hr className="border-border mb-4" />
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between"><span className="text-textSecondary">סכום ביניים</span><span className="text-textPrimary">{formatPrice(subtotal)}</span></div>
-              <div className="flex justify-between"><span className="text-textSecondary">משלוח</span><span className="text-textPrimary">{shipping === 0 ? "חינם" : formatPrice(shipping)}</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary">סכום ביניים</span><span className="text-text-primary">{formatPrice(subtotal)}</span></div>
+              <div className="flex justify-between"><span className="text-text-secondary">משלוח</span><span className="text-text-primary">{shipping === 0 ? "חינם" : formatPrice(shipping)}</span></div>
               <hr className="border-border" />
               <div className="flex justify-between text-base font-bold"><span>סה״כ</span><span>{formatPrice(total)}</span></div>
             </div>
-            <div className="mt-6 flex items-center gap-2 text-xs text-textSecondary">
+            <div className="mt-6 flex items-center gap-2 text-xs text-text-secondary">
               <ShieldCheck className="h-4 w-4 text-emerald-600" />
               <span>תשלום מוצפן ומאובטח SSL</span>
             </div>

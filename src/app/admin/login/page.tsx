@@ -13,8 +13,8 @@ export default function AdminLoginPage() {
             <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-white font-bold text-lg">P</span>
             </div>
-            <h1 className="text-2xl font-bold text-textPrimary">פאנל ניהול</h1>
-            <p className="text-muted mt-1">כניסה למנהלים בלבד</p>
+            <h1 className="text-2xl font-bold text-text-primary">פאנל ניהול</h1>
+            <p className="text-text-secondary mt-1">כניסה למנהלים בלבד</p>
           </div>
           <AdminLoginForm />
         </div>

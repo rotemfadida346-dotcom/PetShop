@@ -20,12 +20,12 @@ export default async function AdminLayout({
         <Container>
           <div className="flex items-center justify-between h-14">
             <div className="flex items-center gap-4">
-              <a href="/" className="text-sm text-textMuted hover:text-white transition-colors">← חנות</a>
+              <a href="/" className="text-sm text-text-text-secondary hover:text-white transition-colors">← חנות</a>
               <span className="text-gray-600">|</span>
               <span className="font-semibold text-sm">פאנל ניהול</span>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-textMuted">{user.name || user.email}</span>
+              <span className="text-sm text-text-text-secondary">{user.name || user.email}</span>
               <AdminLogoutButton />
             </div>
           </div>

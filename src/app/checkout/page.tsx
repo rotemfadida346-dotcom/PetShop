@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 
 export default function CheckoutPage() {
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-bg min-h-screen">
       <Container size="lg">
         <div className="py-8 md:py-12">
-          <h1 className="text-3xl font-bold text-textPrimary tracking-tight mb-8">תשלום</h1>
+          <h1 className="text-3xl font-bold text-text-primary tracking-tight mb-8">תשלום</h1>
           <CheckoutForm />
         </div>
       </Container>

@@ -12,7 +12,7 @@ export default function CartPage() {
     <div className="bg-card min-h-screen">
       <Container>
         <div className="py-8 md:py-12">
-          <h1 className="text-3xl font-bold text-textPrimary tracking-tight mb-8">עגלת קניות</h1>
+          <h1 className="text-3xl font-bold text-text-primary tracking-tight mb-8">עגלת קניות</h1>
           <CartContent />
         </div>
       </Container>

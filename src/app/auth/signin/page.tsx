@@ -14,8 +14,8 @@ export default function SignInPage() {
               <div className="inline-flex items-center gap-2 mb-4">
                 <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center"><span className="text-white font-bold">P</span></div>
               </div>
-              <h1 className="text-2xl font-bold text-textPrimary">ברוכים השבים</h1>
-              <p className="text-muted mt-1">התחברו לחשבון שלכם לניהול הזמנות ומנויים.</p>
+              <h1 className="text-2xl font-bold text-text-primary">ברוכים השבים</h1>
+              <p className="text-text-secondary mt-1">התחברו לחשבון שלכם לניהול הזמנות ומנויים.</p>
             </div>
             <SignInForm />
           </div>

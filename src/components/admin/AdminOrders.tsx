@@ -30,38 +30,38 @@ export default function AdminOrders() {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="py-20 text-center text-textSecondary">טוען הזמנות...</div>;
+  if (loading) return <div className="py-20 text-center text-text-secondary">טוען הזמנות...</div>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <div><h1 className="text-2xl font-bold text-textPrimary">הזמנות</h1><p className="text-sm text-textSecondary mt-1">{orders.length} הזמנות</p></div>
+        <div><h1 className="text-2xl font-bold text-text-primary">הזמנות</h1><p className="text-sm text-text-secondary mt-1">{orders.length} הזמנות</p></div>
       </div>
 
       {orders.length === 0 ? (
         <div className="bg-card rounded-xl border border-border p-12 text-center">
           <p className="text-4xl mb-3">📦</p>
-          <h2 className="text-lg font-semibold text-textPrimary mb-1">אין הזמנות עדיין</h2>
-          <p className="text-sm text-textSecondary">הזמנות חדשות יופיעו כאן כשלקוחות ירכשו מוצרים.</p>
+          <h2 className="text-lg font-semibold text-text-primary mb-1">אין הזמנות עדיין</h2>
+          <p className="text-sm text-text-secondary">הזמנות חדשות יופיעו כאן כשלקוחות ירכשו מוצרים.</p>
         </div>
       ) : (
         <div className="bg-card rounded-xl border border-border overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead><tr className="border-b border-border bg-surface">
-                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">הזמנה</th>
-                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">לקוח</th>
-                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">תאריך</th>
-                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">סכום</th>
-                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">סטטוס</th>
+                <th className="text-right text-xs font-medium text-text-secondary uppercase px-5 py-3">הזמנה</th>
+                <th className="text-right text-xs font-medium text-text-secondary uppercase px-5 py-3">לקוח</th>
+                <th className="text-right text-xs font-medium text-text-secondary uppercase px-5 py-3">תאריך</th>
+                <th className="text-right text-xs font-medium text-text-secondary uppercase px-5 py-3">סכום</th>
+                <th className="text-right text-xs font-medium text-text-secondary uppercase px-5 py-3">סטטוס</th>
               </tr></thead>
               <tbody className="divide-y divide-border">
                 {orders.map((order) => (
-                  <tr key={order.id} className="hover:bg-surface transition-colors">
-                    <td className="px-5 py-4"><span className="font-medium text-textPrimary text-sm">{order.id.slice(0, 12)}...</span></td>
-                    <td className="px-5 py-4"><span className="text-sm text-textSecondary">{order.email}</span></td>
-                    <td className="px-5 py-4"><span className="text-sm text-textSecondary">{new Date(order.createdAt).toLocaleDateString("he-IL")}</span></td>
-                    <td className="px-5 py-4"><span className="text-sm font-medium text-textPrimary">{formatPrice(order.total)}</span></td>
+                  <tr key={order.id} className="hover:bg-surface-hover transition-colors">
+                    <td className="px-5 py-4"><span className="font-medium text-text-primary text-sm">{order.id.slice(0, 12)}...</span></td>
+                    <td className="px-5 py-4"><span className="text-sm text-text-secondary">{order.email}</span></td>
+                    <td className="px-5 py-4"><span className="text-sm text-text-secondary">{new Date(order.createdAt).toLocaleDateString("he-IL")}</span></td>
+                    <td className="px-5 py-4"><span className="text-sm font-medium text-text-primary">{formatPrice(order.total)}</span></td>
                     <td className="px-5 py-4"><Badge variant={STATUS_COLORS[order.status] || "default"}>{STATUS_LABELS[order.status] || order.status}</Badge></td>
                   </tr>
                 ))}

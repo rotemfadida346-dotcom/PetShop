@@ -17,12 +17,12 @@ export default function AdminSettings() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-textPrimary mb-6">הגדרות אתר</h1>
+      <h1 className="text-2xl font-bold text-text-primary mb-6">הגדרות אתר</h1>
 
       <div className="space-y-8">
         {/* Shipping */}
         <div className="bg-card rounded-xl border border-border p-6">
-          <h2 className="text-lg font-semibold text-textPrimary mb-4">הגדרות משלוח</h2>
+          <h2 className="text-lg font-semibold text-text-primary mb-4">הגדרות משלוח</h2>
           <div className="space-y-4 max-w-md">
             <Input
               id="freeShippingThreshold"
@@ -38,18 +38,18 @@ export default function AdminSettings() {
               value={shippingCost}
               onChange={(e) => setShippingCost(parseInt(e.target.value))}
             />
-            <p className="text-sm text-textSecondary">הזמנות מתחת ל-₪{freeShippingThreshold} ישלמו ₪{shippingCost} משלוח.</p>
+            <p className="text-sm text-text-secondary">הזמנות מתחת ל-₪{freeShippingThreshold} ישלמו ₪{shippingCost} משלוח.</p>
           </div>
         </div>
 
         {/* Categories */}
         <div className="bg-card rounded-xl border border-border p-6">
-          <h2 className="text-lg font-semibold text-textPrimary mb-4">קטגוריות</h2>
+          <h2 className="text-lg font-semibold text-text-primary mb-4">קטגוריות</h2>
           <div className="space-y-2">
             {["מזון", "חטיפים", "חול", "תוספים", "צעצועים", "אביזרים"].map((cat) => (
               <div key={cat} className="flex items-center justify-between py-2 px-3 bg-surface rounded-lg">
-                <span className="text-sm font-medium text-textPrimary">{cat}</span>
-                <span className="text-xs text-textSecondary">פעיל</span>
+                <span className="text-sm font-medium text-text-primary">{cat}</span>
+                <span className="text-xs text-text-secondary">פעיל</span>
               </div>
             ))}
           </div>
@@ -57,7 +57,7 @@ export default function AdminSettings() {
 
         {/* Store Info */}
         <div className="bg-card rounded-xl border border-border p-6">
-          <h2 className="text-lg font-semibold text-textPrimary mb-4">פרטי החנות</h2>
+          <h2 className="text-lg font-semibold text-text-primary mb-4">פרטי החנות</h2>
           <div className="space-y-4 max-w-md">
             <Input id="storeName" label="שם החנות" defaultValue="Pawsome" />
             <Input id="storeEmail" label="אימייל חנות" defaultValue="hello@pawsome.co.il" />

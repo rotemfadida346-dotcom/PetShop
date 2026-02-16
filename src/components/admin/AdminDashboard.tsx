@@ -40,7 +40,7 @@ export default function AdminDashboard() {
   }, []);
 
   if (!stats) {
-    return <div className="py-20 text-center text-textSecondary">טוען נתונים...</div>;
+    return <div className="py-20 text-center text-text-secondary">טוען נתונים...</div>;
   }
 
   const cards = [
@@ -56,28 +56,28 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-textPrimary mb-6">לוח בקרה</h1>
+      <h1 className="text-2xl font-bold text-text-primary mb-6">לוח בקרה</h1>
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         {cards.map((card) => (
           <div key={card.label} className="bg-card rounded-xl border border-border p-5 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm text-textSecondary">{card.label}</span>
-              <card.icon className="h-5 w-5 text-textSecondary" />
+              <span className="text-sm text-text-secondary">{card.label}</span>
+              <card.icon className="h-5 w-5 text-text-secondary" />
             </div>
-            <p className="text-2xl font-bold text-textPrimary">{card.value}</p>
+            <p className="text-2xl font-bold text-text-primary">{card.value}</p>
           </div>
         ))}
       </div>
 
       {/* Revenue Chart */}
       <div className="bg-card rounded-xl border border-border p-6 mb-8">
-        <h2 className="font-semibold text-textPrimary mb-4">הכנסות חודשיות (₪)</h2>
+        <h2 className="font-semibold text-text-primary mb-4">הכנסות חודשיות (₪)</h2>
         {hasRevenue ? (
           <RevenueChart data={stats.monthlyRevenue} />
         ) : (
-          <div className="h-48 flex items-center justify-center text-textSecondary text-sm">
+          <div className="h-48 flex items-center justify-center text-text-secondary text-sm">
             אין נתוני הכנסות עדיין. ההכנסות יופיעו כאן לאחר הזמנות.
           </div>
         )}
@@ -87,46 +87,46 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Category Breakdown */}
         <div className="bg-card rounded-xl border border-border p-6">
-          <h2 className="font-semibold text-textPrimary mb-4">פירוט לפי קטגוריה</h2>
+          <h2 className="font-semibold text-text-primary mb-4">פירוט לפי קטגוריה</h2>
           {stats.categoryBreakdown.length > 0 ? (
             <div className="space-y-3">
               {stats.categoryBreakdown.map((cat) => (
                 <div key={cat.category} className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-textPrimary">{cat.category}</p>
-                    <p className="text-xs text-textSecondary">{cat.count} מוצרים</p>
+                    <p className="text-sm font-medium text-text-primary">{cat.category}</p>
+                    <p className="text-xs text-text-secondary">{cat.count} מוצרים</p>
                   </div>
-                  <p className="text-sm font-bold text-textPrimary">{formatPrice(cat.revenue)}</p>
+                  <p className="text-sm font-bold text-text-primary">{formatPrice(cat.revenue)}</p>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-sm text-textSecondary">אין נתונים עדיין.</p>
+            <p className="text-sm text-text-secondary">אין נתונים עדיין.</p>
           )}
         </div>
 
         {/* Stock Overview */}
         <div className="bg-card rounded-xl border border-border p-6">
-          <h2 className="font-semibold text-textPrimary mb-4">סקירת מלאי</h2>
+          <h2 className="font-semibold text-text-primary mb-4">סקירת מלאי</h2>
           {stats.topProducts.length > 0 ? (
             <div className="space-y-3">
               {stats.topProducts.map((product) => (
                 <div key={product.id} className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-textPrimary">{product.name}</p>
-                    <p className="text-xs text-textSecondary">
+                    <p className="text-sm font-medium text-text-primary">{product.name}</p>
+                    <p className="text-xs text-text-secondary">
                       {product.petType === "DOG" ? "🐕" : "🐈"}{" "}
                       {product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category}
                     </p>
                   </div>
-                  <span className={`text-sm font-bold ${product.stock < 50 ? "text-red-600" : product.stock < 100 ? "text-amber-600" : "text-textPrimary"}`}>
+                  <span className={`text-sm font-bold ${product.stock < 50 ? "text-red-600" : product.stock < 100 ? "text-amber-600" : "text-text-primary"}`}>
                     {product.stock} יח׳
                   </span>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-sm text-textSecondary">אין מוצרים עדיין.</p>
+            <p className="text-sm text-text-secondary">אין מוצרים עדיין.</p>
           )}
         </div>
       </div>

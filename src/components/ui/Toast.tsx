@@ -27,7 +27,7 @@ export default function Toast({
   return (
     <div
       className={cn(
-        "fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-gray-900 text-white px-5 py-3.5 rounded-xl shadow-xl transition-all duration-300",
+        "fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-bg-warm text-white px-5 py-3.5 rounded-xl shadow-xl transition-all duration-300",
         isVisible
           ? "translate-y-0 opacity-100"
           : "translate-y-4 opacity-0 pointer-events-none"

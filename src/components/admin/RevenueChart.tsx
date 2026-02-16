@@ -9,14 +9,11 @@ export default function RevenueChart({ data }: RevenueChartProps) {
     <div className="h-72">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 5, right: 0, left: 0, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#2A2A2A" />
-          <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#707070" }} />
-          <YAxis tick={{ fontSize: 12, fill: "#707070" }} tickFormatter={(v) => `₪${(v / 1000).toFixed(0)}K`} />
-          <Tooltip
-            formatter={(value) => [`₪${Number(value).toLocaleString()}`, "הכנסות"]}
-            contentStyle={{ borderRadius: "8px", border: "1px solid #2A2A2A", backgroundColor: "#1E1E1E", color: "#F5F5F5", fontSize: "13px" }}
-          />
-          <Bar dataKey="revenue" fill="#2ABAA0" radius={[4, 4, 0, 0]} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#2C2C31" />
+          <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5C5C64" }} />
+          <YAxis tick={{ fontSize: 12, fill: "#5C5C64" }} tickFormatter={(v) => `₪${(v / 1000).toFixed(0)}K`} />
+          <Tooltip formatter={(value) => [`₪${Number(value).toLocaleString()}`, "הכנסות"]} contentStyle={{ borderRadius: "12px", border: "1px solid #2C2C31", backgroundColor: "#222226", color: "#EAEAEC", fontSize: "13px" }} />
+          <Bar dataKey="revenue" fill="#5CB8A4" radius={[6, 6, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

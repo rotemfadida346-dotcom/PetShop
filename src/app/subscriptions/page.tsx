@@ -44,12 +44,12 @@ export default async function SubscriptionsPage() {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
               לעולם לא תיגמרו מהמוצרים האהובים
             </h1>
-            <p className="mt-6 text-lg text-textMuted max-w-xl mx-auto leading-relaxed">
+            <p className="mt-6 text-lg text-text-text-secondary max-w-xl mx-auto leading-relaxed">
               הירשמו למנוי, בחרו תדירות משלוח, וחסכו עד 10% על כל הזמנה. משלוח חינם, ללא התחייבות.
             </p>
             <div className="mt-8">
               <a href="#products">
-                <Button size="lg" className="bg-card text-textPrimary hover:bg-card-hover">
+                <Button size="lg" className="bg-card text-text-primary hover:bg-surface-hover-hover">
                   התחילו לחסוך
                   <ArrowLeft className="h-4 w-4" />
                 </Button>
@@ -92,8 +92,8 @@ export default async function SubscriptionsPage() {
                 <div className="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-xl font-bold">{item.step}</span>
                 </div>
-                <h3 className="text-lg font-semibold text-textPrimary mb-2">{item.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-text-primary mb-2">{item.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -115,9 +115,9 @@ export default async function SubscriptionsPage() {
               { icon: ShieldCheck, title: "ללא הפתעות", desc: "אותו מחיר, אותה איכות, בכל משלוח" },
             ].map((item) => (
               <div key={item.title} className="text-center p-6 bg-surface rounded-2xl border border-border hover:shadow-md transition-shadow">
-                <item.icon className="h-8 w-8 text-textPrimary mx-auto mb-3" />
-                <h3 className="font-semibold text-textPrimary mb-1">{item.title}</h3>
-                <p className="text-xs text-muted">{item.desc}</p>
+                <item.icon className="h-8 w-8 text-text-primary mx-auto mb-3" />
+                <h3 className="font-semibold text-text-primary mb-1">{item.title}</h3>
+                <p className="text-xs text-text-secondary">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -149,9 +149,9 @@ export default async function SubscriptionsPage() {
                     הכי פופולרי
                   </span>
                 )}
-                <RefreshCw className="h-6 w-6 text-textPrimary mx-auto mb-3" />
-                <h3 className="text-lg font-bold text-textPrimary">{opt.label}</h3>
-                <p className="text-xs text-muted mt-2">{opt.desc}</p>
+                <RefreshCw className="h-6 w-6 text-text-primary mx-auto mb-3" />
+                <h3 className="text-lg font-bold text-text-primary">{opt.label}</h3>
+                <p className="text-xs text-text-secondary mt-2">{opt.desc}</p>
               </div>
             ))}
           </div>
@@ -172,7 +172,7 @@ export default async function SubscriptionsPage() {
             <ProductGrid products={products} />
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted">אין מוצרים זמינים למנוי כרגע.</p>
+              <p className="text-text-secondary">אין מוצרים זמינים למנוי כרגע.</p>
             </div>
           )}
         </Container>
@@ -192,8 +192,8 @@ export default async function SubscriptionsPage() {
               { q: "האם המשלוח באמת חינם?", a: "כן, כל הזמנות מנוי נהנות ממשלוח חינם בכל רחבי ישראל." },
             ].map((faq) => (
               <div key={faq.q} className="bg-card rounded-xl border border-border p-5">
-                <h3 className="font-semibold text-textPrimary mb-2">{faq.q}</h3>
-                <p className="text-sm text-muted leading-relaxed">{faq.a}</p>
+                <h3 className="font-semibold text-text-primary mb-2">{faq.q}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -205,12 +205,12 @@ export default async function SubscriptionsPage() {
         <Container size="sm">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">מוכנים להתחיל לחסוך?</h2>
-            <p className="mt-4 text-textMuted max-w-md mx-auto">
+            <p className="mt-4 text-text-text-secondary max-w-md mx-auto">
               בחרו מוצר, הירשמו למנוי, ותתחילו ליהנות ממשלוח אוטומטי עם הנחה.
             </p>
             <div className="mt-8">
               <Link href="/shop?subscription=true">
-                <Button size="lg" className="bg-card text-textPrimary hover:bg-card-hover">
+                <Button size="lg" className="bg-card text-text-primary hover:bg-surface-hover-hover">
                   לחנות — מוצרים למנוי
                   <ArrowLeft className="h-4 w-4" />
                 </Button>

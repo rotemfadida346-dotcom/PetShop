@@ -22,12 +22,12 @@ export default function SignUpForm() {
         <Input id="email" label="אימייל" type="email" placeholder="you@email.com" required />
         <Input id="password" label="סיסמה" type="password" placeholder="מינימום 8 תווים" required minLength={8} />
         <Input id="confirmPassword" label="אישור סיסמה" type="password" placeholder="הכניסו שוב את הסיסמה" required minLength={8} />
-        <label className="flex items-start gap-2 text-sm"><input type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-gray-300 text-textPrimary focus:ring-black" />
-          <span className="text-muted">אני מסכים/ה ל<Link href="/terms" className="text-textPrimary hover:underline">תנאי השימוש</Link> ול<Link href="/privacy" className="text-textPrimary hover:underline">מדיניות הפרטיות</Link></span>
+        <label className="flex items-start gap-2 text-sm"><input type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-gray-300 text-text-primary focus:ring-black" />
+          <span className="text-text-secondary">אני מסכים/ה ל<Link href="/terms" className="text-text-primary hover:underline">תנאי השימוש</Link> ול<Link href="/privacy" className="text-text-primary hover:underline">מדיניות הפרטיות</Link></span>
         </label>
         <Button type="submit" fullWidth size="lg" isLoading={isLoading}><UserPlus className="h-4 w-4" />צרו חשבון</Button>
       </form>
-      <p className="text-center text-sm text-muted mt-6">יש לכם כבר חשבון? <Link href="/auth/signin" className="text-textPrimary hover:text-muted font-medium">התחברו</Link></p>
+      <p className="text-center text-sm text-text-secondary mt-6">יש לכם כבר חשבון? <Link href="/auth/signin" className="text-text-primary hover:text-text-secondary font-medium">התחברו</Link></p>
     </div>
   );
 }
