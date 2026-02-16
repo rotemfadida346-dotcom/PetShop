@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm dark palette — not pure black, charcoal warmth
-        bg: { DEFAULT: "#121214", light: "#18181C", warm: "#1C1C20" },
-        surface: { DEFAULT: "#1E1E22", light: "#242428", hover: "#2A2A2F" },
-        card: { DEFAULT: "#222226", hover: "#2A2A2F", border: "#2E2E33" },
+        // Improved contrast palette - better readability
+        bg: { DEFAULT: "#F9FAFB", light: "#F3F4F6", warm: "#F5F5F5" },
+        surface: { DEFAULT: "#E5E7EB", light: "#F3F4F6", hover: "#D1D5DB" },
+        card: { DEFAULT: "#FFFFFF", hover: "#F9FAFB", border: "#E5E7EB" },
         // Accent — warm sage/teal green
         accent: {
           DEFAULT: "#5CB8A4",
@@ -27,15 +27,15 @@ const config: Config = {
           800: "#C8ECE4",
           900: "#E8F7F3",
         },
-        // Text layers
+        // Text layers - high contrast for readability
         text: {
-          primary: "#EAEAEC",
-          secondary: "#9A9AA0",
-          muted: "#5C5C64",
-          inverse: "#121214",
+          primary: "#111827",
+          secondary: "#4B5563",
+          muted: "#9CA3AF",
+          inverse: "#FFFFFF",
         },
         // Semantic
-        border: { DEFAULT: "#2C2C31", light: "#36363C" },
+        border: { DEFAULT: "#E5E7EB", light: "#F3F4F6" },
         // Pet categories
         dog: { bg: "#251E14", text: "#E8A44A", accent: "#D4933A" },
         cat: { bg: "#1C1826", text: "#B48AE8", accent: "#9B6FD9" },

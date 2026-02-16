@@ -150,16 +150,34 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         </div>
 
         {/* Quantity & Add to Cart */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center border border-border rounded-lg">
-            <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3 text-text-secondary hover:text-text-primary transition-colors" aria-label="הפחת כמות"><Minus className="h-4 w-4" /></button>
-            <span className="px-4 py-2 font-medium text-text-primary min-w-[3rem] text-center">{quantity}</span>
-            <button onClick={() => setQuantity(quantity + 1)} className="p-3 text-text-secondary hover:text-text-primary transition-colors" aria-label="הגדל כמות"><Plus className="h-4 w-4" /></button>
+        <div className="space-y-3">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center border border-border rounded-lg">
+              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3 text-text-secondary hover:text-text-primary transition-colors" aria-label="הפחת כמות"><Minus className="h-4 w-4" /></button>
+              <span className="px-4 py-2 font-medium text-text-primary min-w-[3rem] text-center">{quantity}</span>
+              <button onClick={() => setQuantity(quantity + 1)} className="p-3 text-text-secondary hover:text-text-primary transition-colors" aria-label="הגדל כמות"><Plus className="h-4 w-4" /></button>
+            </div>
+            <Button onClick={handleAddToCart} size="lg" className="flex-1" disabled={!inStock}>
+              <ShoppingBag className="h-5 w-5" />
+              {inStock ? `הוסף לעגלה — ${formatPrice(currentPrice * quantity)}` : "אזל מהמלאי"}
+            </Button>
           </div>
-          <Button onClick={handleAddToCart} size="lg" className="flex-1" disabled={!inStock}>
-            <ShoppingBag className="h-5 w-5" />
-            {inStock ? `הוסף לעגלה — ${formatPrice(currentPrice * quantity)}` : "אזל מהמלאי"}
-          </Button>
+          
+          {/* Trust Micro-copy */}
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-text-secondary bg-surface rounded-lg p-3 border border-border">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+              תשלום מאובטח
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Truck className="h-3.5 w-3.5 text-emerald-600" />
+              משלוח מהיר בישראל
+            </span>
+            <span className="flex items-center gap-1.5">
+              <RotateCcw className="h-3.5 w-3.5 text-emerald-600" />
+              החזרה תוך 30 יום
+            </span>
+          </div>
         </div>
 
         {/* Trust */}

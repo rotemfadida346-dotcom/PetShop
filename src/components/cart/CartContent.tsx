@@ -71,25 +71,81 @@ export default function CartContent() {
       </div>
 
       <div className="lg:col-span-1">
-        <div className="sticky top-32 bg-bg rounded-2xl p-6 border border-border">
-          <h2 className="text-lg font-semibold text-text-primary mb-4">סיכום הזמנה</h2>
+        <div className="sticky top-32 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700 shadow-xl">
+          <h2 className="text-lg font-semibold text-white mb-4">סיכום הזמנה</h2>
+          
           <div className="space-y-3 text-sm">
-            <div className="flex justify-between"><span className="text-text-secondary">סכום ביניים</span><span className="text-text-primary font-medium">{formatPrice(subtotal)}</span></div>
             <div className="flex justify-between">
-              <span className="text-text-secondary">משלוח</span>
-              <span className="text-text-primary font-medium">{shipping === 0 ? <span className="text-emerald-600">חינם</span> : formatPrice(shipping)}</span>
+              <span className="text-gray-300">סכום ביניים</span>
+              <span className="text-white font-medium">{formatPrice(subtotal)}</span>
             </div>
-            {shipping > 0 && <p className="text-xs text-text-primary font-medium">הוסיפו {formatPrice(200 - subtotal)} למשלוח חינם</p>}
-            <hr className="border-border" />
-            <div className="flex justify-between text-base"><span className="font-semibold text-text-primary">סה״כ</span><span className="font-bold text-text-primary">{formatPrice(total)}</span></div>
+            
+            {/* Visual Shipping Calculator */}
+            <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-300">משלוח</span>
+                {shipping === 0 ? (
+                  <span className="text-emerald-400 font-bold flex items-center gap-1">
+                    <Truck className="h-4 w-4" />
+                    חינם! 🎉
+                  </span>
+                ) : (
+                  <span className="text-white font-medium">{formatPrice(shipping)}</span>
+                )}
+              </div>
+              
+              {shipping > 0 && (
+                <div className="space-y-2">
+                  <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+                    <div 
+                      className="bg-gradient-to-r from-accent-400 to-accent h-full transition-all duration-500"
+                      style={{ width: `${Math.min((subtotal / 200) * 100, 100)}%` }}
+                    />
+                  </div>
+                  <p className="text-xs text-accent font-medium">
+                    הוסיפו עוד {formatPrice(200 - subtotal)} למשלוח חינם! 📦
+                  </p>
+                </div>
+              )}
+              
+              {shipping === 0 && (
+                <p className="text-xs text-emerald-400 mt-1">
+                  ✅ קיבלתם משלוח חינם!
+                </p>
+              )}
+            </div>
+            
+            <hr className="border-gray-700" />
+            <div className="flex justify-between text-base">
+              <span className="font-semibold text-white">סה״כ לתשלום</span>
+              <span className="font-bold text-white text-xl">{formatPrice(total)}</span>
+            </div>
           </div>
+          
           <div className="mt-6 space-y-3">
-            <Link href="/checkout"><Button fullWidth size="lg"><Lock className="h-4 w-4" />לתשלום</Button></Link>
-            <Link href="/shop" className="block"><Button variant="ghost" fullWidth>המשך קניות</Button></Link>
-          </div>
-          <div className="mt-6 pt-4 border-t border-border space-y-2">
-            <div className="flex items-center gap-2 text-xs text-text-secondary"><ShieldCheck className="h-4 w-4 text-emerald-600" /><span>תשלום מאובטח</span></div>
-            <div className="flex items-center gap-2 text-xs text-text-secondary"><Truck className="h-4 w-4 text-emerald-600" /><span>משלוח חינם בהזמנות מעל ₪200</span></div>
+            <Link href="/checkout">
+              <Button fullWidth size="lg" className="bg-accent hover:bg-accent-400 text-white font-bold">
+                <Lock className="h-4 w-4" />
+                מעבר לתשלום מאובטח
+              </Button>
+            </Link>
+            {/* Trust Micro-copy */}
+            <div className="text-center text-xs text-gray-400 space-y-1 bg-white/5 rounded-lg p-3">
+              <p className="flex items-center justify-center gap-1.5">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                תשלום מאובטח ומוצפן
+              </p>
+              <p className="flex items-center justify-center gap-1.5">
+                <Truck className="h-3.5 w-3.5 text-emerald-400" />
+                משלוח מהיר לכל הארץ
+              </p>
+              <p>ללא התחייבות • ביטול חופשי</p>
+            </div>
+            <Link href="/shop" className="block">
+              <Button variant="ghost" fullWidth className="text-gray-300 hover:text-white">
+                המשך קניות
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

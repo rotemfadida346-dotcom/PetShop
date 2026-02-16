@@ -5,7 +5,7 @@ import ProductGrid from "@/components/product/ProductGrid";
 import CategoryCards from "@/components/home/CategoryCards";
 import { getFeaturedProducts } from "@/lib/db/products";
 import { getFeaturedProducts as getMockFeatured } from "@/lib/mock-data";
-import { Truck, ShieldCheck, Star, ArrowLeft, Package, RotateCcw } from "lucide-react";
+import { Truck, ShieldCheck, Star, ArrowLeft, MessageCircle, MapPin, RefreshCw } from "lucide-react";
 
 export default async function HomePage() {
   let featuredProducts: Parameters<typeof ProductGrid>[0]["products"];
@@ -40,22 +40,62 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* Trust */}
-      <section className="bg-surface border-y border-border py-10">
+      {/* Trust Section - Above the Fold */}
+      <section className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 py-16 md:py-20">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
         <Container>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { icon: Package, t: "מוצרים נבחרים", d: "רק מותגים ומוצרים שעמדו בסטנדרטים שלנו" },
-              { icon: Truck, t: "משלוח חינם", d: "בהזמנות מעל ₪200 לכל רחבי ישראל" },
-              { icon: RotateCcw, t: "החזרה קלה", d: "30 יום אחריות – לא מרוצים? מחזירים" },
-              { icon: ShieldCheck, t: "תשלום מאובטח", d: "כרטיס אשראי, PayPal ועוד" },
-            ].map((i) => (
-              <div key={i.t} className="text-center space-y-2">
-                <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-accent/10"><i.icon className="h-5 w-5 text-accent" /></div>
-                <h3 className="font-bold text-text-primary text-body-sm">{i.t}</h3>
-                <p className="text-xs text-text-muted">{i.d}</p>
-              </div>
-            ))}
+          <div className="relative">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">למה לקנות אצלנו?</h2>
+              <p className="text-gray-300 text-lg">חנות ישראלית מקומית שדואגת לחיות המחמד שלכם</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { 
+                  icon: MapPin, 
+                  title: "משלוחים בישראל בלבד", 
+                  desc: "שירות מקומי, אמין ומהיר לכל רחבי הארץ. אנחנו כאן בשבילכם.",
+                  highlight: "🇮🇱"
+                },
+                { 
+                  icon: Truck, 
+                  title: "משלוח חינם מעל ₪200", 
+                  desc: "חיסכון משמעותי על כל הזמנה. ככל שתזמינו יותר, תחסכו יותר.",
+                  highlight: "📦"
+                },
+                { 
+                  icon: MessageCircle, 
+                  title: "שירות לקוחות אנושי", 
+                  desc: "צוות ישראלי זמין בוואטסאפ ומייל. אנשים אמיתיים, לא בוטים.",
+                  highlight: "👋"
+                },
+                { 
+                  icon: RefreshCw, 
+                  title: "החזרות פשוטות תוך 30 יום", 
+                  desc: "לא מתאים? אין בעיה. מדיניות החזרות ברורה וללא סיבוכים.",
+                  highlight: "✅"
+                },
+              ].map((item) => (
+                <div key={item.title} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:border-accent/30 group">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <item.icon className="h-7 w-7 text-accent" />
+                    </div>
+                    <span className="text-3xl">{item.highlight}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-300 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+                אנחנו חנות ישראלית קטנה עם שירות אישי. כל הזמנה מטופלת בקפידה, 
+                וצוות השירות שלנו זמין לכל שאלה. <strong className="text-white">אתם לא לבד בתהליך.</strong>
+              </p>
+            </div>
           </div>
         </Container>
       </section>
