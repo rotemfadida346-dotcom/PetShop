@@ -57,9 +57,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Image */}
       <div>
-        <div className="relative aspect-square bg-background rounded-2xl overflow-hidden border border-gray-200">
+        <div className="relative aspect-square bg-background rounded-2xl overflow-hidden border border-border">
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-gray-300">
+            <div className="text-center text-textMuted">
               <ShoppingBag className="h-20 w-20 mx-auto mb-3 opacity-30" />
               <p className="text-sm opacity-50">{product.name}</p>
             </div>
@@ -104,7 +104,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
         {/* Purchase Type */}
         <div className="space-y-3">
-          <button onClick={() => setPurchaseType("onetime")} className={cn("w-full flex items-center justify-between p-4 rounded-xl border-2 transition-all text-right", purchaseType === "onetime" ? "border-accent bg-background" : "border-gray-200 hover:border-gray-300")}>
+          <button onClick={() => setPurchaseType("onetime")} className={cn("w-full flex items-center justify-between p-4 rounded-xl border-2 transition-all text-right", purchaseType === "onetime" ? "border-accent bg-background" : "border-border hover:border-gray-300")}>
             <div className="flex items-center gap-3">
               <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center", purchaseType === "onetime" ? "border-accent" : "border-gray-300")}>
                 {purchaseType === "onetime" && <div className="w-2.5 h-2.5 rounded-full bg-black" />}
@@ -117,7 +117,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             </div>
           </button>
 
-          <button onClick={() => setPurchaseType("subscription")} className={cn("w-full p-4 rounded-xl border-2 transition-all text-right", purchaseType === "subscription" ? "border-accent bg-background" : "border-gray-200 hover:border-gray-300")}>
+          <button onClick={() => setPurchaseType("subscription")} className={cn("w-full p-4 rounded-xl border-2 transition-all text-right", purchaseType === "subscription" ? "border-accent bg-background" : "border-border hover:border-gray-300")}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center", purchaseType === "subscription" ? "border-accent" : "border-gray-300")}>
@@ -140,7 +140,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               <div className="mt-4 mr-8 flex flex-wrap gap-2">
                 {SUBSCRIPTION_INTERVALS.map((interval) => (
                   <button key={interval.weeks} type="button" onClick={(e) => { e.stopPropagation(); setIntervalWeeks(interval.weeks); }}
-                    className={cn("px-3 py-1.5 rounded-lg text-sm font-medium transition-colors", intervalWeeks === interval.weeks ? "bg-accent text-white" : "bg-white border border-gray-200 text-textSecondary hover:border-gray-400")}>
+                    className={cn("px-3 py-1.5 rounded-lg text-sm font-medium transition-colors", intervalWeeks === interval.weeks ? "bg-accent text-white" : "bg-card border border-border text-textSecondary hover:border-gray-400")}>
                     {interval.label}
                   </button>
                 ))}
@@ -151,7 +151,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
         {/* Quantity & Add to Cart */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center border border-gray-200 rounded-lg">
+          <div className="flex items-center border border-border rounded-lg">
             <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3 text-textSecondary hover:text-textPrimary transition-colors" aria-label="הפחת כמות"><Minus className="h-4 w-4" /></button>
             <span className="px-4 py-2 font-medium text-textPrimary min-w-[3rem] text-center">{quantity}</span>
             <button onClick={() => setQuantity(quantity + 1)} className="p-3 text-textSecondary hover:text-textPrimary transition-colors" aria-label="הגדל כמות"><Plus className="h-4 w-4" /></button>
@@ -163,7 +163,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         </div>
 
         {/* Trust */}
-        <div className="grid grid-cols-3 gap-4 py-4 border-t border-gray-200">
+        <div className="grid grid-cols-3 gap-4 py-4 border-t border-border">
           <div className="text-center"><Truck className="h-5 w-5 text-textPrimary mx-auto mb-1" /><p className="text-xs text-textSecondary">משלוח חינם מעל ₪200</p></div>
           <div className="text-center"><RotateCcw className="h-5 w-5 text-textPrimary mx-auto mb-1" /><p className="text-xs text-textSecondary">החזרה תוך 30 יום</p></div>
           <div className="text-center"><ShieldCheck className="h-5 w-5 text-textPrimary mx-auto mb-1" /><p className="text-xs text-textSecondary">מאושר ע״י וטרינרים</p></div>
@@ -171,7 +171,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
         {/* Benefits */}
         {benefitsList.length > 0 && (
-          <div className="pt-4 border-t border-gray-200">
+          <div className="pt-4 border-t border-border">
             <h3 className="text-lg font-semibold text-textPrimary mb-3">יתרונות</h3>
             <ul className="space-y-2">
               {benefitsList.map((b, i) => (
@@ -183,7 +183,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
         {/* Ingredients */}
         {product.ingredients && (
-          <div className="pt-4 border-t border-gray-200">
+          <div className="pt-4 border-t border-border">
             <h3 className="text-lg font-semibold text-textPrimary mb-3">רכיבים</h3>
             <p className="text-sm text-textSecondary leading-relaxed">{product.ingredients}</p>
           </div>
@@ -191,7 +191,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
         {/* Who Is This For */}
         {product.whoIsFor && (
-          <div className="pt-4 border-t border-gray-200">
+          <div className="pt-4 border-t border-border">
             <h3 className="text-lg font-semibold text-textPrimary mb-3">למי זה מתאים?</h3>
             <p className="text-textSecondary leading-relaxed">{product.whoIsFor}</p>
           </div>
@@ -199,11 +199,11 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
         {/* FAQ */}
         {product.faqs.length > 0 && (
-          <div className="pt-4 border-t border-gray-200">
+          <div className="pt-4 border-t border-border">
             <h3 className="text-lg font-semibold text-textPrimary mb-3">שאלות נפוצות</h3>
             <div className="space-y-2">
               {product.faqs.map((faq) => (
-                <div key={faq.id} className="border border-gray-200 rounded-xl overflow-hidden">
+                <div key={faq.id} className="border border-border rounded-xl overflow-hidden">
                   <button onClick={() => setOpenFaq(openFaq === faq.id ? null : faq.id)} className="w-full flex items-center justify-between p-4 text-right hover:bg-background transition-colors">
                     <span className="font-medium text-textPrimary pl-4">{faq.question}</span>
                     {openFaq === faq.id ? <ChevronUp className="h-5 w-5 text-textSecondary shrink-0" /> : <ChevronDown className="h-5 w-5 text-textSecondary shrink-0" />}

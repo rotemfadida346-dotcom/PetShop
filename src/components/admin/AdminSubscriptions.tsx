@@ -32,7 +32,7 @@ export default function AdminSubscriptions() {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="py-20 text-center text-muted">טוען מנויים...</div>;
+  if (loading) return <div className="py-20 text-center text-textSecondary">טוען מנויים...</div>;
 
   const activeCount = subs.filter((s) => s.status === "ACTIVE").length;
   const mrr = subs.filter((s) => s.status === "ACTIVE").reduce((sum, s) => sum + s.pricePerDelivery, 0);
@@ -41,44 +41,44 @@ export default function AdminSubscriptions() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-black">מנויים</h1>
-          <p className="text-sm text-muted mt-1">{activeCount} פעילים · {formatPrice(mrr)} הכנסה חוזרת</p>
+          <h1 className="text-2xl font-bold text-textPrimary">מנויים</h1>
+          <p className="text-sm text-textSecondary mt-1">{activeCount} פעילים · {formatPrice(mrr)} הכנסה חוזרת</p>
         </div>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-xl border border-border p-4"><p className="text-xs text-muted uppercase">פעילים</p><p className="text-2xl font-bold text-emerald-600 mt-1">{subs.filter((s) => s.status === "ACTIVE").length}</p></div>
-        <div className="bg-white rounded-xl border border-border p-4"><p className="text-xs text-muted uppercase">מושהים</p><p className="text-2xl font-bold text-amber-600 mt-1">{subs.filter((s) => s.status === "PAUSED").length}</p></div>
-        <div className="bg-white rounded-xl border border-border p-4"><p className="text-xs text-muted uppercase">בוטלו</p><p className="text-2xl font-bold text-muted mt-1">{subs.filter((s) => s.status === "CANCELLED").length}</p></div>
+        <div className="bg-card rounded-xl border border-border p-4"><p className="text-xs text-textSecondary uppercase">פעילים</p><p className="text-2xl font-bold text-emerald-600 mt-1">{subs.filter((s) => s.status === "ACTIVE").length}</p></div>
+        <div className="bg-card rounded-xl border border-border p-4"><p className="text-xs text-textSecondary uppercase">מושהים</p><p className="text-2xl font-bold text-amber-600 mt-1">{subs.filter((s) => s.status === "PAUSED").length}</p></div>
+        <div className="bg-card rounded-xl border border-border p-4"><p className="text-xs text-textSecondary uppercase">בוטלו</p><p className="text-2xl font-bold text-textSecondary mt-1">{subs.filter((s) => s.status === "CANCELLED").length}</p></div>
       </div>
 
       {subs.length === 0 ? (
-        <div className="bg-white rounded-xl border border-border p-12 text-center">
+        <div className="bg-card rounded-xl border border-border p-12 text-center">
           <p className="text-4xl mb-3">🔄</p>
-          <h2 className="text-lg font-semibold text-black mb-1">אין מנויים עדיין</h2>
-          <p className="text-sm text-muted">מנויים חדשים יופיעו כאן כשלקוחות ירשמו.</p>
+          <h2 className="text-lg font-semibold text-textPrimary mb-1">אין מנויים עדיין</h2>
+          <p className="text-sm text-textSecondary">מנויים חדשים יופיעו כאן כשלקוחות ירשמו.</p>
         </div>
       ) : (
-        <div className="bg-white rounded-xl border border-border overflow-hidden">
+        <div className="bg-card rounded-xl border border-border overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead><tr className="border-b border-border bg-gray-50">
-                <th className="text-right text-xs font-medium text-muted uppercase px-5 py-3">מנוי</th>
-                <th className="text-right text-xs font-medium text-muted uppercase px-5 py-3">לקוח</th>
-                <th className="text-right text-xs font-medium text-muted uppercase px-5 py-3">מוצר</th>
-                <th className="text-right text-xs font-medium text-muted uppercase px-5 py-3">תדירות</th>
-                <th className="text-right text-xs font-medium text-muted uppercase px-5 py-3">מחיר</th>
-                <th className="text-right text-xs font-medium text-muted uppercase px-5 py-3">סטטוס</th>
-                <th className="text-left text-xs font-medium text-muted uppercase px-5 py-3">פעולות</th>
+              <thead><tr className="border-b border-border bg-surface">
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">מנוי</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">לקוח</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">מוצר</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">תדירות</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">מחיר</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-5 py-3">סטטוס</th>
+                <th className="text-left text-xs font-medium text-textSecondary uppercase px-5 py-3">פעולות</th>
               </tr></thead>
               <tbody className="divide-y divide-border">
                 {subs.map((sub) => (
-                  <tr key={sub.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-5 py-4"><div className="flex items-center gap-2"><RefreshCw className="h-4 w-4 text-muted" /><span className="font-medium text-black text-sm">{sub.id.slice(0, 10)}...</span></div></td>
-                    <td className="px-5 py-4"><span className="text-sm text-black">{sub.user?.name || sub.user?.email || sub.userId.slice(0, 8)}</span></td>
-                    <td className="px-5 py-4"><span className="text-sm text-muted">{sub.product?.name || sub.productId.slice(0, 8)}</span></td>
-                    <td className="px-5 py-4"><span className="text-sm text-muted">{getSubscriptionIntervalLabel(sub.intervalWeeks)}</span></td>
-                    <td className="px-5 py-4"><span className="text-sm font-medium text-black">{formatPrice(sub.pricePerDelivery)}</span></td>
+                  <tr key={sub.id} className="hover:bg-surface transition-colors">
+                    <td className="px-5 py-4"><div className="flex items-center gap-2"><RefreshCw className="h-4 w-4 text-textSecondary" /><span className="font-medium text-textPrimary text-sm">{sub.id.slice(0, 10)}...</span></div></td>
+                    <td className="px-5 py-4"><span className="text-sm text-textPrimary">{sub.user?.name || sub.user?.email || sub.userId.slice(0, 8)}</span></td>
+                    <td className="px-5 py-4"><span className="text-sm text-textSecondary">{sub.product?.name || sub.productId.slice(0, 8)}</span></td>
+                    <td className="px-5 py-4"><span className="text-sm text-textSecondary">{getSubscriptionIntervalLabel(sub.intervalWeeks)}</span></td>
+                    <td className="px-5 py-4"><span className="text-sm font-medium text-textPrimary">{formatPrice(sub.pricePerDelivery)}</span></td>
                     <td className="px-5 py-4"><Badge variant={STATUS_MAP[sub.status]?.variant || "default"}>{STATUS_MAP[sub.status]?.label || sub.status}</Badge></td>
                     <td className="px-5 py-4">
                       <div className="flex items-center justify-end gap-1">

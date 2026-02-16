@@ -8,26 +8,26 @@ export const metadata: Metadata = { title: "ההזמנה אושרה" };
 
 export default function CheckoutSuccessPage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-card min-h-screen">
       <Container size="sm">
         <div className="py-20 text-center">
           <CheckCircle className="h-16 w-16 text-emerald-500 mx-auto mb-6" />
           <h1 className="text-3xl font-bold text-textPrimary mb-3">ההזמנה אושרה!</h1>
           <p className="text-lg text-textSecondary mb-8 max-w-md mx-auto">תודה על ההזמנה. נשלח לכם אימייל אישור עם פרטי מעקב בקרוב.</p>
-          <div className="bg-background rounded-2xl p-8 mb-8 border border-gray-200 max-w-md mx-auto">
+          <div className="bg-background rounded-2xl p-8 mb-8 border border-border max-w-md mx-auto">
             <Package className="h-10 w-10 text-textPrimary mx-auto mb-3" />
             <h2 className="font-semibold text-textPrimary mb-1">מה קורה עכשיו?</h2>
             <ul className="text-sm text-textSecondary space-y-2 text-right mt-4">
               <li className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-gray-100 text-textPrimary text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                <span className="w-6 h-6 rounded-full bg-card-hover text-textPrimary text-xs font-bold flex items-center justify-center shrink-0">1</span>
                 נכין את ההזמנה שלכם למשלוח
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-gray-100 text-textPrimary text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                <span className="w-6 h-6 rounded-full bg-card-hover text-textPrimary text-xs font-bold flex items-center justify-center shrink-0">2</span>
                 תקבלו מספר מעקב באימייל
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-gray-100 text-textPrimary text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                <span className="w-6 h-6 rounded-full bg-card-hover text-textPrimary text-xs font-bold flex items-center justify-center shrink-0">3</span>
                 המוצרים האהובים מגיעים עד הדלת!
               </li>
             </ul>

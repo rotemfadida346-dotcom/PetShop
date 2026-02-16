@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "שאלון חיות מחמד - מצ�
 
 export default function QuizPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-surface min-h-screen">
       <Container size="md"><div className="py-12 md:py-20"><QuizFlow /></div></Container>
     </div>
   );

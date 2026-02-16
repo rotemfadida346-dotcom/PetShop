@@ -8,11 +8,11 @@ export const metadata: Metadata = { title: "הסיפור שלנו" };
 
 export default function AboutPage() {
   return (
-    <div className="bg-white">
-      <section className="bg-gray-50">
+    <div className="bg-card">
+      <section className="bg-surface">
         <Container size="md">
           <div className="py-20 md:py-32 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-black">תזונה שנוצרה באהבה עבור המשפחה הפרוותית שלכם</h1>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-textPrimary">תזונה שנוצרה באהבה עבור המשפחה הפרוותית שלכם</h1>
             <p className="mt-6 text-lg text-muted max-w-xl mx-auto leading-relaxed">התחלנו את Pawsome עם אמונה פשוטה: כל חיית מחמד ראויה לאוכל טוב כמו מה שהיינו אוכלים בעצמנו. ללא מילויים, ללא קיצורי דרך — רק תזונה פרימיום כנה.</p>
           </div>
         </Container>
@@ -23,15 +23,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[{ icon: Leaf, title: "טבעי קודם", desc: "כל מתכון מתחיל עם מרכיבים אמיתיים ושלמים." }, { icon: ShieldCheck, title: "מאושר ע״י וטרינרים", desc: "כל הפורמולות פותחו עם תזונאים וטרינריים." }, { icon: Heart, title: "אושר חיות מחמד", desc: "אם חיית המחמד שלכם לא אוהבת, נתקן את זה." }, { icon: Award, title: "אובססיה לאיכות", desc: "ייצור בקבוצות קטנות עם בדיקות קפדניות." }].map((v) => (
               <div key={v.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gray-50 mb-4"><v.icon className="h-7 w-7 text-black" /></div>
-                <h3 className="text-lg font-semibold text-black mb-2">{v.title}</h3>
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface mb-4"><v.icon className="h-7 w-7 text-textPrimary" /></div>
+                <h3 className="text-lg font-semibold text-textPrimary mb-2">{v.title}</h3>
                 <p className="text-muted text-sm leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-surface">
         <Container size="md">
           <div className="max-w-2xl mx-auto">
             <h2 className="section-heading mb-6">הסיפור שלנו</h2>
@@ -45,7 +45,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[{ value: "10,000+", label: "בעלי חיות מחמד מרוצים" }, { value: "50,000+", label: "ארוחות שנמסרו" }, { value: "4.8/5", label: "דירוג ממוצע" }, { value: "30 יום", label: "אחריות החזר כספי" }].map((stat) => (
-              <div key={stat.label}><p className="text-3xl md:text-4xl font-bold text-black">{stat.value}</p><p className="text-sm text-muted mt-1">{stat.label}</p></div>
+              <div key={stat.label}><p className="text-3xl md:text-4xl font-bold text-textPrimary">{stat.value}</p><p className="text-sm text-muted mt-1">{stat.label}</p></div>
             ))}
           </div>
         </Container>
@@ -54,9 +54,9 @@ export default function AboutPage() {
         <Container size="sm">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">מוכנים לעשות את המעבר?</h2>
-            <p className="mt-4 text-gray-400 max-w-md mx-auto">הצטרפו לאלפי בעלי חיות מחמד שסומכים על Pawsome. נסו ללא סיכון עם אחריות 30 יום.</p>
+            <p className="mt-4 text-textMuted max-w-md mx-auto">הצטרפו לאלפי בעלי חיות מחמד שסומכים על Pawsome. נסו ללא סיכון עם אחריות 30 יום.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link href="/shop"><Button size="lg" className="bg-white text-black hover:bg-gray-100">לחנות <ArrowLeft className="h-4 w-4" /></Button></Link>
+              <Link href="/shop"><Button size="lg" className="bg-card text-textPrimary hover:bg-card-hover">לחנות <ArrowLeft className="h-4 w-4" /></Button></Link>
               <Link href="/quiz"><Button variant="outline" size="lg" className="border-gray-600 text-white hover:bg-gray-800">לשאלון</Button></Link>
             </div>
           </div>
