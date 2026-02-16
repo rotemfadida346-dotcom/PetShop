@@ -25,21 +25,17 @@ export default async function HomePage() {
         <Container>
           <div className="relative py-20 md:py-28 lg:py-36">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 text-sm font-semibold text-brand-700 border border-brand-200 shadow-sm">
-                🩺 מאושר על ידי וטרינרים
-              </div>
-
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1]">
-                מזון פרימיום שחיות המחמד שלכם{" "}
-                <span className="text-brand-500">באמת יאהבו</span>
+                🩺 פרימיום לחיות המחמד{" "}
+                <span className="text-brand-500">שלכם</span>
               </h1>
 
               <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed">
-                מרכיבים טבעיים, מאושר על ידי וטרינרים. הירשמו למנוי וחסכו עד 10% על כל הזמנה עם משלוח חינם.
+                מבחר מוצרים איכותיים: מזון, חטיפים, צעצועים, מיטות, כלובים ומגרדות
               </p>
 
-              <p className="mt-3 text-sm text-gray-500 font-medium flex items-center gap-1.5">
-                🇮🇱 משלוחים בכל רחבי ישראל בלבד
+              <p className="mt-3 text-base text-gray-500 font-medium">
+                הירשמו למנוי לחיסכון של עד 10% על כל הזמנה עם משלוח חינם
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
