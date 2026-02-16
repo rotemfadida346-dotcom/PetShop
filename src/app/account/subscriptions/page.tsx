@@ -62,7 +62,7 @@ export default function SubscriptionsPage() {
           <div className="mt-8 bg-gray-100 border border-border rounded-xl p-6">
             <h3 className="font-semibold text-black mb-2">יתרונות המנוי</h3>
             <ul className="text-sm text-muted space-y-1">
-              <li>• חסכו עד 15% בכל משלוח</li>
+              <li>• חסכו עד 10% על כל הזמנה</li>
               <li>• משלוח חינם על כל הזמנות מנוי</li>
               <li>• עצרו, דלגו או בטלו בכל עת — ללא התחייבות</li>
               <li>• שנו תדירות או החליפו מוצרים בקלות</li>

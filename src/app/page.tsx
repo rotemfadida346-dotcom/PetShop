@@ -32,7 +32,7 @@ export default async function HomePage() {
               </h1>
 
               <p className="mt-6 text-lg md:text-xl text-muted max-w-lg leading-relaxed">
-                מרכיבים טבעיים, מאושר על ידי וטרינרים. הירשמו למנוי וחסכו עד 15% עם משלוח חינם.
+                מרכיבים טבעיים, מאושר על ידי וטרינרים. הירשמו למנוי וחסכו עד 10% על כל הזמנה עם משלוח חינם.
               </p>
 
               <p className="mt-3 text-sm text-muted-dark font-medium">
@@ -139,7 +139,7 @@ export default async function HomePage() {
       <section className="section-padding bg-black text-white">
         <Container size="md">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">מנוי וחיסכון עד 15%</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">מנוי וחיסכון עד 10% על כל הזמנה</h2>
             <p className="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
               לעולם לא תיגמרו מהמוצרים האהובים על חיית המחמד שלכם. קבעו לוח זמנים, חסכו בכל הזמנה, עצרו או בטלו בכל עת.
             </p>

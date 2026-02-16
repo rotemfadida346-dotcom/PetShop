@@ -17,8 +17,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "מנויים - חסכו עד 15%",
-  description: "הירשמו למנוי וקבלו את המוצרים האהובים ישירות עד הדלת. חסכו עד 15%, משלוח חינם, עצרו או בטלו בכל עת.",
+  title: "מנויים - חסכו עד 10%",
+  description: "הירשמו למנוי וקבלו את המוצרים האהובים ישירות עד הדלת. חסכו עד 10% על כל הזמנה, משלוח חינם, עצרו או בטלו בכל עת.",
 };
 
 export default async function SubscriptionsPage() {
@@ -45,12 +45,12 @@ export default async function SubscriptionsPage() {
               לעולם לא תיגמרו מהמוצרים האהובים
             </h1>
             <p className="mt-6 text-lg text-gray-400 max-w-xl mx-auto leading-relaxed">
-              הירשמו למנוי, בחרו תדירות משלוח, וחסכו עד 15% על כל הזמנה. משלוח חינם, ללא התחייבות.
+              הירשמו למנוי, בחרו תדירות משלוח, וחסכו עד 10% על כל הזמנה. משלוח חינם, ללא התחייבות.
             </p>
             <div className="mt-8">
               <a href="#products">
                 <Button size="lg" className="bg-white text-black hover:bg-gray-100">
-                  צפו במוצרים למנוי
+                  התחילו לחסוך
                   <ArrowLeft className="h-4 w-4" />
                 </Button>
               </a>
@@ -85,7 +85,7 @@ export default async function SubscriptionsPage() {
                 step: "3",
                 icon: Percent,
                 title: "חסכו בכל משלוח",
-                desc: "קבלו הנחה אוטומטית של עד 15% על כל משלוח מנוי.",
+                desc: "קבלו הנחה אוטומטית של עד 10% על כל הזמנת מנוי.",
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -109,7 +109,7 @@ export default async function SubscriptionsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
-              { icon: Percent, title: "חסכון עד 15%", desc: "הנחה אוטומטית על כל משלוח מנוי" },
+              { icon: Percent, title: "חסכון עד 10%", desc: "הנחה אוטומטית על כל הזמנת מנוי" },
               { icon: Truck, title: "משלוח חינם", desc: "משלוח חינם על כל הזמנות מנוי" },
               { icon: Pause, title: "גמישות מלאה", desc: "עצרו, דלגו או בטלו בכל עת — ללא התחייבות" },
               { icon: ShieldCheck, title: "ללא הפתעות", desc: "אותו מחיר, אותה איכות, בכל משלוח" },
@@ -187,7 +187,7 @@ export default async function SubscriptionsPage() {
             {[
               { q: "איך מבטלים מנוי?", a: "אפשר לבטל בכל עת דרך דף החשבון שלכם. אין התחייבות ואין עמלת ביטול." },
               { q: "אפשר לשנות את תדירות המשלוח?", a: "כן! ניתן לשנות מכל שבועיים ועד כל 6 שבועות ישירות מדף המנויים בחשבון." },
-              { q: "מה ההנחה על מנויים?", a: "ההנחה משתנה לפי מוצר — בין 10% ל-15% על כל משלוח מנוי." },
+              { q: "מה ההנחה על מנויים?", a: "מנויים מקבלים הנחה של עד 10% על כל הזמנה." },
               { q: "אפשר להשהות מנוי זמנית?", a: "בוודאי! ניתן להשהות מנוי ולחדש אותו בכל עת שנוח לכם." },
               { q: "האם המשלוח באמת חינם?", a: "כן, כל הזמנות מנוי נהנות ממשלוח חינם בכל רחבי ישראל." },
             ].map((faq) => (

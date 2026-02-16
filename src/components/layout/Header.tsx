@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-border">
       <div className="bg-black text-white text-center text-xs py-2 px-4">
-        <p>משלוח חינם בהזמנות מעל ₪200 | מנוי וחיסכון עד 15%</p>
+        <p>משלוח חינם בהזמנות מעל ₪200 | מנוי וחיסכון עד 10% על כל הזמנה</p>
       </div>
 
       <Container>
