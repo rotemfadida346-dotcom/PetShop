@@ -3,16 +3,19 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { PET_TYPES, PRODUCT_CATEGORIES } from "@/lib/constants";
+import { RefreshCw } from "lucide-react";
 
 interface ShopFiltersProps {
   currentPet?: string;
   currentCategory?: string;
+  currentSubscription?: string;
   currentSort?: string;
 }
 
 export default function ShopFilters({
   currentPet,
   currentCategory,
+  currentSubscription,
   currentSort,
 }: ShopFiltersProps) {
   const router = useRouter();
@@ -25,6 +28,7 @@ export default function ShopFilters({
     } else {
       params.delete(key);
     }
+    params.delete("page");
     router.push(`/shop?${params.toString()}`);
   }
 
@@ -99,21 +103,41 @@ export default function ShopFilters({
         ))}
       </div>
 
-      {/* Sort */}
-      <div className="flex items-center gap-2 pt-2 border-t border-stone-100">
-        <span className="text-sm font-medium text-stone-500">Sort by:</span>
-        <select
-          value={currentSort || ""}
-          onChange={(e) =>
-            updateFilter("sort", e.target.value || null)
+      {/* Subscription Filter + Sort */}
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-stone-100">
+        {/* Subscription toggle */}
+        <button
+          onClick={() =>
+            updateFilter(
+              "subscription",
+              currentSubscription === "true" ? null : "true"
+            )
           }
-          className="text-sm border border-stone-200 rounded-lg px-3 py-2 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"
+          className={cn(
+            "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors",
+            currentSubscription === "true"
+              ? "bg-emerald-600 text-white"
+              : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+          )}
         >
-          <option value="">Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="name">Name: A-Z</option>
-        </select>
+          <RefreshCw className="h-3.5 w-3.5" />
+          Subscribe & Save
+        </button>
+
+        {/* Sort */}
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium text-stone-500">Sort:</span>
+          <select
+            value={currentSort || ""}
+            onChange={(e) => updateFilter("sort", e.target.value || null)}
+            className="text-sm border border-stone-200 rounded-lg px-3 py-2 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"
+          >
+            <option value="">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name">Name: A-Z</option>
+          </select>
+        </div>
       </div>
     </div>
   );

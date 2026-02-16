@@ -2,7 +2,8 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import ProductGrid from "@/components/product/ProductGrid";
-import { getFeaturedProducts } from "@/lib/mock-data";
+import { getFeaturedProducts } from "@/lib/db/products";
+import { getFeaturedProducts as getMockFeatured } from "@/lib/mock-data";
 import {
   Truck,
   ShieldCheck,
@@ -13,8 +14,13 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export default function HomePage() {
-  const featuredProducts = getFeaturedProducts();
+export default async function HomePage() {
+  let featuredProducts: Parameters<typeof ProductGrid>[0]["products"];
+  try {
+    featuredProducts = await getFeaturedProducts();
+  } catch {
+    featuredProducts = getMockFeatured();
+  }
 
   return (
     <>
