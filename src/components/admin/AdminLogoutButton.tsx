@@ -9,7 +9,7 @@ export default function AdminLogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="text-sm text-textMuted hover:text-white transition-colors"
+      className="text-sm text-text-text-secondary hover:text-white transition-colors"
     >
       התנתק
     </button>

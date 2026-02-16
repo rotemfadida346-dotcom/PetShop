@@ -17,42 +17,34 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const hasDiscount = product.compareAt && product.compareAt > product.price;
   const isDog = product.petType === "DOG";
-  const categoryLabel = product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category;
+  const cat = product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category === "TOYS" ? "צעצועים" : "אביזרים";
 
   return (
-    <Link href={`/product/${product.slug}`} className="group block bg-card rounded-xl overflow-hidden border border-border hover:border-accent/40 hover:shadow-xl hover:shadow-accent/5 hover:scale-[1.03] transition-all duration-300">
-      <div className={`relative aspect-[4/3] overflow-hidden ${isDog ? "bg-gradient-to-br from-dog-50 to-dog-100" : "bg-gradient-to-br from-cat-50 to-cat-100"}`}>
+    <Link href={`/product/${product.slug}`} className="group block bg-card rounded-2xl overflow-hidden border border-card-border hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 hover:-translate-y-1 transition-all duration-300">
+      <div className={`relative aspect-[4/3] overflow-hidden ${isDog ? "bg-dog-bg" : "bg-cat-bg"}`}>
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <span className="text-5xl block mb-2 opacity-50 group-hover:scale-110 transition-transform duration-500">{isDog ? "🐕" : "🐈"}</span>
-            <p className="text-xs font-medium opacity-40 text-textSecondary">{categoryLabel}</p>
-          </div>
+          <span className="text-5xl opacity-30 group-hover:scale-110 group-hover:opacity-40 transition-all duration-500">{isDog ? "🐕" : "🐈"}</span>
         </div>
-        {product.images[0] && <Image src={product.images[0].url} alt={product.images[0].alt || product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />}
-        {product.subscriptionDiscount > 0 && (
-          <div className="absolute top-3 right-3"><span className="bg-accent text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-lg shadow-accent/30">מנוי</span></div>
-        )}
+        {product.images[0] && <Image src={product.images[0].url} alt={product.images[0].alt || product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />}
         <div className="absolute bottom-3 right-3">
-          <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${isDog ? "bg-dog-50 text-dog-600 border border-dog-100" : "bg-cat-50 text-cat-600 border border-cat-100"}`}>
-            {isDog ? "🐕 כלבים" : "🐈 חתולים"}
+          <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${isDog ? "bg-dog-bg text-dog-text" : "bg-cat-bg text-cat-text"}`}>
+            {isDog ? "🐕 כלבים" : "🐈 חתולים"} · {cat}
           </span>
         </div>
       </div>
-      <div className="p-4 space-y-2.5">
-        <div className="flex items-center gap-1">
-          {[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />)}
-          <span className="text-xs text-textMuted mr-1.5">(4.8)</span>
+      <div className="p-4 space-y-2">
+        <div className="flex items-center gap-0.5">
+          {[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />)}
+          <span className="text-[11px] text-text-muted mr-1.5">(4.8)</span>
         </div>
-        <h3 className="font-bold text-textPrimary group-hover:text-accent transition-colors line-clamp-1 text-[15px]">{product.name}</h3>
-        {product.shortDesc && <p className="text-sm text-textSecondary line-clamp-2 leading-relaxed">{product.shortDesc}</p>}
-        <div className="flex items-center justify-between pt-2 border-t border-border">
+        <h3 className="font-bold text-text-primary group-hover:text-accent transition-colors line-clamp-1">{product.name}</h3>
+        {product.shortDesc && <p className="text-body-sm text-text-secondary line-clamp-2">{product.shortDesc}</p>}
+        <div className="flex items-center justify-between pt-2 border-t border-card-border">
           <div className="flex items-baseline gap-2">
-            <span className="text-xl font-extrabold text-textPrimary">{formatPrice(product.price)}</span>
-            {hasDiscount && <span className="text-sm text-textMuted line-through">{formatPrice(product.compareAt!)}</span>}
+            <span className="text-lg font-extrabold text-text-primary">{formatPrice(product.price)}</span>
+            {hasDiscount && <span className="text-body-sm text-text-muted line-through">{formatPrice(product.compareAt!)}</span>}
           </div>
-          <div className="p-2 rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
-            <ShoppingBag className="h-4 w-4" />
-          </div>
+          <div className="p-2 rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-text-inverse transition-colors"><ShoppingBag className="h-4 w-4" /></div>
         </div>
       </div>
     </Link>

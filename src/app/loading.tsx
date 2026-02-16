@@ -9,7 +9,7 @@ export default function Loading() {
             <div className="inline-flex items-center justify-center w-12 h-12 mb-4">
               <div className="w-8 h-8 border-2 border-black border-t-transparent rounded-full animate-spin" />
             </div>
-            <p className="text-sm text-muted">טוען...</p>
+            <p className="text-sm text-text-secondary">טוען...</p>
           </div>
         </div>
       </Container>

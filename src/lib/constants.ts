@@ -1,6 +1,5 @@
 export const SITE_NAME = "Pawsome";
-export const SITE_DESCRIPTION =
-  "מזון פרימיום לכלבים וחתולים. מאושר על ידי וטרינרים, מרכיבים טבעיים שחיות המחמד שלכם יאהבו.";
+export const SITE_DESCRIPTION = "חנות חיות מחמד חכמה – מבחר מוצרים איכותיים לכלבים וחתולים. מזון, צעצועים, מיטות, אביזרים ועוד.";
 export const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export const CURRENCY = "₪";
@@ -32,26 +31,26 @@ export const NAV_LINKS = [
   { href: "/shop?pet=DOG", label: "כלבים" },
   { href: "/shop?pet=CAT", label: "חתולים" },
   { href: "/subscriptions", label: "מנויים" },
-  { href: "/quiz", label: "מצא את ההתאמה" },
+  { href: "/quiz", label: "התאמה אישית" },
   { href: "/about", label: "אודות" },
 ] as const;
 
 export const FOOTER_LINKS = {
   shop: [
-    { href: "/shop?pet=DOG", label: "מזון לכלבים" },
+    { href: "/shop?pet=DOG", label: "מוצרים לכלבים" },
     { href: "/shop?pet=DOG&category=TREATS", label: "חטיפים לכלבים" },
-    { href: "/shop?pet=CAT", label: "מזון לחתולים" },
+    { href: "/shop?pet=CAT", label: "מוצרים לחתולים" },
     { href: "/shop?pet=CAT&category=LITTER", label: "חול לחתולים" },
     { href: "/shop?pet=CAT&category=TREATS", label: "חטיפים לחתולים" },
   ],
   company: [
     { href: "/about", label: "הסיפור שלנו" },
-    { href: "/quiz", label: "שאלון לחיות מחמד" },
+    { href: "/quiz", label: "התאמה אישית" },
     { href: "/contact", label: "צור קשר" },
   ],
   support: [
     { href: "/faq", label: "שאלות נפוצות" },
-    { href: "/shipping", label: "משלוחים" },
+    { href: "/shipping", label: "מדיניות משלוחים" },
     { href: "/returns", label: "החזרות" },
     { href: "/account", label: "החשבון שלי" },
   ],

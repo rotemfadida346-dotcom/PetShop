@@ -76,8 +76,8 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
             className={cn(
               "px-3.5 py-2 rounded-lg text-sm font-medium transition-colors",
               p === currentPage
-                ? "bg-accent text-white shadow-md"
-                : "text-textSecondary hover:bg-accent-50 hover:text-accent"
+                ? "bg-accent/15 text-accent ring-1 ring-accent/30"
+                : "text-text-secondary hover:bg-surface-hover hover:text-accent"
             )}
           >
             {p}
