@@ -1,54 +1,57 @@
 export const SITE_NAME = "Pawsome";
 export const SITE_DESCRIPTION =
-  "Premium nutrition for your dogs & cats. Vet-approved, naturally sourced ingredients your pets will love.";
+  "מזון פרימיום לכלבים וחתולים. מאושר על ידי וטרינרים, מרכיבים טבעיים שחיות המחמד שלכם יאהבו.";
 export const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
+export const CURRENCY = "₪";
+export const FREE_SHIPPING_THRESHOLD = 200;
+export const SHIPPING_COST = 25;
+
 export const SUBSCRIPTION_INTERVALS = [
-  { weeks: 2, label: "Every 2 weeks" },
-  { weeks: 4, label: "Every 4 weeks" },
-  { weeks: 6, label: "Every 6 weeks" },
+  { weeks: 2, label: "כל שבועיים" },
+  { weeks: 4, label: "כל 4 שבועות" },
+  { weeks: 6, label: "כל 6 שבועות" },
 ] as const;
 
 export const PET_TYPES = [
-  { value: "DOG", label: "Dogs", emoji: "🐕" },
-  { value: "CAT", label: "Cats", emoji: "🐈" },
+  { value: "DOG", label: "כלבים", emoji: "🐕" },
+  { value: "CAT", label: "חתולים", emoji: "🐈" },
 ] as const;
 
 export const PRODUCT_CATEGORIES = [
-  { value: "FOOD", label: "Food" },
-  { value: "TREATS", label: "Treats" },
-  { value: "LITTER", label: "Litter" },
-  { value: "SUPPLEMENTS", label: "Supplements" },
-  { value: "TOYS", label: "Toys" },
-  { value: "ACCESSORIES", label: "Accessories" },
+  { value: "FOOD", label: "מזון" },
+  { value: "TREATS", label: "חטיפים" },
+  { value: "LITTER", label: "חול" },
+  { value: "SUPPLEMENTS", label: "תוספים" },
+  { value: "TOYS", label: "צעצועים" },
+  { value: "ACCESSORIES", label: "אביזרים" },
 ] as const;
 
 export const NAV_LINKS = [
-  { href: "/shop", label: "Shop All" },
-  { href: "/shop?pet=DOG", label: "Dogs" },
-  { href: "/shop?pet=CAT", label: "Cats" },
-  { href: "/quiz", label: "Find Your Match" },
-  { href: "/about", label: "Our Story" },
+  { href: "/shop", label: "חנות" },
+  { href: "/shop?pet=DOG", label: "כלבים" },
+  { href: "/shop?pet=CAT", label: "חתולים" },
+  { href: "/quiz", label: "מצא את ההתאמה" },
+  { href: "/about", label: "אודות" },
 ] as const;
 
 export const FOOTER_LINKS = {
   shop: [
-    { href: "/shop?pet=DOG", label: "Dog Food" },
-    { href: "/shop?pet=DOG&category=TREATS", label: "Dog Treats" },
-    { href: "/shop?pet=CAT", label: "Cat Food" },
-    { href: "/shop?pet=CAT&category=LITTER", label: "Cat Litter" },
-    { href: "/shop?pet=CAT&category=TREATS", label: "Cat Treats" },
+    { href: "/shop?pet=DOG", label: "מזון לכלבים" },
+    { href: "/shop?pet=DOG&category=TREATS", label: "חטיפים לכלבים" },
+    { href: "/shop?pet=CAT", label: "מזון לחתולים" },
+    { href: "/shop?pet=CAT&category=LITTER", label: "חול לחתולים" },
+    { href: "/shop?pet=CAT&category=TREATS", label: "חטיפים לחתולים" },
   ],
   company: [
-    { href: "/about", label: "Our Story" },
-    { href: "/quiz", label: "Pet Quiz" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
+    { href: "/about", label: "הסיפור שלנו" },
+    { href: "/quiz", label: "שאלון לחיות מחמד" },
+    { href: "/contact", label: "צור קשר" },
   ],
   support: [
-    { href: "/faq", label: "FAQ" },
-    { href: "/shipping", label: "Shipping" },
-    { href: "/returns", label: "Returns" },
-    { href: "/account", label: "My Account" },
+    { href: "/faq", label: "שאלות נפוצות" },
+    { href: "/shipping", label: "משלוחים" },
+    { href: "/returns", label: "החזרות" },
+    { href: "/account", label: "החשבון שלי" },
   ],
 } as const;

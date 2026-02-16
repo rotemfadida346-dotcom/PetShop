@@ -5,18 +5,10 @@ import { useCartStore } from "@/store/cart";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import {
-  formatPrice,
-  calculateSubscriptionPrice,
-} from "@/lib/utils";
-import {
-  Lock,
-  CreditCard,
-  ShoppingBag,
-  ShieldCheck,
-  ArrowLeft,
-} from "lucide-react";
+import { formatPrice, calculateSubscriptionPrice, getShippingCost } from "@/lib/utils";
+import { Lock, CreditCard, ShoppingBag, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function CheckoutForm() {
   const items = useCartStore((s) => s.items);
@@ -24,46 +16,32 @@ export default function CheckoutForm() {
   const clearCart = useCartStore((s) => s.clearCart);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<"paypal" | "tranzila">("tranzila");
 
   const subtotal = getSubtotal();
-  const shipping = subtotal >= 49 ? 0 : 5.99;
-  const tax = subtotal * 0.08;
-  const total = subtotal + shipping + tax;
+  const shipping = getShippingCost(subtotal);
+  const total = subtotal + shipping;
 
   async function handleCheckout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
-
     try {
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          paymentMethod,
           items: items.map((item) => ({
-            productId: item.productId,
-            name: item.name,
-            price: item.isSubscription
-              ? calculateSubscriptionPrice(item.price, item.subscriptionDiscount)
-              : item.price,
-            quantity: item.quantity,
-            isSubscription: item.isSubscription,
-            intervalWeeks: item.intervalWeeks,
+            productId: item.productId, name: item.name,
+            price: item.isSubscription ? calculateSubscriptionPrice(item.price, item.subscriptionDiscount) : item.price,
+            quantity: item.quantity, isSubscription: item.isSubscription, intervalWeeks: item.intervalWeeks,
           })),
         }),
       });
-
       const data = await response.json();
-
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        // For demo, simulate success
-        clearCart();
-        router.push("/checkout/success");
-      }
-    } catch (error) {
-      console.error("Checkout error:", error);
-      // For demo, simulate success
+      if (data.url) { window.location.href = data.url; }
+      else { clearCart(); router.push("/checkout/success"); }
+    } catch {
       clearCart();
       router.push("/checkout/success");
     } finally {
@@ -74,16 +52,10 @@ export default function CheckoutForm() {
   if (items.length === 0) {
     return (
       <div className="text-center py-20">
-        <ShoppingBag className="h-16 w-16 text-stone-300 mx-auto mb-4" />
-        <h2 className="text-xl font-semibold text-stone-900 mb-2">
-          Your cart is empty
-        </h2>
-        <p className="text-stone-500 mb-8">
-          Add some products before checking out.
-        </p>
-        <Link href="/shop">
-          <Button size="lg">Browse Products</Button>
-        </Link>
+        <ShoppingBag className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+        <h2 className="text-xl font-semibold text-black mb-2">העגלה ריקה</h2>
+        <p className="text-muted mb-8">הוסיפו מוצרים לפני שתמשיכו לתשלום.</p>
+        <Link href="/shop"><Button size="lg">לחנות</Button></Link>
       </div>
     );
   }
@@ -91,157 +63,100 @@ export default function CheckoutForm() {
   return (
     <form onSubmit={handleCheckout}>
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-        {/* Left: Form */}
         <div className="lg:col-span-3 space-y-8">
           {/* Contact */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-200">
-            <h2 className="text-lg font-semibold text-stone-900 mb-4">
-              Contact Information
-            </h2>
+          <div className="bg-white rounded-2xl p-6 border border-border">
+            <h2 className="text-lg font-semibold text-black mb-4">פרטי התקשרות</h2>
             <div className="space-y-4">
-              <Input
-                id="email"
-                label="Email"
-                type="email"
-                placeholder="you@email.com"
-                required
-              />
-              <Input
-                id="phone"
-                label="Phone (optional)"
-                type="tel"
-                placeholder="(555) 555-5555"
-              />
+              <Input id="email" label="אימייל" type="email" placeholder="you@email.com" required />
+              <Input id="phone" label="טלפון" type="tel" placeholder="050-1234567" required />
             </div>
           </div>
 
           {/* Shipping */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-200">
-            <h2 className="text-lg font-semibold text-stone-900 mb-4">
-              Shipping Address
-            </h2>
+          <div className="bg-white rounded-2xl p-6 border border-border">
+            <h2 className="text-lg font-semibold text-black mb-4">כתובת למשלוח</h2>
+            <p className="text-sm text-muted mb-4">📦 משלוחים בכל רחבי ישראל בלבד</p>
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <Input
-                  id="firstName"
-                  label="First Name"
-                  placeholder="John"
-                  required
-                />
-                <Input
-                  id="lastName"
-                  label="Last Name"
-                  placeholder="Doe"
-                  required
-                />
+                <Input id="firstName" label="שם פרטי" placeholder="ישראל" required />
+                <Input id="lastName" label="שם משפחה" placeholder="ישראלי" required />
               </div>
-              <Input
-                id="address1"
-                label="Address"
-                placeholder="123 Main St"
-                required
-              />
-              <Input
-                id="address2"
-                label="Apartment, suite, etc. (optional)"
-                placeholder="Apt 4B"
-              />
-              <div className="grid grid-cols-3 gap-4">
-                <Input id="city" label="City" placeholder="New York" required />
-                <Input id="state" label="State" placeholder="NY" required />
-                <Input id="zip" label="ZIP Code" placeholder="10001" required />
+              <Input id="address1" label="כתובת" placeholder="רחוב הרצל 1" required />
+              <Input id="address2" label="דירה / קומה (אופציונלי)" placeholder="דירה 4" />
+              <div className="grid grid-cols-2 gap-4">
+                <Input id="city" label="עיר" placeholder="תל אביב" required />
+                <Input id="zip" label="מיקוד" placeholder="6100000" required />
               </div>
             </div>
           </div>
 
-          {/* Payment info */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-200">
-            <h2 className="text-lg font-semibold text-stone-900 mb-4">
-              Payment
-            </h2>
-            <div className="bg-stone-50 rounded-xl p-6 text-center border border-stone-200">
-              <CreditCard className="h-8 w-8 text-stone-400 mx-auto mb-3" />
-              <p className="text-sm text-stone-600 mb-1">
-                You&apos;ll be redirected to Stripe&apos;s secure checkout to complete
-                payment.
-              </p>
-              <p className="text-xs text-stone-400">
-                We accept Visa, Mastercard, AMEX, Apple Pay, and Google Pay.
-              </p>
+          {/* Payment */}
+          <div className="bg-white rounded-2xl p-6 border border-border">
+            <h2 className="text-lg font-semibold text-black mb-4">אמצעי תשלום</h2>
+            <div className="space-y-3">
+              <button type="button" onClick={() => setPaymentMethod("tranzila")}
+                className={cn("w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-right", paymentMethod === "tranzila" ? "border-black bg-gray-50" : "border-border hover:border-gray-300")}>
+                <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0", paymentMethod === "tranzila" ? "border-black" : "border-gray-300")}>
+                  {paymentMethod === "tranzila" && <div className="w-2.5 h-2.5 rounded-full bg-black" />}
+                </div>
+                <div>
+                  <p className="font-medium text-black">כרטיס אשראי (Tranzila)</p>
+                  <p className="text-sm text-muted">ויזה, מאסטרקארד, אמריקן אקספרס</p>
+                </div>
+                <CreditCard className="h-5 w-5 text-muted mr-auto" />
+              </button>
+
+              <button type="button" onClick={() => setPaymentMethod("paypal")}
+                className={cn("w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-right", paymentMethod === "paypal" ? "border-black bg-gray-50" : "border-border hover:border-gray-300")}>
+                <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0", paymentMethod === "paypal" ? "border-black" : "border-gray-300")}>
+                  {paymentMethod === "paypal" && <div className="w-2.5 h-2.5 rounded-full bg-black" />}
+                </div>
+                <div>
+                  <p className="font-medium text-black">PayPal</p>
+                  <p className="text-sm text-muted">תשלום מאובטח דרך PayPal</p>
+                </div>
+                <span className="font-bold text-blue-600 text-sm mr-auto">PayPal</span>
+              </button>
             </div>
           </div>
 
           <div className="flex items-center gap-4">
             <Link href="/cart">
-              <Button variant="ghost" type="button">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Cart
-              </Button>
+              <Button variant="ghost" type="button"><ArrowRight className="h-4 w-4" />חזרה לעגלה</Button>
             </Link>
             <Button type="submit" size="lg" isLoading={isLoading} className="flex-1">
               <Lock className="h-4 w-4" />
-              Pay {formatPrice(total)}
+              שלם {formatPrice(total)}
             </Button>
           </div>
         </div>
 
-        {/* Right: Summary */}
+        {/* Summary */}
         <div className="lg:col-span-2">
-          <div className="sticky top-32 bg-white rounded-2xl p-6 border border-stone-200">
-            <h2 className="text-lg font-semibold text-stone-900 mb-4">
-              Order Summary
-            </h2>
-
-            {/* Items */}
+          <div className="sticky top-32 bg-white rounded-2xl p-6 border border-border">
+            <h2 className="text-lg font-semibold text-black mb-4">סיכום הזמנה</h2>
             <div className="space-y-3 mb-6">
               {items.map((item) => {
-                const price = item.isSubscription
-                  ? calculateSubscriptionPrice(
-                      item.price,
-                      item.subscriptionDiscount
-                    )
-                  : item.price;
-
+                const price = item.isSubscription ? calculateSubscriptionPrice(item.price, item.subscriptionDiscount) : item.price;
                 return (
                   <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-stone-600 line-clamp-1 pr-2">
-                      {item.name} x{item.quantity}
-                    </span>
-                    <span className="text-stone-900 font-medium shrink-0">
-                      {formatPrice(price * item.quantity)}
-                    </span>
+                    <span className="text-muted line-clamp-1 pl-2">{item.name} x{item.quantity}</span>
+                    <span className="text-black font-medium shrink-0">{formatPrice(price * item.quantity)}</span>
                   </div>
                 );
               })}
             </div>
-
-            <hr className="border-stone-200 mb-4" />
-
+            <hr className="border-border mb-4" />
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-stone-500">Subtotal</span>
-                <span className="text-stone-900">{formatPrice(subtotal)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-stone-500">Shipping</span>
-                <span className="text-stone-900">
-                  {shipping === 0 ? "Free" : formatPrice(shipping)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-stone-500">Tax (est.)</span>
-                <span className="text-stone-900">{formatPrice(tax)}</span>
-              </div>
-              <hr className="border-stone-200" />
-              <div className="flex justify-between text-base font-bold">
-                <span>Total</span>
-                <span>{formatPrice(total)}</span>
-              </div>
+              <div className="flex justify-between"><span className="text-muted">סכום ביניים</span><span className="text-black">{formatPrice(subtotal)}</span></div>
+              <div className="flex justify-between"><span className="text-muted">משלוח</span><span className="text-black">{shipping === 0 ? "חינם" : formatPrice(shipping)}</span></div>
+              <hr className="border-border" />
+              <div className="flex justify-between text-base font-bold"><span>סה״כ</span><span>{formatPrice(total)}</span></div>
             </div>
-
-            <div className="mt-6 flex items-center gap-2 text-xs text-stone-500">
+            <div className="mt-6 flex items-center gap-2 text-xs text-muted">
               <ShieldCheck className="h-4 w-4 text-emerald-600" />
-              <span>SSL encrypted & secure checkout</span>
+              <span>תשלום מוצפן ומאובטח SSL</span>
             </div>
           </div>
         </div>

@@ -5,11 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatPrice(price: number, currency: string = "USD"): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-  }).format(price);
+export function formatPrice(price: number): string {
+  return `₪${price.toFixed(2)}`;
 }
 
 export function calculateSubscriptionPrice(
@@ -34,12 +31,16 @@ export function truncate(text: string, length: number): string {
 export function getSubscriptionIntervalLabel(weeks: number): string {
   switch (weeks) {
     case 2:
-      return "Every 2 weeks";
+      return "כל שבועיים";
     case 4:
-      return "Every 4 weeks";
+      return "כל 4 שבועות";
     case 6:
-      return "Every 6 weeks";
+      return "כל 6 שבועות";
     default:
-      return `Every ${weeks} weeks`;
+      return `כל ${weeks} שבועות`;
   }
+}
+
+export function getShippingCost(subtotal: number): number {
+  return subtotal >= 200 ? 0 : 25;
 }

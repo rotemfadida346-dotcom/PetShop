@@ -4,7 +4,7 @@
 export const MOCK_PRODUCTS = [
   {
     id: "1",
-    name: "Premium Chicken & Rice Dog Food",
+    name: "מוצר 1",
     slug: "premium-chicken-rice-dog-food",
     shortDesc: "Complete nutrition with real chicken as the first ingredient.",
     description:
@@ -51,7 +51,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "2",
-    name: "Wild Salmon & Sweet Potato Dog Food",
+    name: "מוצר 2",
     slug: "wild-salmon-sweet-potato-dog-food",
     shortDesc: "Omega-rich formula for healthy skin, coat, and joints.",
     description:
@@ -85,7 +85,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "3",
-    name: "Indoor Cat Chicken Formula",
+    name: "מוצר 3",
     slug: "indoor-cat-chicken-formula",
     shortDesc: "Tailored nutrition for indoor cats with weight management.",
     description:
@@ -119,7 +119,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "4",
-    name: "Grain-Free Turkey & Cranberry Cat Food",
+    name: "מוצר 4",
     slug: "grain-free-turkey-cranberry-cat-food",
     shortDesc: "Premium grain-free nutrition with antioxidant-rich cranberries.",
     description:
@@ -147,7 +147,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "5",
-    name: "Peanut Butter Training Treats",
+    name: "מוצר 5",
     slug: "peanut-butter-training-treats",
     shortDesc: "Small, soft bites perfect for training sessions.",
     description:
@@ -175,7 +175,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "6",
-    name: "Freeze-Dried Salmon Cat Treats",
+    name: "מוצר 6",
     slug: "freeze-dried-salmon-cat-treats",
     shortDesc: "Single ingredient, pure wild salmon bites.",
     description:
@@ -202,7 +202,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "7",
-    name: "Natural Clumping Cat Litter",
+    name: "מוצר 7",
     slug: "natural-clumping-cat-litter",
     shortDesc: "Ultra-clumping, low-dust formula from natural clay.",
     description:
@@ -235,7 +235,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "8",
-    name: "Dental Chew Sticks for Dogs",
+    name: "מוצר 8",
     slug: "dental-chew-sticks-dogs",
     shortDesc: "Daily dental care that dogs actually enjoy.",
     description:
@@ -263,7 +263,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "9",
-    name: "Puppy Growth Chicken & Oatmeal",
+    name: "מוצר 9",
     slug: "puppy-growth-chicken-oatmeal",
     shortDesc: "DHA-enriched formula for growing puppies.",
     description:
@@ -291,7 +291,7 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "10",
-    name: "Senior Cat Gentle Digestion Formula",
+    name: "מוצר 10",
     slug: "senior-cat-gentle-digestion",
     shortDesc: "Easy-to-digest nutrition for cats 7+.",
     description:

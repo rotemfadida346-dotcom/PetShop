@@ -3,8 +3,8 @@ import Container from "@/components/ui/Container";
 import CartContent from "@/components/cart/CartContent";
 
 export const metadata: Metadata = {
-  title: "Shopping Cart",
-  description: "Review your cart and proceed to checkout.",
+  title: "עגלת קניות",
+  description: "בדקו את העגלה שלכם והמשיכו לתשלום.",
 };
 
 export default function CartPage() {
@@ -12,9 +12,7 @@ export default function CartPage() {
     <div className="bg-white min-h-screen">
       <Container>
         <div className="py-8 md:py-12">
-          <h1 className="text-3xl font-bold text-stone-900 tracking-tight mb-8">
-            Shopping Cart
-          </h1>
+          <h1 className="text-3xl font-bold text-black tracking-tight mb-8">עגלת קניות</h1>
           <CartContent />
         </div>
       </Container>
