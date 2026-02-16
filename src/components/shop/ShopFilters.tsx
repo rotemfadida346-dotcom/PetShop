@@ -23,47 +23,41 @@ export default function ShopFilters({ currentPet, currentCategory, currentSubscr
     router.push(`/shop?${params.toString()}`);
   }
 
+  const pillBase = "px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 border";
+  const pillInactive = "bg-card text-textSecondary border-gray-200 hover:border-accent hover:text-accent";
+  const pillActive = "bg-accent text-white border-accent shadow-md shadow-accent/20";
+
   return (
-    <div className="mb-8 space-y-4 bg-surface rounded-2xl p-5 border border-gray-100">
-      {/* Pet Type */}
+    <div className="mb-8 space-y-4 bg-card rounded-xl p-5 shadow-sm border border-gray-100">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-sm font-semibold text-gray-500 ml-2 min-w-fit">חיית מחמד:</span>
-        <button onClick={() => updateFilter("pet", null)} className={cn("px-4 py-2 rounded-full text-sm font-semibold transition-all", !currentPet ? "bg-gray-900 text-white shadow-md" : "bg-white text-gray-500 border border-gray-200 hover:border-brand-300 hover:text-brand-600")}>הכל</button>
+        <span className="text-sm font-bold text-textSecondary ml-2 min-w-fit">חיית מחמד:</span>
+        <button onClick={() => updateFilter("pet", null)} className={cn(pillBase, !currentPet ? pillActive : pillInactive)}>הכל</button>
         {PET_TYPES.map((pet) => (
-          <button key={pet.value} onClick={() => updateFilter("pet", currentPet === pet.value ? null : pet.value)}
-            className={cn("px-4 py-2 rounded-full text-sm font-semibold transition-all",
-              currentPet === pet.value
-                ? pet.value === "DOG" ? "bg-dog-500 text-white shadow-md" : "bg-cat-500 text-white shadow-md"
-                : "bg-white text-gray-500 border border-gray-200 hover:border-brand-300 hover:text-brand-600")}>
+          <button key={pet.value} onClick={() => updateFilter("pet", currentPet === pet.value ? null : pet.value)} className={cn(pillBase, currentPet === pet.value ? pillActive : pillInactive)}>
             {pet.emoji} {pet.label}
           </button>
         ))}
       </div>
 
-      {/* Category */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-sm font-semibold text-gray-500 ml-2 min-w-fit">קטגוריה:</span>
-        <button onClick={() => updateFilter("category", null)} className={cn("px-4 py-2 rounded-full text-sm font-semibold transition-all", !currentCategory ? "bg-brand-500 text-white shadow-md" : "bg-white text-gray-500 border border-gray-200 hover:border-brand-300 hover:text-brand-600")}>הכל</button>
+        <span className="text-sm font-bold text-textSecondary ml-2 min-w-fit">קטגוריה:</span>
+        <button onClick={() => updateFilter("category", null)} className={cn(pillBase, !currentCategory ? pillActive : pillInactive)}>הכל</button>
         {PRODUCT_CATEGORIES.map((cat) => (
-          <button key={cat.value} onClick={() => updateFilter("category", currentCategory === cat.value ? null : cat.value)}
-            className={cn("px-4 py-2 rounded-full text-sm font-semibold transition-all", currentCategory === cat.value ? "bg-brand-500 text-white shadow-md" : "bg-white text-gray-500 border border-gray-200 hover:border-brand-300 hover:text-brand-600")}>
+          <button key={cat.value} onClick={() => updateFilter("category", currentCategory === cat.value ? null : cat.value)} className={cn(pillBase, currentCategory === cat.value ? pillActive : pillInactive)}>
             {cat.label}
           </button>
         ))}
       </div>
 
-      {/* Subscription + Sort */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-gray-200">
         <button onClick={() => updateFilter("subscription", currentSubscription === "true" ? null : "true")}
-          className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all",
-            currentSubscription === "true" ? "bg-emerald-500 text-white shadow-md" : "bg-white text-gray-500 border border-gray-200 hover:border-emerald-300 hover:text-emerald-600")}>
-          <RefreshCw className="h-3.5 w-3.5" />
-          מנוי וחיסכון
+          className={cn("inline-flex items-center gap-2", pillBase, currentSubscription === "true" ? pillActive : pillInactive)}>
+          <RefreshCw className="h-3.5 w-3.5" /> מנוי וחיסכון
         </button>
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-gray-500">מיין:</span>
+          <span className="text-sm font-bold text-textSecondary">מיין:</span>
           <select value={currentSort || ""} onChange={(e) => updateFilter("sort", e.target.value || null)}
-            className="text-sm border border-gray-200 rounded-xl px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-400/30 focus:border-brand-400 font-medium">
+            className="text-sm border border-gray-200 rounded-xl px-3 py-2 bg-card text-textPrimary focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent font-medium">
             <option value="">מומלצים</option>
             <option value="price-asc">מחיר: נמוך לגבוה</option>
             <option value="price-desc">מחיר: גבוה לנמוך</option>

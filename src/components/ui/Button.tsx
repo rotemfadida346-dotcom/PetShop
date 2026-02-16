@@ -14,10 +14,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", isLoading = false, fullWidth = false, children, disabled, ...props }, ref) => {
     const variants = {
-      primary: "bg-brand-500 text-white hover:bg-brand-600 shadow-md shadow-brand-500/20 hover:shadow-lg hover:shadow-brand-500/30",
-      secondary: "bg-gray-900 text-white hover:bg-gray-800 shadow-md",
-      outline: "border-2 border-gray-200 text-gray-700 hover:border-brand-300 hover:bg-brand-50",
-      ghost: "text-gray-600 hover:bg-gray-100 hover:text-gray-900",
+      primary: "bg-accent text-white hover:bg-accent-600 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/30",
+      secondary: "bg-gray-800 text-white hover:bg-gray-700 shadow-md",
+      outline: "border-2 border-gray-200 text-textPrimary hover:border-accent hover:text-accent",
+      ghost: "text-textSecondary hover:bg-gray-100 hover:text-textPrimary",
       danger: "bg-red-500 text-white hover:bg-red-600 shadow-md",
     };
 
@@ -31,7 +31,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-400/40 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]",
+          "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]",
           variants[variant],
           sizes[size],
           fullWidth && "w-full",
