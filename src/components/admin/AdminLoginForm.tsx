@@ -41,7 +41,7 @@ export default function AdminLoginForm() {
   }
 
   return (
-    <div className="bg-white rounded-2xl p-8 border border-border shadow-sm">
+    <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
       {error && (
         <div className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 mb-4 text-sm">
           <AlertCircle className="h-4 w-4 shrink-0" />

@@ -32,24 +32,24 @@ export default async function SubscriptionsPage() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-card">
       {/* Hero */}
       <section className="bg-black text-white">
         <Container>
           <div className="py-16 md:py-24 text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 bg-card/10 rounded-full px-4 py-2 mb-6 text-sm font-medium">
               <RefreshCw className="h-4 w-4" />
               מנוי וחיסכון
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
               לעולם לא תיגמרו מהמוצרים האהובים
             </h1>
-            <p className="mt-6 text-lg text-gray-400 max-w-xl mx-auto leading-relaxed">
+            <p className="mt-6 text-lg text-textMuted max-w-xl mx-auto leading-relaxed">
               הירשמו למנוי, בחרו תדירות משלוח, וחסכו עד 10% על כל הזמנה. משלוח חינם, ללא התחייבות.
             </p>
             <div className="mt-8">
               <a href="#products">
-                <Button size="lg" className="bg-white text-black hover:bg-gray-100">
+                <Button size="lg" className="bg-card text-textPrimary hover:bg-card-hover">
                   התחילו לחסוך
                   <ArrowLeft className="h-4 w-4" />
                 </Button>
@@ -60,7 +60,7 @@ export default async function SubscriptionsPage() {
       </section>
 
       {/* How It Works */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-surface">
         <Container>
           <div className="text-center mb-12">
             <h2 className="section-heading">איך זה עובד?</h2>
@@ -92,7 +92,7 @@ export default async function SubscriptionsPage() {
                 <div className="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-xl font-bold">{item.step}</span>
                 </div>
-                <h3 className="text-lg font-semibold text-black mb-2">{item.title}</h3>
+                <h3 className="text-lg font-semibold text-textPrimary mb-2">{item.title}</h3>
                 <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -101,7 +101,7 @@ export default async function SubscriptionsPage() {
       </section>
 
       {/* Benefits */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-card">
         <Container>
           <div className="text-center mb-12">
             <h2 className="section-heading">למה כדאי להירשם למנוי?</h2>
@@ -114,9 +114,9 @@ export default async function SubscriptionsPage() {
               { icon: Pause, title: "גמישות מלאה", desc: "עצרו, דלגו או בטלו בכל עת — ללא התחייבות" },
               { icon: ShieldCheck, title: "ללא הפתעות", desc: "אותו מחיר, אותה איכות, בכל משלוח" },
             ].map((item) => (
-              <div key={item.title} className="text-center p-6 bg-gray-50 rounded-2xl border border-border hover:shadow-md transition-shadow">
-                <item.icon className="h-8 w-8 text-black mx-auto mb-3" />
-                <h3 className="font-semibold text-black mb-1">{item.title}</h3>
+              <div key={item.title} className="text-center p-6 bg-surface rounded-2xl border border-border hover:shadow-md transition-shadow">
+                <item.icon className="h-8 w-8 text-textPrimary mx-auto mb-3" />
+                <h3 className="font-semibold text-textPrimary mb-1">{item.title}</h3>
                 <p className="text-xs text-muted">{item.desc}</p>
               </div>
             ))}
@@ -125,7 +125,7 @@ export default async function SubscriptionsPage() {
       </section>
 
       {/* Frequency Options */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-surface">
         <Container size="md">
           <div className="text-center mb-10">
             <h2 className="section-heading">בחרו את התדירות שלכם</h2>
@@ -141,7 +141,7 @@ export default async function SubscriptionsPage() {
               <div
                 key={opt.weeks}
                 className={`relative p-6 rounded-2xl border-2 text-center transition-all ${
-                  opt.popular ? "border-black bg-white shadow-md" : "border-border bg-white hover:border-gray-300"
+                  opt.popular ? "border-black bg-card shadow-md" : "border-border bg-card hover:border-gray-300"
                 }`}
               >
                 {opt.popular && (
@@ -149,8 +149,8 @@ export default async function SubscriptionsPage() {
                     הכי פופולרי
                   </span>
                 )}
-                <RefreshCw className="h-6 w-6 text-black mx-auto mb-3" />
-                <h3 className="text-lg font-bold text-black">{opt.label}</h3>
+                <RefreshCw className="h-6 w-6 text-textPrimary mx-auto mb-3" />
+                <h3 className="text-lg font-bold text-textPrimary">{opt.label}</h3>
                 <p className="text-xs text-muted mt-2">{opt.desc}</p>
               </div>
             ))}
@@ -159,7 +159,7 @@ export default async function SubscriptionsPage() {
       </section>
 
       {/* Products */}
-      <section id="products" className="section-padding bg-white">
+      <section id="products" className="section-padding bg-card">
         <Container>
           <div className="text-center mb-10">
             <h2 className="section-heading">מוצרים זמינים למנוי</h2>
@@ -179,7 +179,7 @@ export default async function SubscriptionsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-surface">
         <Container size="md">
           <h2 className="section-heading text-center mb-10">שאלות נפוצות על מנויים</h2>
 
@@ -191,8 +191,8 @@ export default async function SubscriptionsPage() {
               { q: "אפשר להשהות מנוי זמנית?", a: "בוודאי! ניתן להשהות מנוי ולחדש אותו בכל עת שנוח לכם." },
               { q: "האם המשלוח באמת חינם?", a: "כן, כל הזמנות מנוי נהנות ממשלוח חינם בכל רחבי ישראל." },
             ].map((faq) => (
-              <div key={faq.q} className="bg-white rounded-xl border border-border p-5">
-                <h3 className="font-semibold text-black mb-2">{faq.q}</h3>
+              <div key={faq.q} className="bg-card rounded-xl border border-border p-5">
+                <h3 className="font-semibold text-textPrimary mb-2">{faq.q}</h3>
                 <p className="text-sm text-muted leading-relaxed">{faq.a}</p>
               </div>
             ))}
@@ -205,12 +205,12 @@ export default async function SubscriptionsPage() {
         <Container size="sm">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">מוכנים להתחיל לחסוך?</h2>
-            <p className="mt-4 text-gray-400 max-w-md mx-auto">
+            <p className="mt-4 text-textMuted max-w-md mx-auto">
               בחרו מוצר, הירשמו למנוי, ותתחילו ליהנות ממשלוח אוטומטי עם הנחה.
             </p>
             <div className="mt-8">
               <Link href="/shop?subscription=true">
-                <Button size="lg" className="bg-white text-black hover:bg-gray-100">
+                <Button size="lg" className="bg-card text-textPrimary hover:bg-card-hover">
                   לחנות — מוצרים למנוי
                   <ArrowLeft className="h-4 w-4" />
                 </Button>

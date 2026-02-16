@@ -16,7 +16,7 @@
   }
 
   ::selection {
-    @apply bg-accent-200 text-textPrimary;
+    @apply bg-accent/30 text-white;
   }
 }
 

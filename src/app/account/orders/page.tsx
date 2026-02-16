@@ -21,21 +21,21 @@ const STATUS_MAP: Record<string, { label: string; variant: "success" | "info" | 
 
 export default function OrdersPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-surface min-h-screen">
       <Container size="lg">
         <div className="py-8 md:py-12">
-          <Link href="/account" className="inline-flex items-center gap-1 text-sm text-muted hover:text-black mb-6 transition-colors"><ArrowRight className="h-4 w-4" />חזרה לחשבון</Link>
-          <h1 className="text-3xl font-bold text-black tracking-tight mb-8">ההזמנות שלי</h1>
+          <Link href="/account" className="inline-flex items-center gap-1 text-sm text-muted hover:text-textPrimary mb-6 transition-colors"><ArrowRight className="h-4 w-4" />חזרה לחשבון</Link>
+          <h1 className="text-3xl font-bold text-textPrimary tracking-tight mb-8">ההזמנות שלי</h1>
           <div className="space-y-4">
             {MOCK_ORDERS.map((order) => {
               const status = STATUS_MAP[order.status] || STATUS_MAP.PENDING;
               return (
-                <div key={order.id} className="bg-white rounded-xl border border-border p-6">
+                <div key={order.id} className="bg-card rounded-xl border border-border p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                     <div className="flex items-center gap-3">
                       <Package className="h-5 w-5 text-muted" />
                       <div>
-                        <p className="font-semibold text-black">{order.id}</p>
+                        <p className="font-semibold text-textPrimary">{order.id}</p>
                         <p className="text-sm text-muted">{new Date(order.date).toLocaleDateString("he-IL")}</p>
                       </div>
                     </div>
@@ -43,11 +43,11 @@ export default function OrdersPage() {
                   </div>
                   <div className="border-t border-border pt-4 space-y-2">
                     {order.items.map((item, i) => (
-                      <div key={i} className="flex justify-between text-sm"><span className="text-muted">{item.name} x{item.qty}</span><span className="text-black font-medium">{formatPrice(item.price * item.qty)}</span></div>
+                      <div key={i} className="flex justify-between text-sm"><span className="text-muted">{item.name} x{item.qty}</span><span className="text-textPrimary font-medium">{formatPrice(item.price * item.qty)}</span></div>
                     ))}
                   </div>
                   <div className="border-t border-border mt-4 pt-4 flex items-center justify-between">
-                    <p className="font-semibold text-black">סה״כ: {formatPrice(order.total)}</p>
+                    <p className="font-semibold text-textPrimary">סה״כ: {formatPrice(order.total)}</p>
                     <Button variant="ghost" size="sm"><Eye className="h-4 w-4" />פרטים</Button>
                   </div>
                 </div>

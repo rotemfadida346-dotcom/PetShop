@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "התחברות" };
 
 export default function SignInPage() {
   return (
-    <div className="bg-gray-50 min-h-screen flex items-center">
+    <div className="bg-surface min-h-screen flex items-center">
       <Container size="sm">
         <div className="py-12">
           <div className="max-w-md mx-auto">
@@ -14,7 +14,7 @@ export default function SignInPage() {
               <div className="inline-flex items-center gap-2 mb-4">
                 <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center"><span className="text-white font-bold">P</span></div>
               </div>
-              <h1 className="text-2xl font-bold text-black">ברוכים השבים</h1>
+              <h1 className="text-2xl font-bold text-textPrimary">ברוכים השבים</h1>
               <p className="text-muted mt-1">התחברו לחשבון שלכם לניהול הזמנות ומנויים.</p>
             </div>
             <SignInForm />

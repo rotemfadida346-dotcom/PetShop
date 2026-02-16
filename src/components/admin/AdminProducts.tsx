@@ -123,7 +123,7 @@ export default function AdminProducts() {
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-textPrimary">סוג חיה</label>
               <select value={newProduct.petType} onChange={(e) => setNewProduct({ ...newProduct, petType: e.target.value })}
-                className="block w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-textPrimary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20">
+                className="block w-full rounded-xl border border-border bg-card px-4 py-2.5 text-textPrimary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20">
                 <option value="DOG">🐕 כלב</option>
                 <option value="CAT">🐈 חתול</option>
               </select>
@@ -132,7 +132,7 @@ export default function AdminProducts() {
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-textPrimary">קטגוריה</label>
               <select value={newProduct.category} onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
-                className="block w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-textPrimary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20">
+                className="block w-full rounded-xl border border-border bg-card px-4 py-2.5 text-textPrimary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20">
                 <option value="FOOD">מזון</option>
                 <option value="TREATS">חטיפים</option>
                 <option value="LITTER">חול</option>
@@ -147,17 +147,17 @@ export default function AdminProducts() {
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-textPrimary">תיאור מלא</label>
               <textarea value={newProduct.description} onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })} placeholder="תיאור מפורט של המוצר..." rows={3}
-                className="block w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-textPrimary placeholder:text-gray-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-y" />
+                className="block w-full rounded-xl border border-border bg-card px-4 py-2.5 text-textPrimary placeholder:text-textMuted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-y" />
             </div>
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-textPrimary">יתרונות (שורה חדשה לכל יתרון)</label>
               <textarea value={newProduct.benefits || ""} onChange={(e) => setNewProduct({ ...newProduct, benefits: e.target.value })} placeholder="יתרון ראשון&#10;יתרון שני&#10;יתרון שלישי" rows={3}
-                className="block w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-textPrimary placeholder:text-gray-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-y" />
+                className="block w-full rounded-xl border border-border bg-card px-4 py-2.5 text-textPrimary placeholder:text-textMuted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-y" />
             </div>
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-textPrimary">רכיבים</label>
               <textarea value={newProduct.ingredients || ""} onChange={(e) => setNewProduct({ ...newProduct, ingredients: e.target.value })} placeholder="רשימת רכיבים מופרדת בפסיקים" rows={2}
-                className="block w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-textPrimary placeholder:text-gray-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-y" />
+                className="block w-full rounded-xl border border-border bg-card px-4 py-2.5 text-textPrimary placeholder:text-textMuted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 resize-y" />
             </div>
           </div>
 
@@ -178,39 +178,39 @@ export default function AdminProducts() {
       </div>
 
       {/* Table */}
-      <div className="bg-card rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+      <div className="bg-card rounded-xl border border-border overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-200 bg-gray-50">
-                <th className="text-right text-xs font-medium text-gray-500 uppercase px-4 py-3">מוצר</th>
-                <th className="text-right text-xs font-medium text-gray-500 uppercase px-4 py-3">קטגוריה</th>
-                <th className="text-right text-xs font-medium text-gray-500 uppercase px-4 py-3">מחיר</th>
-                <th className="text-right text-xs font-medium text-gray-500 uppercase px-4 py-3">לפני הנחה</th>
-                <th className="text-right text-xs font-medium text-gray-500 uppercase px-4 py-3">הנחה</th>
-                <th className="text-right text-xs font-medium text-gray-500 uppercase px-4 py-3">מלאי</th>
-                <th className="text-right text-xs font-medium text-gray-500 uppercase px-4 py-3">סטטוס</th>
-                <th className="text-left text-xs font-medium text-gray-500 uppercase px-4 py-3">פעולות</th>
+              <tr className="border-b border-border bg-surface">
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-4 py-3">מוצר</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-4 py-3">קטגוריה</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-4 py-3">מחיר</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-4 py-3">לפני הנחה</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-4 py-3">הנחה</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-4 py-3">מלאי</th>
+                <th className="text-right text-xs font-medium text-textSecondary uppercase px-4 py-3">סטטוס</th>
+                <th className="text-left text-xs font-medium text-textSecondary uppercase px-4 py-3">פעולות</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-border">
               {products.map((product) => {
                 const hasDiscount = product.compareAt && product.compareAt > product.price;
                 const discountPercent = hasDiscount ? Math.round((1 - product.price / product.compareAt!) * 100) : 0;
 
                 return (
-                  <tr key={product.id} className="hover:bg-gray-50 transition-colors">
+                  <tr key={product.id} className="hover:bg-surface transition-colors">
                     <td className="px-4 py-4">
                       {editing === product.id ? (
                         <Input value={editData.name || ""} onChange={(e) => setEditData({ ...editData, name: e.target.value })} className="text-sm" />
                       ) : (
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">
+                          <div className="w-10 h-10 bg-card-hover rounded-lg flex items-center justify-center shrink-0">
                             <span className="text-lg">{product.petType === "DOG" ? "🐕" : "🐈"}</span>
                           </div>
                           <div>
                             <p className="font-semibold text-textPrimary text-sm">{product.name}</p>
-                            <p className="text-xs text-gray-400">{product.slug}</p>
+                            <p className="text-xs text-textMuted">{product.slug}</p>
                           </div>
                         </div>
                       )}
@@ -227,7 +227,7 @@ export default function AdminProducts() {
                       {editing === product.id ? (
                         <Input type="number" value={editData.compareAt || ""} onChange={(e) => setEditData({ ...editData, compareAt: e.target.value ? parseFloat(e.target.value) : null })} placeholder="—" className="text-sm w-24" />
                       ) : (
-                        <span className="text-sm text-gray-400">{hasDiscount ? <span className="line-through">{formatPrice(product.compareAt!)}</span> : "—"}</span>
+                        <span className="text-sm text-textMuted">{hasDiscount ? <span className="line-through">{formatPrice(product.compareAt!)}</span> : "—"}</span>
                       )}
                     </td>
                     <td className="px-4 py-4">{hasDiscount ? <Badge variant="danger">-{discountPercent}%</Badge> : <span className="text-xs text-gray-300">—</span>}</td>
@@ -244,12 +244,12 @@ export default function AdminProducts() {
                         {editing === product.id ? (
                           <>
                             <button onClick={() => saveEdit(product.slug)} className="p-2 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-all" title="שמור"><Save className="h-4 w-4" /></button>
-                            <button onClick={() => setEditing(null)} className="p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-all" title="ביטול"><X className="h-4 w-4" /></button>
+                            <button onClick={() => setEditing(null)} className="p-2 text-textMuted hover:text-gray-700 hover:bg-card-hover rounded-lg transition-all" title="ביטול"><X className="h-4 w-4" /></button>
                           </>
                         ) : (
                           <>
-                            <button onClick={() => startEdit(product)} className="p-2 text-gray-400 hover:text-accent hover:bg-accent-50 rounded-lg transition-all" title="עריכה"><Pencil className="h-4 w-4" /></button>
-                            <button onClick={() => deleteProduct(product.slug, product.id)} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="מחיקה"><Trash2 className="h-4 w-4" /></button>
+                            <button onClick={() => startEdit(product)} className="p-2 text-textMuted hover:text-accent hover:bg-accent-50 rounded-lg transition-all" title="עריכה"><Pencil className="h-4 w-4" /></button>
+                            <button onClick={() => deleteProduct(product.slug, product.id)} className="p-2 text-textMuted hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="מחיקה"><Trash2 className="h-4 w-4" /></button>
                           </>
                         )}
                       </div>

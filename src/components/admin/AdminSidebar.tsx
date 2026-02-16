@@ -38,7 +38,7 @@ export default function AdminSidebar() {
                 "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200",
                 isActive
                   ? "bg-black text-white shadow-sm"
-                  : "text-muted hover:text-black hover:bg-white hover:shadow-sm"
+                  : "text-textSecondary hover:text-textPrimary hover:bg-card hover:shadow-sm"
               )}
             >
               <item.icon className="h-4 w-4" />

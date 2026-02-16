@@ -2,7 +2,7 @@ import Container from "@/components/ui/Container";
 
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-card">
       <Container>
         <div className="py-20 flex items-center justify-center">
           <div className="text-center">
