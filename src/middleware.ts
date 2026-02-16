@@ -12,6 +12,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/product") ||
     pathname.startsWith("/quiz") ||
     pathname.startsWith("/about") ||
+    pathname.startsWith("/subscriptions") ||
     pathname.startsWith("/auth") ||
     pathname.startsWith("/cart") ||
     pathname.startsWith("/checkout") ||
