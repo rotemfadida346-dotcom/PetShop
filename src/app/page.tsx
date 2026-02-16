@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import ProductGrid from "@/components/product/ProductGrid";
+import CategoryCards from "@/components/home/CategoryCards";
 import { getFeaturedProducts } from "@/lib/db/products";
 import { getFeaturedProducts as getMockFeatured } from "@/lib/mock-data";
 import { Truck, ShieldCheck, Leaf, Heart, Star, ArrowLeft } from "lucide-react";
@@ -76,26 +77,37 @@ export default async function HomePage() {
       </section>
 
       {/* Shop by Pet */}
-      <section className="section-padding bg-background">
+      <section className="py-12 md:py-16 bg-background">
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <Link href="/shop?pet=DOG" className="group relative bg-card rounded-xl p-6 md:p-8 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 flex items-center gap-5">
+              <span className="text-5xl group-hover:scale-110 transition-transform duration-300 shrink-0">🐕</span>
+              <div>
+                <h3 className="text-xl font-extrabold text-textPrimary mb-1">לכלבים</h3>
+                <p className="text-sm text-textSecondary mb-2">מזון, חטיפים ותוספים פרימיום לכל גזע.</p>
+                <span className="inline-flex items-center gap-1 text-accent font-bold text-sm group-hover:gap-2 transition-all">לחנות <ArrowLeft className="h-3.5 w-3.5" /></span>
+              </div>
+            </Link>
+            <Link href="/shop?pet=CAT" className="group relative bg-card rounded-xl p-6 md:p-8 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 flex items-center gap-5">
+              <span className="text-5xl group-hover:scale-110 transition-transform duration-300 shrink-0">🐈</span>
+              <div>
+                <h3 className="text-xl font-extrabold text-textPrimary mb-1">לחתולים</h3>
+                <p className="text-sm text-textSecondary mb-2">מזון גורמה, חול טבעי ומגרדות.</p>
+                <span className="inline-flex items-center gap-1 text-accent font-bold text-sm group-hover:gap-2 transition-all">לחנות <ArrowLeft className="h-3.5 w-3.5" /></span>
+              </div>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Category Cards */}
+      <section className="section-padding bg-[#FFF9F0]">
         <Container>
           <div className="text-center mb-12">
-            <h2 className="section-heading">קנו לפי חיית מחמד</h2>
-            <p className="section-subheading mx-auto mt-3">גלו תזונה פרימיום המותאמת לצרכים הייחודיים של חיית המחמד שלכם.</p>
+            <h2 className="section-heading">קנו לפי קטגוריה</h2>
+            <p className="section-subheading mx-auto mt-3">כל מה שחיית המחמד שלכם צריכה, במקום אחד.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Link href="/shop?pet=DOG" className="group relative bg-card rounded-xl p-8 md:p-12 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
-              <span className="text-6xl mb-4 block group-hover:scale-110 transition-transform duration-300">🐕</span>
-              <h3 className="text-heading-md text-textPrimary mb-2">לכלבים</h3>
-              <p className="text-textSecondary mb-4">מזון, חטיפים ותוספים פרימיום לכל גזע ושלב חיים.</p>
-              <span className="inline-flex items-center gap-1.5 text-accent font-bold text-sm group-hover:gap-2.5 transition-all">מוצרים לכלבים <ArrowLeft className="h-4 w-4" /></span>
-            </Link>
-            <Link href="/shop?pet=CAT" className="group relative bg-card rounded-xl p-8 md:p-12 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
-              <span className="text-6xl mb-4 block group-hover:scale-110 transition-transform duration-300">🐈</span>
-              <h3 className="text-heading-md text-textPrimary mb-2">לחתולים</h3>
-              <p className="text-textSecondary mb-4">ממזון גורמה ועד חול טבעי, הכל מה שהחתול שלכם ראוי לו.</p>
-              <span className="inline-flex items-center gap-1.5 text-accent font-bold text-sm group-hover:gap-2.5 transition-all">מוצרים לחתולים <ArrowLeft className="h-4 w-4" /></span>
-            </Link>
-          </div>
+          <CategoryCards />
         </Container>
       </section>
 
