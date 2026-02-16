@@ -37,7 +37,7 @@ async function main() {
   const products = [
     // ── DOG PRODUCTS (5) ────────────────────────────────
     {
-      name: "מוצר 1",
+      name: "מזון כלבים פרימיום - עוף ואורז",
       slug: "premium-chicken-rice-dog-food",
       shortDesc: "Complete nutrition with real chicken as the first ingredient.",
       description:
@@ -48,8 +48,8 @@ async function main() {
         "Deboned Chicken, Brown Rice, Oatmeal, Chicken Meal, Barley, Chicken Fat (preserved with mixed tocopherols), Dried Beet Pulp, Flaxseed, Natural Flavor, Salmon Oil, Vitamins & Minerals",
       whoIsFor:
         "Perfect for adult dogs (1-7 years) of all breeds and sizes who thrive on a poultry-based diet. Ideal for dogs with moderate activity levels who need sustained energy throughout the day.",
-      price: 54.99,
-      compareAt: 64.99,
+      price: 189.90,
+      compareAt: 229.90,
       petType: "DOG" as const,
       category: "FOOD" as const,
       isFeatured: true,
@@ -67,7 +67,7 @@ async function main() {
       ],
     },
     {
-      name: "מוצר 2",
+      name: "מזון כלבים - סלמון וילד ובטטה",
       slug: "wild-salmon-sweet-potato-dog-food",
       shortDesc: "Omega-rich formula for healthy skin, coat, and joints.",
       description:
@@ -78,7 +78,7 @@ async function main() {
         "Salmon, Salmon Meal, Sweet Potatoes, Peas, Canola Oil, Potato Protein, Dried Chicory Root, Flaxseed, Natural Flavor, Vitamins & Minerals",
       whoIsFor:
         "Ideal for dogs with grain sensitivities or those who love fish-based proteins. Great for dogs with dry skin or dull coats that need extra omega support.",
-      price: 59.99,
+      price: 209.90,
       petType: "DOG" as const,
       category: "FOOD" as const,
       isFeatured: true,
@@ -94,7 +94,7 @@ async function main() {
       ],
     },
     {
-      name: "מוצר 3",
+      name: "חטיפי אימון - חמאת בוטנים",
       slug: "peanut-butter-training-treats",
       shortDesc: "Small, soft bites perfect for training sessions.",
       description:
@@ -105,8 +105,8 @@ async function main() {
         "Chicken, Peanut Butter, Oat Flour, Glycerin, Pea Flour, Cane Molasses, Gelatin, Natural Flavor, Phosphoric Acid, Sorbic Acid, Mixed Tocopherols",
       whoIsFor:
         "Perfect for dog owners who love training their pups. Suitable for all life stages and breeds. The soft texture is great for senior dogs too.",
-      price: 12.99,
-      compareAt: 15.99,
+      price: 42.90,
+      compareAt: 54.90,
       petType: "DOG" as const,
       category: "TREATS" as const,
       isFeatured: true,
@@ -121,7 +121,7 @@ async function main() {
       ],
     },
     {
-      name: "מוצר 4",
+      name: "מקלות לניקוי שיניים לכלבים",
       slug: "dental-chew-sticks-dogs",
       shortDesc: "Daily dental care that dogs actually enjoy.",
       description:
@@ -132,7 +132,7 @@ async function main() {
         "Rice Flour, Glycerin, Gelatin, Powdered Cellulose, Lecithin, Calcium Carbonate, Natural Flavor, Sodium Tripolyphosphate, Dried Parsley, Zinc Sulfate",
       whoIsFor:
         "For adult dogs of all sizes. Choose the appropriate size for your dog: Small (5-25 lbs), Medium (25-50 lbs), or Large (50+ lbs).",
-      price: 22.99,
+      price: 79.90,
       petType: "DOG" as const,
       category: "TREATS" as const,
       isFeatured: false,
@@ -148,7 +148,7 @@ async function main() {
       ],
     },
     {
-      name: "מוצר 5",
+      name: "מזון לגורי כלבים - עוף ושיבולת שועל",
       slug: "puppy-growth-chicken-oatmeal",
       shortDesc: "DHA-enriched formula for growing puppies.",
       description:
@@ -159,7 +159,7 @@ async function main() {
         "Chicken, Chicken Meal, Oatmeal, Brown Rice, Barley, Chicken Fat, Fish Oil (source of DHA), Dried Beet Pulp, Flaxseed, Calcium Carbonate, Vitamins & Minerals",
       whoIsFor:
         "For puppies of all breeds from weaning to 1 year old. Large breed puppies may continue this formula until 18-24 months.",
-      price: 49.99,
+      price: 169.90,
       petType: "DOG" as const,
       category: "FOOD" as const,
       isFeatured: false,
@@ -176,7 +176,7 @@ async function main() {
 
     // ── CAT PRODUCTS (5) ────────────────────────────────
     {
-      name: "מוצר 6",
+      name: "מזון לחתולי בית - עוף ואורז",
       slug: "indoor-cat-chicken-formula",
       shortDesc: "Tailored nutrition for indoor cats with weight management.",
       description:
@@ -187,8 +187,8 @@ async function main() {
         "Chicken, Chicken Meal, Brown Rice, Corn Gluten Meal, Wheat, Chicken Fat, Dried Beet Pulp, Cellulose, Natural Flavor, Fish Oil, Vitamins & Minerals",
       whoIsFor:
         "Designed for adult indoor cats (1-7 years) who have a less active lifestyle. Especially beneficial for cats prone to hairballs or weight gain.",
-      price: 42.99,
-      compareAt: 49.99,
+      price: 149.90,
+      compareAt: 179.90,
       petType: "CAT" as const,
       category: "FOOD" as const,
       isFeatured: true,
@@ -203,7 +203,7 @@ async function main() {
       ],
     },
     {
-      name: "מוצר 7",
+      name: "מזון לחתולים ללא דגנים - הודו וחמוציות",
       slug: "grain-free-turkey-cranberry-cat-food",
       shortDesc: "Premium grain-free nutrition with antioxidant-rich cranberries.",
       description:
@@ -214,7 +214,7 @@ async function main() {
         "Turkey, Turkey Meal, Peas, Chickpeas, Chicken Fat, Tapioca Starch, Dried Cranberries, Flaxseed, Natural Flavor, Salmon Oil, Vitamins & Minerals",
       whoIsFor:
         "Perfect for cats with grain sensitivities or those who prefer poultry flavors. Suitable for all breeds.",
-      price: 46.99,
+      price: 164.90,
       petType: "CAT" as const,
       category: "FOOD" as const,
       isFeatured: false,
@@ -229,7 +229,7 @@ async function main() {
       ],
     },
     {
-      name: "מוצר 8",
+      name: "חטיפי סלמון מיובשים בהקפאה לחתולים",
       slug: "freeze-dried-salmon-cat-treats",
       shortDesc: "Single ingredient, pure wild salmon bites.",
       description:
@@ -239,7 +239,7 @@ async function main() {
       ingredients: "Wild-Caught Salmon",
       whoIsFor:
         "Ideal for all cats, including those with food sensitivities. Perfect as training treats, rewards, or a nutritious meal topper.",
-      price: 14.99,
+      price: 49.90,
       petType: "CAT" as const,
       category: "TREATS" as const,
       isFeatured: false,
@@ -252,7 +252,7 @@ async function main() {
       faqs: [],
     },
     {
-      name: "מוצר 9",
+      name: "חול מתגבש טבעי לחתולים",
       slug: "natural-clumping-cat-litter",
       shortDesc: "Ultra-clumping, low-dust formula from natural clay.",
       description:
@@ -262,8 +262,8 @@ async function main() {
       ingredients: "Natural Bentonite Clay, Activated Charcoal, Baking Soda",
       whoIsFor:
         "Perfect for single and multi-cat households. Especially great for cats and owners sensitive to dust. Works with all standard litter boxes.",
-      price: 24.99,
-      compareAt: 29.99,
+      price: 84.90,
+      compareAt: 99.90,
       petType: "CAT" as const,
       category: "LITTER" as const,
       isFeatured: true,
@@ -279,7 +279,7 @@ async function main() {
       ],
     },
     {
-      name: "מוצר 10",
+      name: "מזון לחתולים מבוגרים - עיכול עדין",
       slug: "senior-cat-gentle-digestion",
       shortDesc: "Easy-to-digest nutrition for cats 7+.",
       description:
@@ -290,8 +290,8 @@ async function main() {
         "Chicken, Chicken Meal, Brewers Rice, Corn Gluten Meal, Wheat, Chicken Fat, Natural Flavor, Dried Beet Pulp, Fish Oil, Glucosamine, Chondroitin, Vitamins & Minerals",
       whoIsFor:
         "For cats aged 7 years and older. Especially beneficial for senior cats showing signs of joint stiffness or digestive sensitivity.",
-      price: 44.99,
-      compareAt: 52.99,
+      price: 154.90,
+      compareAt: 184.90,
       petType: "CAT" as const,
       category: "FOOD" as const,
       isFeatured: false,
