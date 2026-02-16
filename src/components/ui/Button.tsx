@@ -12,29 +12,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant = "primary",
-      size = "md",
-      isLoading = false,
-      fullWidth = false,
-      children,
-      disabled,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, variant = "primary", size = "md", isLoading = false, fullWidth = false, children, disabled, ...props }, ref) => {
     const variants = {
-      primary:
-        "bg-amber-600 text-white hover:bg-amber-700 focus:ring-amber-500 shadow-sm",
-      secondary:
-        "bg-stone-800 text-white hover:bg-stone-900 focus:ring-stone-500 shadow-sm",
-      outline:
-        "border-2 border-stone-300 text-stone-700 hover:bg-stone-50 focus:ring-stone-400",
-      ghost: "text-stone-600 hover:bg-stone-100 focus:ring-stone-400",
-      danger:
-        "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 shadow-sm",
+      primary: "bg-black text-white hover:bg-gray-800 shadow-sm",
+      secondary: "bg-gray-100 text-black hover:bg-gray-200 shadow-sm",
+      outline: "border-2 border-gray-300 text-black hover:bg-gray-50",
+      ghost: "text-muted hover:bg-gray-100",
+      danger: "bg-red-600 text-white hover:bg-red-700 shadow-sm",
     };
 
     const sizes = {
@@ -47,7 +31,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
+          "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black/20 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
           variants[variant],
           sizes[size],
           fullWidth && "w-full",
@@ -64,5 +48,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = "Button";
-
 export default Button;

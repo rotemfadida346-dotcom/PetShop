@@ -1,37 +1,30 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Assistant } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const assistant = Assistant({
+  subsets: ["latin", "hebrew"],
+  variable: "--font-assistant",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_NAME} - Premium Pet Nutrition`,
+    default: `${SITE_NAME} - מזון פרימיום לחיות מחמד`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: `${SITE_NAME} - Premium Pet Nutrition`,
+    title: `${SITE_NAME} - מזון פרימיום לחיות מחמד`,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${SITE_NAME} - Premium Pet Nutrition`,
-    description: SITE_DESCRIPTION,
-  },
-  robots: {
-    index: true,
-    follow: true,
+    locale: "he_IL",
   },
 };
 
@@ -41,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased bg-white text-stone-900`}>
+    <html lang="he" dir="rtl">
+      <body className={`${assistant.variable} font-sans antialiased bg-white text-black`}>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
