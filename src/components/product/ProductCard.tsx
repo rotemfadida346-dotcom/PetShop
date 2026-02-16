@@ -23,7 +23,6 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const hasDiscount = product.compareAt && product.compareAt > product.price;
-  const discountPercent = hasDiscount ? Math.round((1 - product.price / product.compareAt!) * 100) : 0;
   const isDog = product.petType === "DOG";
 
   const categoryLabel = product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category;
@@ -55,19 +54,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
         )}
 
-        {/* Top badges */}
-        <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-          {product.isFeatured && (
-            <span className="bg-brand-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-              רב מכר 🔥
-            </span>
-          )}
-          {hasDiscount && (
-            <span className="bg-red-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-              -{discountPercent}%
-            </span>
-          )}
-        </div>
 
         {/* Pet type pill */}
         <div className="absolute bottom-3 right-3">
