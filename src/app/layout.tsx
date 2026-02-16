@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl">
-      <body className={`${assistant.variable} font-sans antialiased bg-white text-gray-900`}>
+      <body className={`${assistant.variable} font-sans antialiased bg-background text-textPrimary`}>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
