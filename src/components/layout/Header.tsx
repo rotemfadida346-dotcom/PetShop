@@ -10,8 +10,6 @@ import {
   X,
   Search,
   User,
-  Heart,
-  ChevronDown,
 } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 

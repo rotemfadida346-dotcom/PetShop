@@ -18,7 +18,6 @@ import {
   ChevronUp,
   Minus,
   Plus,
-  RefreshCw,
 } from "lucide-react";
 
 interface ProductDetailsProps {
