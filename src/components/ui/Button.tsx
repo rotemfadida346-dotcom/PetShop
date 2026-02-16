@@ -14,24 +14,24 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", isLoading = false, fullWidth = false, children, disabled, ...props }, ref) => {
     const variants = {
-      primary: "bg-black text-white hover:bg-gray-800 shadow-sm",
-      secondary: "bg-gray-100 text-black hover:bg-gray-200 shadow-sm",
-      outline: "border-2 border-gray-300 text-black hover:bg-gray-50",
-      ghost: "text-muted hover:bg-gray-100",
-      danger: "bg-red-600 text-white hover:bg-red-700 shadow-sm",
+      primary: "bg-brand-500 text-white hover:bg-brand-600 shadow-md shadow-brand-500/20 hover:shadow-lg hover:shadow-brand-500/30",
+      secondary: "bg-gray-900 text-white hover:bg-gray-800 shadow-md",
+      outline: "border-2 border-gray-200 text-gray-700 hover:border-brand-300 hover:bg-brand-50",
+      ghost: "text-gray-600 hover:bg-gray-100 hover:text-gray-900",
+      danger: "bg-red-500 text-white hover:bg-red-600 shadow-md",
     };
 
     const sizes = {
-      sm: "px-3 py-1.5 text-sm",
-      md: "px-5 py-2.5 text-sm",
-      lg: "px-8 py-3.5 text-base",
+      sm: "px-3.5 py-1.5 text-sm rounded-lg",
+      md: "px-5 py-2.5 text-sm rounded-xl",
+      lg: "px-8 py-3.5 text-base rounded-xl",
     };
 
     return (
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black/20 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
+          "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-400/40 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]",
           variants[variant],
           sizes[size],
           fullWidth && "w-full",

@@ -32,21 +32,26 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
     total = mockProducts.length;
   }
 
-  const title = searchParams.pet ? (searchParams.pet === "DOG" ? "מוצרים לכלבים" : "מוצרים לחתולים") : "כל המוצרים";
+  const isDog = searchParams.pet === "DOG";
+  const isCat = searchParams.pet === "CAT";
+  const title = isDog ? "מוצרים לכלבים 🐕" : isCat ? "מוצרים לחתולים 🐈" : "כל המוצרים";
 
   return (
-    <div className="bg-white">
-      <div className="bg-gray-50 border-b border-border">
+    <div className="bg-white min-h-screen">
+      {/* Header */}
+      <div className={`border-b border-gray-100 ${isDog ? "bg-gradient-to-b from-dog-50 to-white" : isCat ? "bg-gradient-to-b from-cat-50 to-white" : "bg-gradient-to-b from-brand-50 to-white"}`}>
         <Container>
-          <div className="py-10 md:py-16">
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-black">{title}</h1>
-            <p className="mt-2 text-muted">{total} מוצרים</p>
+          <div className="py-10 md:py-14">
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900">{title}</h1>
+            <p className="mt-2 text-muted text-lg">{total} מוצרים במגוון קטגוריות</p>
           </div>
         </Container>
       </div>
+
       <Container>
-        <div className="py-8 md:py-12">
+        <div className="py-8 md:py-10">
           <ShopFilters currentPet={searchParams.pet} currentCategory={searchParams.category} currentSubscription={searchParams.subscription} currentSort={searchParams.sort} />
+
           {products.length > 0 ? (
             <>
               <ProductGrid products={products} />
@@ -54,8 +59,8 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
             </>
           ) : (
             <div className="text-center py-20">
-              <p className="text-5xl mb-4">🔍</p>
-              <h2 className="text-xl font-semibold text-black mb-2">לא נמצאו מוצרים</h2>
+              <p className="text-6xl mb-4">🔍</p>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">לא נמצאו מוצרים</h2>
               <p className="text-muted">נסו לשנות את הסינון או עיינו בכל המוצרים.</p>
             </div>
           )}

@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
-import Badge from "@/components/ui/Badge";
-import { ShoppingBag, Star } from "lucide-react";
+import { Star, ShoppingBag } from "lucide-react";
 
 interface ProductCardProps {
   product: {
@@ -25,19 +24,27 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const hasDiscount = product.compareAt && product.compareAt > product.price;
   const discountPercent = hasDiscount ? Math.round((1 - product.price / product.compareAt!) * 100) : 0;
+  const isDog = product.petType === "DOG";
+
+  const categoryLabel = product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category;
 
   return (
     <Link
       href={`/product/${product.slug}`}
-      className="group block bg-white rounded-2xl overflow-hidden border border-border hover:border-gray-300 hover:shadow-lg transition-all duration-300"
+      className="group block rounded-2xl overflow-hidden border border-gray-100 bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:-translate-y-1 transition-all duration-300"
     >
-      <div className="relative aspect-square bg-gray-50 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center text-gray-300">
+      {/* Image area with warm colored background */}
+      <div className={`relative aspect-[4/3] overflow-hidden ${isDog ? "bg-gradient-to-br from-dog-50 to-orange-50" : "bg-gradient-to-br from-cat-50 to-violet-50"}`}>
+        {/* Placeholder */}
+        <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <ShoppingBag className="h-12 w-12 mx-auto mb-2 opacity-30" />
-            <p className="text-xs opacity-50">{product.name}</p>
+            <span className="text-5xl block mb-2 opacity-40 group-hover:scale-110 transition-transform duration-500">
+              {isDog ? "🐕" : "🐈"}
+            </span>
+            <p className={`text-xs font-medium opacity-40 ${isDog ? "text-dog-600" : "text-cat-600"}`}>{categoryLabel}</p>
           </div>
         </div>
+
         {product.images[0] && (
           <Image
             src={product.images[0].url}
@@ -47,27 +54,60 @@ export default function ProductCard({ product }: ProductCardProps) {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
         )}
+
+        {/* Top badges */}
         <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-          {product.isFeatured && <Badge variant="warning">רב מכר</Badge>}
-          {hasDiscount && <Badge variant="danger">-{discountPercent}%</Badge>}
+          {product.isFeatured && (
+            <span className="bg-brand-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+              רב מכר 🔥
+            </span>
+          )}
+          {hasDiscount && (
+            <span className="bg-red-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+              -{discountPercent}%
+            </span>
+          )}
         </div>
-        <div className="absolute top-3 left-3">
-          <span className="text-lg">{product.petType === "DOG" ? "🐕" : "🐈"}</span>
+
+        {/* Pet type pill */}
+        <div className="absolute bottom-3 right-3">
+          <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${isDog ? "bg-dog-100 text-dog-600" : "bg-cat-100 text-cat-600"}`}>
+            {isDog ? "🐕 כלבים" : "🐈 חתולים"}
+          </span>
         </div>
       </div>
 
-      <div className="p-4 space-y-2">
-        <div className="flex items-center gap-0.5">
+      {/* Content */}
+      <div className="p-4 space-y-2.5">
+        {/* Rating */}
+        <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} className="h-3.5 w-3.5 fill-black text-black" />
+            <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
           ))}
-          <span className="text-xs text-muted mr-1">(4.8)</span>
+          <span className="text-xs text-muted mr-1.5">(4.8)</span>
         </div>
-        <h3 className="font-semibold text-black group-hover:text-muted transition-colors line-clamp-1">{product.name}</h3>
-        {product.shortDesc && <p className="text-sm text-muted line-clamp-2">{product.shortDesc}</p>}
-        <div className="flex items-baseline gap-2 pt-1">
-          <span className="text-lg font-bold text-black">{formatPrice(product.price)}</span>
-          {hasDiscount && <span className="text-sm text-muted line-through">{formatPrice(product.compareAt!)}</span>}
+
+        {/* Name */}
+        <h3 className="font-bold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-1 text-[15px]">
+          {product.name}
+        </h3>
+
+        {/* Description */}
+        {product.shortDesc && (
+          <p className="text-sm text-muted line-clamp-2 leading-relaxed">{product.shortDesc}</p>
+        )}
+
+        {/* Price */}
+        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+          <div className="flex items-baseline gap-2">
+            <span className="text-xl font-extrabold text-gray-900">{formatPrice(product.price)}</span>
+            {hasDiscount && (
+              <span className="text-sm text-muted line-through">{formatPrice(product.compareAt!)}</span>
+            )}
+          </div>
+          <div className={`p-2 rounded-xl transition-colors ${isDog ? "bg-dog-50 text-dog-500 group-hover:bg-dog-100" : "bg-cat-50 text-cat-500 group-hover:bg-cat-100"}`}>
+            <ShoppingBag className="h-4 w-4" />
+          </div>
         </div>
       </div>
     </Link>
