@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Container from "@/components/ui/Container";
-import ProductDetails from "@/components/product/ProductDetails";
+import PremiumProductDetails from "@/components/product/PremiumProductDetails";
 import ProductGrid from "@/components/product/ProductGrid";
 import { getProductBySlug, getRelatedProducts, ProductDetail } from "@/lib/db/products";
 import { getProductBySlug as getMockProduct, MOCK_PRODUCTS } from "@/lib/mock-data";
@@ -32,16 +32,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="bg-white">
       <Container>
         <div className="py-8 md:py-12">
-          <nav className="flex items-center gap-2 text-sm text-muted mb-8">
-            <a href="/" className="hover:text-black transition-colors">בית</a>
+          <nav className="flex items-center gap-2 text-sm text-text-secondary mb-8">
+            <a href="/" className="hover:text-accent transition-colors">בית</a>
             <span>/</span>
-            <a href="/shop" className="hover:text-black transition-colors">חנות</a>
+            <a href="/shop" className="hover:text-accent transition-colors">חנות</a>
             <span>/</span>
-            <a href={`/shop?pet=${product.petType}`} className="hover:text-black transition-colors">{product.petType === "DOG" ? "כלבים" : "חתולים"}</a>
+            <a href={`/shop?pet=${product.petType}`} className="hover:text-accent transition-colors">{product.petType === "DOG" ? "כלבים" : "חתולים"}</a>
             <span>/</span>
-            <span className="text-black font-medium truncate">{product.name}</span>
+            <span className="text-text-primary font-medium truncate">{product.name}</span>
           </nav>
-          <ProductDetails product={product} />
+          <PremiumProductDetails product={product} />
         </div>
       </Container>
       {relatedProducts.length > 0 && (
