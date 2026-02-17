@@ -22,14 +22,29 @@
 
 @layer components {
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-12 md:py-20 lg:py-24;
   }
 
   .section-heading {
-    @apply text-heading-xl text-text-primary;
+    @apply text-2xl md:text-3xl lg:text-heading-xl text-text-primary;
   }
 
   .section-sub {
-    @apply text-body-lg text-text-secondary max-w-2xl;
+    @apply text-base md:text-lg text-text-secondary max-w-2xl;
+  }
+  
+  /* Mobile-first button optimization */
+  .btn-mobile-full {
+    @apply w-full sm:w-auto;
+  }
+  
+  /* Mobile touch targets (min 48x48px) */
+  .touch-target {
+    @apply min-h-[48px] min-w-[48px];
+  }
+  
+  /* Mobile-optimized cards */
+  .card-mobile {
+    @apply p-4 md:p-6 lg:p-8;
   }
 }

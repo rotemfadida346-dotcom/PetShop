@@ -11,13 +11,25 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="bg-card min-h-screen">
-      <section className="bg-surface border-b border-border">
+      <section className="bg-gradient-to-b from-gray-50 to-white border-b border-border">
         <Container size="md">
-          <div className="py-12 md:py-16 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-text-primary">צרו קשר</h1>
-            <p className="mt-3 text-text-secondary max-w-xl mx-auto">
-              יש לכם שאלות על מוצר, הזמנה או משהו אחר? אנחנו כאן כדי לעזור!
+          <div className="py-12 md:py-16 text-center px-4">
+            <div className="text-4xl md:text-5xl mb-4">📞</div>
+            <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">נשמח לעזור לכם!</h1>
+            <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              יש לכם שאלות על מוצר? צריכים עזרה בבחירה? או סתם רוצים לשוחח? 
+              <strong className="text-text-primary"> הצוות שלנו זמין ומחכה לשמוע מכם.</strong>
             </p>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="https://wa.me/972501234567" className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors w-full sm:w-auto justify-center">
+                <MessageCircle className="h-5 w-5" />
+                וואטסאפ: 050-123-4567
+              </a>
+              <a href="mailto:hello@pawsome.co.il" className="flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors w-full sm:w-auto justify-center">
+                <Mail className="h-5 w-5" />
+                hello@pawsome.co.il
+              </a>
+            </div>
           </div>
         </Container>
       </section>

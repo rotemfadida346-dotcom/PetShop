@@ -157,12 +157,14 @@ export default function FAQPage() {
 
   return (
     <div className="bg-card min-h-screen">
-      <section className="bg-surface border-b border-border">
+      <section className="bg-gradient-to-b from-gray-50 to-white border-b border-border">
         <Container size="md">
-          <div className="py-12 md:py-16 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-text-primary">שאלות נפוצות</h1>
-            <p className="mt-3 text-text-secondary max-w-xl mx-auto">
-              מצאו תשובות לשאלות הנפוצות על מוצרים, הזמנות, משלוחים ומנויים.
+          <div className="py-12 md:py-16 text-center px-4">
+            <div className="text-4xl md:text-5xl mb-4">💬</div>
+            <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">שאלות נפוצות</h1>
+            <p className="text-base md:text-lg text-text-secondary max-w-xl mx-auto leading-relaxed">
+              מצאו תשובות לשאלות הנפוצות ביותר. אם לא מצאתם תשובה - 
+              <a href="/contact" className="text-accent font-medium hover:underline"> צרו קשר ונשמח לעזור</a>
             </p>
           </div>
         </Container>

@@ -4,19 +4,19 @@
 export const MOCK_PRODUCTS = [
   {
     id: "1",
-    name: "מוצר 1",
+    name: "מזון כלבים פרימיום - עוף ואורז",
     slug: "premium-chicken-rice-dog-food",
-    shortDesc: "Complete nutrition with real chicken as the first ingredient.",
+    shortDesc: "תזונה מלאה ומאוזנת עם עוף אמיתי כמרכיב ראשון",
     description:
-      "Our Premium Chicken & Rice formula is crafted with real, deboned chicken and wholesome brown rice to provide complete, balanced nutrition for your adult dog. Every batch is slow-cooked in small batches to preserve the natural flavors and nutrients your dog craves.",
+      "פורמולת העוף והאורז הפרימיום שלנו מיוצרת מעוף טרי ואורז מלא איכותי, ומספקת תזונה מלאה ומאוזנת לכלב הבוגר שלכם. כל מנה מבושלת לאט בקבוצות קטנות כדי לשמר את הטעם והערכים התזונתיים הטבעיים.",
     benefits:
-      "Supports lean muscle mass with high-quality protein\nPromotes healthy digestion with prebiotic fiber\nNourishes skin and coat with omega fatty acids\nNo artificial colors, flavors, or preservatives\nMade in the USA with globally sourced ingredients",
+      "תומך במסת שריר רזה עם חלבון איכותי\nמקדם עיכול בריא עם סיבים פרה-ביוטיים\nמזין את העור והפרווה עם חומצות שומן אומגה\nללא צבעי מאכל, טעמים או משמרים מלאכותיים\nמיוצר בסטנדרטים הגבוהים ביותר",
     ingredients:
-      "Deboned Chicken, Brown Rice, Oatmeal, Chicken Meal, Barley, Chicken Fat (preserved with mixed tocopherols), Dried Beet Pulp, Flaxseed, Natural Flavor, Salmon Oil, Vitamins & Minerals",
+      "עוף טרי, אורז חום, שיבולת שועל, קמח עוף, שעורה, שומן עוף (משומר עם טוקופרולים מעורבים), סיבי סלק מיובשים, זרעי פשתן, טעם טבעי, שמן סלמון, ויטמינים ומינרלים",
     whoIsFor:
-      "Perfect for adult dogs (1-7 years) of all breeds and sizes who thrive on a poultry-based diet. Ideal for dogs with moderate activity levels who need sustained energy throughout the day.",
-    price: 54.99,
-    compareAt: 64.99,
+      "מושלם לכלבים בוגרים (1-7 שנים) מכל הגזעים והגדלים. אידיאלי לכלבים עם רמת פעילות בינונית שזקוקים לאנרגיה מתמשכת לאורך כל היום.",
+    price: 189.90,
+    compareAt: 229.90,
     petType: "DOG" as const,
     category: "FOOD" as const,
     isFeatured: true,
@@ -51,9 +51,9 @@ export const MOCK_PRODUCTS = [
   },
   {
     id: "2",
-    name: "מוצר 2",
+    name: "מזון כלבים - סלמון וילד ובטטה",
     slug: "wild-salmon-sweet-potato-dog-food",
-    shortDesc: "Omega-rich formula for healthy skin, coat, and joints.",
+    shortDesc: "פורמולה עשירה באומגה 3 לעור, פרווה ומפרקים בריאים",
     description:
       "Featuring wild-caught salmon as the primary protein, this grain-free recipe is packed with omega-3 fatty acids for a lustrous coat and healthy joints. Sweet potatoes provide gentle, easily digestible carbohydrates.",
     benefits:
@@ -62,7 +62,7 @@ export const MOCK_PRODUCTS = [
       "Salmon, Salmon Meal, Sweet Potatoes, Peas, Canola Oil, Potato Protein, Dried Chicory Root, Flaxseed, Natural Flavor, Vitamins & Minerals",
     whoIsFor:
       "Ideal for dogs with grain sensitivities or those who love fish-based proteins. Great for dogs with dry skin or dull coats that need extra omega support.",
-    price: 59.99,
+    price: 209.90,
     compareAt: null,
     petType: "DOG" as const,
     category: "FOOD" as const,
