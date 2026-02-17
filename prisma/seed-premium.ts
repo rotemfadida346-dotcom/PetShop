@@ -70,8 +70,9 @@ async function main() {
       badges: ["הנמכר ביותר", "משלוח חינם"],
       tags: ["royal-canin", "mini", "adult", "small-breed", "premium", "subscription"],
       images: [
-        { url: "/images/products/royal-canin-mini.jpg", alt: "רויאל קנין מיני אדולט - שק 3 ק״ג", position: 0 },
-        { url: "/images/products/royal-canin-mini-detail.jpg", alt: "גרגירי המזון במבט קרוב", position: 1 },
+        { url: "https://placehold.co/800x800/E8F5E9/2E7D32?text=Royal+Canin+Mini+Adult&font=assistant", alt: "רויאל קנין מיני אדולט - שק 3 ק״ג", position: 0 },
+        { url: "https://placehold.co/800x800/F1F8E9/558B2F?text=Kibble+Detail&font=assistant", alt: "גרגירי המזון במבט קרוב", position: 1 },
+        { url: "https://placehold.co/800x800/E8F5E9/2E7D32?text=Package+Back&font=assistant", alt: "גב האריזה עם מידע תזונתי", position: 2 },
       ],
       faqs: [
         { question: "כמה צריך להאכיל ביום?", answer: "לכלב במשקל 5 ק״ג מומלץ כ-95 גרם ביום (מחולק ל-2 ארוחות). לכלב במשקל 8 ק״ג מומלץ כ-135 גרם ביום. יש להתאים לפי רמת הפעילות.", position: 0 },
@@ -113,8 +114,9 @@ async function main() {
       badges: ["מומלץ וטרינרים", "משלוח חינם"],
       tags: ["hills", "science-plan", "adult-cat", "premium", "subscription"],
       images: [
-        { url: "/images/products/hills-adult-cat.jpg", alt: "הילס סיינס פלאן חתול בוגר", position: 0 },
-        { url: "/images/products/hills-adult-cat-detail.jpg", alt: "גרגירי המזון", position: 1 },
+        { url: "https://placehold.co/800x800/E1F5FE/0277BD?text=Hills+Science+Plan&font=assistant", alt: "הילס סיינס פלאן חתול בוגר", position: 0 },
+        { url: "https://placehold.co/800x800/B3E5FC/0288D1?text=Cat+Food+Detail&font=assistant", alt: "גרגירי המזון", position: 1 },
+        { url: "https://placehold.co/800x800/E1F5FE/0277BD?text=Package+Info&font=assistant", alt: "מידע על האריזה", position: 2 },
       ],
       faqs: [
         { question: "כמה צריך להאכיל חתול ביום?", answer: "לחתול במשקל 4 ק״ג מומלץ כ-55 גרם ביום. לחתול במשקל 6 ק״ג מומלץ כ-75 גרם ביום. יש להתאים לפי רמת הפעילות.", position: 0 },
@@ -151,8 +153,9 @@ async function main() {
       badges: ["הכי פופולרי", "עמיד במיוחד"],
       tags: ["kong", "toy", "durable", "chew", "premium"],
       images: [
-        { url: "/images/products/kong-classic-red.jpg", alt: "קונג קלאסיק אדום", position: 0 },
-        { url: "/images/products/kong-classic-action.jpg", alt: "כלב משחק עם קונג", position: 1 },
+        { url: "https://placehold.co/800x800/FFEBEE/C62828?text=KONG+Classic&font=assistant", alt: "קונג קלאסיק אדום", position: 0 },
+        { url: "https://placehold.co/800x800/FFCDD2/D32F2F?text=Dog+Playing&font=assistant", alt: "כלב משחק עם קונג", position: 1 },
+        { url: "https://placehold.co/800x800/FFEBEE/C62828?text=KONG+Details&font=assistant", alt: "פרטי המוצר", position: 2 },
       ],
       faqs: [
         { question: "איזה גודל לבחור?", answer: "קטן: עד 9 ק״ג, בינוני: 9-23 ק״ג, גדול: 13-30 ק״ג, ענק: מעל 27 ק״ג. אם הכלב ביניים, בחרו את הגדול יותר.", position: 0 },
@@ -194,7 +197,8 @@ async function main() {
       badges: ["פרימיום", "ללא דגנים"],
       tags: ["acana", "wet-food", "fish", "grain-free", "premium", "subscription"],
       images: [
-        { url: "/images/products/acana-pacifica.jpg", alt: "אקנה פצ'ולה - מזון רטוב", position: 0 },
+        { url: "https://placehold.co/800x800/E0F2F1/00695C?text=Acana+Pacifica&font=assistant", alt: "אקנה פצ'ולה - מזון רטוב", position: 0 },
+        { url: "https://placehold.co/800x800/B2DFDB/00796B?text=Wet+Food+Can&font=assistant", alt: "פחית מזון רטוב", position: 1 },
       ],
       faqs: [
         { question: "כמה פחיות ביום?", answer: "לחתול במשקל 4 ק״ג מומלץ כ-2-3 פחיות ביום. ניתן לשלב עם מזון יבש.", position: 0 },
@@ -272,7 +276,8 @@ async function main() {
       badges: ["מוצר ישראלי", "משלוח חינם"],
       tags: ["catlit", "clumping", "scented", "israeli", "subscription"],
       images: [
-        { url: "/images/products/catlit-clumping.jpg", alt: "חול קטליט מתגבש", position: 0 },
+        { url: "https://placehold.co/800x800/F3E5F5/6A1B9A?text=Catlit+Litter&font=assistant", alt: "חול קטליט מתגבש", position: 0 },
+        { url: "https://placehold.co/800x800/E1BEE7/7B1FA2?text=Litter+Box&font=assistant", alt: "ארגז חול", position: 1 },
       ],
       faqs: [
         { question: "כמה זמן מחזיק שק אחד?", answer: "לחתול בודד, שק 10 ק״ג מחזיק כ-30 יום. לשני חתולים, כ-15 יום.", position: 0 },

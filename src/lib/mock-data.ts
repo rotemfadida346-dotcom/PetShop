@@ -25,7 +25,8 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 15,
     tags: ["chicken", "rice", "adult", "all-breeds"],
     images: [
-      { url: "/images/products/dog-food-chicken.jpg", alt: "Premium Chicken & Rice Dog Food", position: 0 },
+      { url: "https://placehold.co/800x800/E8F5E9/2E7D32?text=Royal+Canin+Mini&font=assistant", alt: "מזון כלבים פרימיום - עוף ואורז", position: 0 },
+      { url: "https://placehold.co/800x800/F1F8E9/558B2F?text=Kibble+Detail&font=assistant", alt: "גרגירי המזון", position: 1 },
     ],
     faqs: [
       {
@@ -72,7 +73,8 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 15,
     tags: ["salmon", "grain-free", "sensitive", "omega"],
     images: [
-      { url: "/images/products/dog-food-salmon.jpg", alt: "Wild Salmon Dog Food", position: 0 },
+      { url: "https://placehold.co/800x800/E1F5FE/01579B?text=Salmon+Dog+Food&font=assistant", alt: "מזון סלמון לכלבים", position: 0 },
+      { url: "https://placehold.co/800x800/B3E5FC/0277BD?text=Salmon+Detail&font=assistant", alt: "פרטי המזון", position: 1 },
     ],
     faqs: [
       {
@@ -106,7 +108,8 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 12,
     tags: ["indoor", "chicken", "weight-management", "hairball"],
     images: [
-      { url: "/images/products/cat-food-indoor.jpg", alt: "Indoor Cat Chicken Formula", position: 0 },
+      { url: "https://placehold.co/800x800/F3E5F5/6A1B9A?text=Hills+Cat+Food&font=assistant", alt: "מזון חתולי בית", position: 0 },
+      { url: "https://placehold.co/800x800/E1BEE7/7B1FA2?text=Cat+Kibble&font=assistant", alt: "גרגירי מזון", position: 1 },
     ],
     faqs: [
       {
@@ -140,7 +143,7 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 12,
     tags: ["grain-free", "turkey", "cranberry", "sensitive"],
     images: [
-      { url: "/images/products/cat-food-turkey.jpg", alt: "Grain-Free Turkey Cat Food", position: 0 },
+      { url: "https://placehold.co/800x800/FFF3E0/E65100?text=Turkey+Cat+Food&font=assistant", alt: "מזון הודו לחתולים", position: 0 },
     ],
     faqs: [],
     reviews: [],
@@ -168,7 +171,7 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 10,
     tags: ["training", "peanut-butter", "soft", "low-calorie"],
     images: [
-      { url: "/images/products/dog-treats-pb.jpg", alt: "Peanut Butter Training Treats", position: 0 },
+      { url: "https://placehold.co/800x800/FFF9C4/F57F17?text=Training+Treats&font=assistant", alt: "חטיפי אימון", position: 0 },
     ],
     faqs: [],
     reviews: [],
@@ -195,7 +198,7 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 10,
     tags: ["salmon", "freeze-dried", "single-ingredient", "hypoallergenic"],
     images: [
-      { url: "/images/products/cat-treats-salmon.jpg", alt: "Freeze-Dried Salmon Cat Treats", position: 0 },
+      { url: "https://placehold.co/800x800/E0F7FA/00838F?text=Salmon+Treats&font=assistant", alt: "חטיפי סלמון", position: 0 },
     ],
     faqs: [],
     reviews: [],
@@ -222,7 +225,8 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 15,
     tags: ["clumping", "natural", "low-dust", "odor-control"],
     images: [
-      { url: "/images/products/cat-litter.jpg", alt: "Natural Clumping Cat Litter", position: 0 },
+      { url: "https://placehold.co/800x800/EFEBE9/4E342E?text=Catlit+Litter&font=assistant", alt: "חול לחתולים", position: 0 },
+      { url: "https://placehold.co/800x800/D7CCC8/5D4037?text=Litter+Detail&font=assistant", alt: "פרטי החול", position: 1 },
     ],
     faqs: [
       {
@@ -256,7 +260,7 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 10,
     tags: ["dental", "chews", "oral-health", "vet-recommended"],
     images: [
-      { url: "/images/products/dog-dental-chews.jpg", alt: "Dental Chew Sticks", position: 0 },
+      { url: "https://placehold.co/800x800/E8EAF6/3F51B5?text=Dental+Chews&font=assistant", alt: "מקלות שיניים", position: 0 },
     ],
     faqs: [],
     reviews: [],
@@ -284,7 +288,7 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 15,
     tags: ["puppy", "growth", "DHA", "chicken", "all-breeds"],
     images: [
-      { url: "/images/products/puppy-food.jpg", alt: "Puppy Growth Formula", position: 0 },
+      { url: "https://placehold.co/800x800/FFF8E1/F9A825?text=Puppy+Food&font=assistant", alt: "מזון לגורים", position: 0 },
     ],
     faqs: [],
     reviews: [],
@@ -312,7 +316,7 @@ export const MOCK_PRODUCTS = [
     subscriptionDiscount: 12,
     tags: ["senior", "gentle", "digestion", "joints", "7+"],
     images: [
-      { url: "/images/products/senior-cat-food.jpg", alt: "Senior Cat Food", position: 0 },
+      { url: "https://placehold.co/800x800/FCE4EC/C2185B?text=Senior+Cat+Food&font=assistant", alt: "מזון לחתולים מבוגרים", position: 0 },
     ],
     faqs: [],
     reviews: [],
