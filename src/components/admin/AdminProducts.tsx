@@ -154,10 +154,38 @@ export default function AdminProducts() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-heading-lg text-text-primary">מוצרים ({products.length})</h1>
-        <Button size="sm" onClick={() => { if (showNew) { setShowNew(false); } else { openNewInCategory(activeCategory); } }}>
-          {showNew ? <><ChevronUp className="h-4 w-4" />סגור</> : <><Plus className="h-4 w-4" />הוסף מוצר</>}
+        <Button size="lg" onClick={() => { if (showNew) { setShowNew(false); } else { openNewInCategory(activeCategory); } }} className="font-bold">
+          {showNew ? <><ChevronUp className="h-4 w-4" />סגור טופס</> : <><Plus className="h-5 w-5" />הוסף מוצר חדש</>}
         </Button>
       </div>
+
+      {/* Image Management Help Banner */}
+      {!showNew && (
+        <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl p-6 mb-6 shadow-lg">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
+              <ImageIcon className="h-7 w-7" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-bold mb-2">🎨 ניהול תמונות מוצרים - קל ופשוט!</h3>
+              <div className="space-y-2 text-sm">
+                <p className="flex items-center gap-2">
+                  <span className="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center font-bold">1</span>
+                  <span><strong>מוצר חדש:</strong> לחץ &quot;הוסף מוצר&quot; למעלה → גלול למטה → ראה &quot;📸 תמונות המוצר&quot;</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center font-bold">2</span>
+                  <span><strong>מוצר קיים:</strong> לחץ על הכפתור הכחול 🖼️ בטבלה למטה (עמודת &quot;פעולות&quot;)</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center font-bold">3</span>
+                  <span><strong>הוספה מהירה:</strong> לחץ על כפתור צבעוני (ירוק/סגול/אדום) לתמונת placeholder מיידית!</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Category Tabs */}
       <div className="flex flex-wrap gap-2 mb-6">
@@ -211,8 +239,16 @@ export default function AdminProducts() {
               <textarea value={newProduct.ingredients || ""} onChange={(e) => setNewProduct({ ...newProduct, ingredients: e.target.value })} placeholder="רשימת רכיבים" rows={2} className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15 resize-y" /></div>
           </div>
 
-          {/* Image Manager */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          {/* Image Manager - PROMINENT */}
+          <div className="mt-8 pt-8 border-t-4 border-accent/20">
+            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 mb-4 border-2 border-blue-200">
+              <h3 className="font-bold text-blue-900 mb-1 flex items-center gap-2">
+                📸 תמונות המוצר
+              </h3>
+              <p className="text-sm text-blue-800">
+                הוסף 2-4 תמונות למוצר. לחץ על הכפתורים הצבעוניים להוספה מהירה של placeholders!
+              </p>
+            </div>
             <ImageUploadManager 
               images={newProductImages} 
               onChange={setNewProductImages}
@@ -220,8 +256,14 @@ export default function AdminProducts() {
             />
           </div>
 
-          <div className="mt-6 flex items-center gap-3">
-            <Button onClick={createProduct} isLoading={saving}><Save className="h-4 w-4" />צור מוצר ({newProductImages.length} תמונות)</Button>
+          <div className="mt-8 pt-6 border-t-2 border-gray-300 flex items-center gap-3">
+            <Button onClick={createProduct} isLoading={saving} size="lg" className="font-bold">
+              <Save className="h-4 w-4" />
+              {newProductImages.length > 0 
+                ? `צור מוצר עם ${newProductImages.length} תמונות`
+                : "צור מוצר (ללא תמונות)"
+              }
+            </Button>
             <Button variant="ghost" onClick={() => {
               setShowNew(false);
               setNewProductImages([]);
@@ -230,12 +272,26 @@ export default function AdminProducts() {
         </div>
       )}
 
-      {/* Tip */}
-      <div className="bg-accent/5 border border-accent/15 rounded-xl p-4 mb-6 flex items-start gap-3">
-        <Tag className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-        <div>
-          <p className="text-body-sm font-semibold text-accent">איך לשים הנחה?</p>
-          <p className="text-body-sm text-text-secondary mt-0.5">עריכה → הכניסו מחיר מקורי בעמודת ״לפני הנחה״ → ההנחה מופיעה אוטומטית.</p>
+      {/* Tips */}
+      <div className="space-y-3 mb-6">
+        <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 flex items-start gap-3">
+          <ImageIcon className="h-6 w-6 text-blue-600 shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-bold text-blue-900 mb-1">📸 איך להוסיף תמונות למוצרים?</p>
+            <p className="text-sm text-blue-800">
+              <strong>מוצר חדש:</strong> לחץ &quot;הוסף מוצר&quot; → גלול למטה לסקציה &quot;תמונות מוצר&quot; → לחץ כפתור צבעוני
+              <br />
+              <strong>מוצר קיים:</strong> לחץ על הכפתור הכחול 🖼️ בעמודת &quot;פעולות&quot;
+            </p>
+          </div>
+        </div>
+        
+        <div className="bg-accent/5 border border-accent/15 rounded-xl p-4 flex items-start gap-3">
+          <Tag className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+          <div>
+            <p className="text-body-sm font-semibold text-accent">איך לשים הנחה?</p>
+            <p className="text-body-sm text-text-secondary mt-0.5">עריכה → הכניסו מחיר מקורי בעמודת ״לפני הנחה״ → ההנחה מופיעה אוטומטית.</p>
+          </div>
         </div>
       </div>
 
@@ -260,7 +316,7 @@ export default function AdminProducts() {
                   <th className="text-right text-xs font-medium text-text-muted uppercase px-4 py-3">הנחה</th>
                   <th className="text-right text-xs font-medium text-text-muted uppercase px-4 py-3">מלאי</th>
                   <th className="text-right text-xs font-medium text-text-muted uppercase px-4 py-3">סטטוס</th>
-                  <th className="text-left text-xs font-medium text-text-muted uppercase px-4 py-3">פעולות</th>
+                  <th className="text-left text-xs font-medium text-text-muted uppercase px-4 py-3">פעולות (🖼️ = תמונות)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
@@ -301,9 +357,17 @@ export default function AdminProducts() {
                             <><button onClick={() => saveEdit(product.slug)} className="p-2 text-accent hover:bg-accent/10 rounded-lg transition-all" title="שמור"><Save className="h-4 w-4" /></button>
                               <button onClick={() => setEditing(null)} className="p-2 text-text-muted hover:bg-surface-hover rounded-lg transition-all" title="ביטול"><X className="h-4 w-4" /></button></>
                           ) : (
-                            <><button onClick={() => startEditImages(product.slug)} className="p-2 text-text-muted hover:text-blue-500 hover:bg-blue-500/10 rounded-lg transition-all" title="ערוך תמונות"><ImageIcon className="h-4 w-4" /></button>
+                            <>
+                              <button 
+                                onClick={() => startEditImages(product.slug)} 
+                                className="p-2.5 text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-all font-medium" 
+                                title="ערוך תמונות - לחץ כאן!"
+                              >
+                                <ImageIcon className="h-5 w-5" />
+                              </button>
                               <button onClick={() => startEdit(product)} className="p-2 text-text-muted hover:text-accent hover:bg-accent/10 rounded-lg transition-all" title="עריכה"><Pencil className="h-4 w-4" /></button>
-                              <button onClick={() => deleteProduct(product.slug, product.id)} className="p-2 text-text-muted hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="מחיקה"><Trash2 className="h-4 w-4" /></button></>
+                              <button onClick={() => deleteProduct(product.slug, product.id)} className="p-2 text-text-muted hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="מחיקה"><Trash2 className="h-4 w-4" /></button>
+                            </>
                           )}
                         </div>
                       </td>
