@@ -4,14 +4,13 @@ import Link from "next/link";
 import { useState, useCallback } from "react";
 import { useCartStore } from "@/store/cart";
 import Container from "@/components/ui/Container";
-import { ShoppingBag, Menu, X, Search, User, Shield, Phone, Clock, Heart, ChevronDown } from "lucide-react";
+import { ShoppingBag, Menu, X, Search, Phone, Clock, Heart } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const items = useCartStore((s) => s.items);
   const count = useCartStore((s) => s.getItemCount());
   const subtotal = useCartStore((s) => s.getSubtotal());
   
