@@ -30,8 +30,8 @@ export default function Footer() {
                 <a href="mailto:hello@pawsome.co.il" className="hover:text-accent transition-colors">hello@pawsome.co.il</a>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">
-                <span className="h-4 w-4 text-accent">💬</span>
-                <span>וואטסאפ: 050-123-4567</span>
+                <span className="h-4 w-4 text-accent">📞</span>
+                <a href="tel:0509555350" className="hover:text-accent transition-colors font-bold" dir="ltr">050-9555350</a>
               </div>
             </div>
           </div>

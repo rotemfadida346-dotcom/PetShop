@@ -8,13 +8,13 @@ import Input from "@/components/ui/Input";
 import { formatPrice, calculateSubscriptionPrice } from "@/lib/utils";
 import { 
   Lock, CreditCard, ShoppingBag, ShieldCheck, ArrowRight, 
-  CheckCircle, Truck, Zap, Package, Minus, Plus, Tag, X 
+  CheckCircle, Truck, Zap, Package, Minus, Plus, Tag, X, Phone 
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type ShippingType = "standard" | "express";
-type PaymentMethod = "credit-card" | "bit" | "paybox";
+type PaymentMethod = "phone" | "credit-card" | "bit" | "paybox";
 
 export default function EnhancedCheckoutForm() {
   const items = useCartStore((s) => s.items);
@@ -25,7 +25,7 @@ export default function EnhancedCheckoutForm() {
   
   const [isLoading, setIsLoading] = useState(false);
   const [shippingType, setShippingType] = useState<ShippingType>("standard");
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("credit-card");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("phone");
   const [promoCode, setPromoCode] = useState("");
   const [appliedPromo, setAppliedPromo] = useState<{ code: string; discount: number } | null>(null);
   const [promoError, setPromoError] = useState("");
@@ -63,12 +63,18 @@ export default function EnhancedCheckoutForm() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 2500));
+    // Simulate order saving
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
     const orderId = `ORD-${Date.now()}`;
-    clearCart();
-    router.push(`/checkout/success?orderId=${orderId}&total=${total}`);
+    const isPhoneOrder = paymentMethod === "phone";
+    
+    // Don't clear cart for phone orders (customer might need to reference it)
+    if (!isPhoneOrder) {
+      clearCart();
+    }
+    
+    router.push(`/checkout/success?orderId=${orderId}&total=${total}&phone=${isPhoneOrder}`);
   }
 
   if (items.length === 0) {
@@ -239,72 +245,126 @@ export default function EnhancedCheckoutForm() {
             </h2>
             
             <div className="space-y-3 mb-6">
+              {/* Phone Order - PRIMARY OPTION */}
               <button
                 type="button"
-                onClick={() => setPaymentMethod("credit-card")}
+                onClick={() => setPaymentMethod("phone")}
                 className={cn(
-                  "w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all",
-                  paymentMethod === "credit-card" ? "border-accent bg-accent/5" : "border-gray-200 hover:border-gray-300"
+                  "w-full p-5 rounded-xl border-2 transition-all text-right",
+                  paymentMethod === "phone" ? "border-emerald-500 bg-emerald-50 shadow-lg" : "border-gray-200 hover:border-gray-300"
                 )}
               >
-                <div className={cn(
-                  "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
-                  paymentMethod === "credit-card" ? "border-accent" : "border-gray-300"
-                )}>
-                  {paymentMethod === "credit-card" && <div className="w-2.5 h-2.5 rounded-full bg-accent" />}
-                </div>
-                <CreditCard className="h-6 w-6 text-gray-600" />
-                <div className="flex-1 text-right">
-                  <p className="font-bold text-text-primary">כרטיס אשראי</p>
-                  <p className="text-sm text-text-secondary">ויזא, מאסטרקארד, אמריקן אקספרס</p>
+                <div className="flex items-start gap-4 mb-3">
+                  <div className={cn(
+                    "w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 mt-1",
+                    paymentMethod === "phone" ? "border-emerald-500" : "border-gray-300"
+                  )}>
+                    {paymentMethod === "phone" && <div className="w-3 h-3 rounded-full bg-emerald-500" />}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Phone className="h-6 w-6 text-emerald-600" />
+                      <p className="font-bold text-text-primary text-lg">הזמנה טלפונית - שירות אישי ומומחה</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg p-3 mb-3">
+                      <p className="text-sm mb-1">התקשר אלינו עכשיו:</p>
+                      <a href="tel:0509555350" className="text-2xl font-bold hover:underline block" onClick={(e) => e.stopPropagation()}>
+                        050-9555350
+                      </a>
+                    </div>
+                    <p className="text-sm text-text-secondary leading-relaxed mb-3">
+                      צוות המומחים שלנו זמין לעזור לך לבחור את המוצרים המושלמים. 
+                      קבל ייעוץ אישי, התאמה מדויקת וביצוע הזמנה קל ומהיר בטלפון.
+                    </p>
+                    {paymentMethod === "phone" && (
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-3">
+                        <h4 className="font-bold text-blue-900 mb-2 text-sm">שעות פעילות:</h4>
+                        <ul className="text-sm text-blue-800 space-y-1">
+                          <li className="flex items-center gap-2">
+                            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                            <strong>א׳-ה׳:</strong> 9:00 - 18:00
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                            <strong>ו׳:</strong> 9:00 - 13:00
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                            <strong>מוצ״ש:</strong> מצאת השבת - 22:00
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </button>
 
-              <button
-                type="button"
-                onClick={() => setPaymentMethod("bit")}
-                className={cn(
-                  "w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all",
-                  paymentMethod === "bit" ? "border-accent bg-accent/5" : "border-gray-200 hover:border-gray-300"
-                )}
-              >
-                <div className={cn(
-                  "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
-                  paymentMethod === "bit" ? "border-accent" : "border-gray-300"
-                )}>
-                  {paymentMethod === "bit" && <div className="w-2.5 h-2.5 rounded-full bg-accent" />}
-                </div>
-                <span className="text-2xl">📱</span>
-                <div className="flex-1 text-right">
-                  <p className="font-bold text-text-primary">Bit</p>
-                  <p className="text-sm text-text-secondary">תשלום מיידי דרך האפליקציה</p>
-                </div>
-              </button>
+              {/* Online Payment - Coming Soon */}
+              <div className="relative">
+                <button
+                  type="button"
+                  disabled
+                  className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed"
+                >
+                  <div className="w-5 h-5 rounded-full border-2 border-gray-300 shrink-0"></div>
+                  <CreditCard className="h-6 w-6 text-gray-400" />
+                  <div className="flex-1 text-right">
+                    <p className="font-bold text-gray-600">תשלום מקוון מאובטח</p>
+                    <p className="text-sm text-gray-500">כרטיס אשראי, Bit, PayBox</p>
+                  </div>
+                  <span className="absolute top-2 left-2 bg-amber-400 text-amber-900 text-xs font-bold px-3 py-1 rounded-full">
+                    בקרוב!
+                  </span>
+                </button>
+                <p className="text-xs text-text-muted mt-2 text-center">
+                  אנו עובדים במרץ להביא לך חווית תשלום מקוונת מאובטחת ונוחה
+                </p>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => setPaymentMethod("paybox")}
-                className={cn(
-                  "w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all",
-                  paymentMethod === "paybox" ? "border-accent bg-accent/5" : "border-gray-200 hover:border-gray-300"
-                )}
-              >
-                <div className={cn(
-                  "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
-                  paymentMethod === "paybox" ? "border-accent" : "border-gray-300"
-                )}>
-                  {paymentMethod === "paybox" && <div className="w-2.5 h-2.5 rounded-full bg-accent" />}
-                </div>
-                <span className="text-2xl">🏪</span>
-                <div className="flex-1 text-right">
-                  <p className="font-bold text-text-primary">PayBox</p>
-                  <p className="text-sm text-text-secondary">תשלום בנקאי מאובטח</p>
-                </div>
-              </button>
+              {/* Removed credit-card, bit, paybox - kept for future */}
+
             </div>
 
-            {/* Credit Card Form */}
-            {paymentMethod === "credit-card" && (
+            {/* Phone Order Info */}
+            {paymentMethod === "phone" && (
+              <div className="bg-gradient-to-br from-emerald-50 to-green-50 border-2 border-emerald-200 rounded-xl p-6 mt-4">
+                <div className="flex items-start gap-3 mb-4">
+                  <Phone className="h-6 w-6 text-emerald-600 shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-emerald-900 mb-2 text-lg">איך זה עובד?</h3>
+                    <ol className="text-sm text-emerald-800 space-y-2 mr-5">
+                      <li className="flex items-start gap-2">
+                        <span className="font-bold shrink-0">1.</span>
+                        <span>לחץ על &quot;השלמת הזמנה&quot; למטה</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="font-bold shrink-0">2.</span>
+                        <span>המערכת תשמור את פרטי ההזמנה שלך</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="font-bold shrink-0">3.</span>
+                        <span>התקשר ל-<a href="tel:0509555350" className="font-bold underline">050-9555350</a> להשלמת התשלום</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="font-bold shrink-0">4.</span>
+                        <span>נוכל לספק ייעוץ, לענות על שאלות ולהשלים את ההזמנה</span>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+                <a 
+                  href="tel:0509555350"
+                  className="block w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-center shadow-lg"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Phone className="h-5 w-5 inline ml-2" />
+                  התקשר עכשיו: 050-9555350
+                </a>
+              </div>
+            )}
+
+            {/* Credit Card Form - Hidden, kept for future */}
+            {paymentMethod === "credit-card" && false && (
               <div className="space-y-4 pt-4 border-t border-gray-200">
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                   <div className="flex items-start gap-3">
@@ -349,29 +409,6 @@ export default function EnhancedCheckoutForm() {
               </div>
             )}
 
-            {paymentMethod === "bit" && (
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center mt-4">
-                <span className="text-5xl mb-3 block">📱</span>
-                <p className="text-sm text-blue-900 mb-2">
-                  <strong>תועברו לאפליקציית Bit</strong> להשלמת התשלום
-                </p>
-                <p className="text-xs text-blue-700">
-                  לאחר לחיצה על &quot;השלמת הזמנה&quot;, תפתח אפליקציית Bit אוטומטית
-                </p>
-              </div>
-            )}
-
-            {paymentMethod === "paybox" && (
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 text-center mt-4">
-                <span className="text-5xl mb-3 block">🏪</span>
-                <p className="text-sm text-purple-900 mb-2">
-                  <strong>תשלום בנקאי מאובטח דרך PayBox</strong>
-                </p>
-                <p className="text-xs text-purple-700">
-                  תועברו לדף תשלום מאובטח של PayBox
-                </p>
-              </div>
-            )}
           </div>
 
           {/* Terms & Newsletter */}
@@ -399,20 +436,43 @@ export default function EnhancedCheckoutForm() {
                 חזרה לעגלה
               </Button>
             </Link>
-            <Button 
-              type="submit" 
-              size="lg" 
-              isLoading={isLoading}
-              className="flex-1 bg-gradient-to-r from-accent to-accent-400 hover:from-accent-400 hover:to-accent text-white font-bold text-lg py-6"
-            >
-              <Lock className="h-5 w-5" />
-              {isLoading ? "מעבד הזמנה..." : `השלמת הזמנה - ${formatPrice(total)}`}
-            </Button>
+            {paymentMethod === "phone" ? (
+              <Button 
+                type="submit" 
+                size="lg" 
+                isLoading={isLoading}
+                className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-lg py-6"
+              >
+                <Phone className="h-5 w-5" />
+                {isLoading ? "שומר פרטי הזמנה..." : `שמור הזמנה והתקשר`}
+              </Button>
+            ) : (
+              <Button 
+                type="submit" 
+                size="lg" 
+                isLoading={isLoading}
+                className="flex-1 bg-gradient-to-r from-accent to-accent-400 hover:from-accent-400 hover:to-accent text-white font-bold text-lg py-6"
+              >
+                <Lock className="h-5 w-5" />
+                {isLoading ? "מעבד הזמנה..." : `השלמת הזמנה - ${formatPrice(total)}`}
+              </Button>
+            )}
           </div>
 
-          <p className="text-center text-sm text-gray-500">
-            🔒 תשלום מאובטח ומוצפן SSL • ללא התחייבות • ביטול חופשי
-          </p>
+          {paymentMethod === "phone" ? (
+            <div className="text-center">
+              <p className="text-sm text-gray-500 mb-2">
+                📞 שירות אישי ומקצועי • ייעוץ חינם • ללא התחייבות
+              </p>
+              <p className="text-xs text-text-muted">
+                לאחר לחיצה על ההזמנה, פרטיך יישמרו ותוכל להתקשר להשלמת התשלום
+              </p>
+            </div>
+          ) : (
+            <p className="text-center text-sm text-gray-500">
+              🔒 תשלום מאובטח ומוצפן SSL • ללא התחייבות • ביטול חופשי
+            </p>
+          )}
         </div>
 
         {/* Order Summary Sidebar */}

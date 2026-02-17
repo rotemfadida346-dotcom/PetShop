@@ -21,13 +21,17 @@ export default function ContactPage() {
               <strong className="text-text-primary"> הצוות שלנו זמין ומחכה לשמוע מכם.</strong>
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="https://wa.me/972501234567" className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors w-full sm:w-auto justify-center">
+              <a href="tel:0509555350" className="flex items-center gap-2 bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition-colors w-full sm:w-auto justify-center">
+                <Phone className="h-5 w-5" />
+                050-9555350
+              </a>
+              <a href="https://wa.me/9720509555350" className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors w-full sm:w-auto justify-center">
                 <MessageCircle className="h-5 w-5" />
-                וואטסאפ: 050-123-4567
+                וואטסאפ
               </a>
               <a href="mailto:hello@pawsome.co.il" className="flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors w-full sm:w-auto justify-center">
                 <Mail className="h-5 w-5" />
-                hello@pawsome.co.il
+                אימייל
               </a>
             </div>
           </div>
@@ -116,16 +120,16 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                      <Phone className="h-5 w-5 text-accent" />
+                  <a href="tel:0509555350" className="flex items-start gap-4 hover:bg-gray-50 rounded-lg p-2 -m-2 transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
+                      <Phone className="h-5 w-5 text-emerald-600" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-text-primary mb-1">טלפון</h3>
-                      <p className="text-text-secondary text-sm" dir="ltr">+972-3-1234567</p>
-                      <p className="text-text-muted text-xs mt-1">ראשון-חמישי, 9:00-18:00</p>
+                      <p className="text-emerald-600 font-bold text-lg" dir="ltr">050-9555350</p>
+                      <p className="text-text-muted text-xs mt-1">א׳-ה׳ 9:00-18:00, ו׳ 9:00-13:00, מוצ״ש מצאת השבת-22:00</p>
                     </div>
-                  </div>
+                  </a>
 
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
