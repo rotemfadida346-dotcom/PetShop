@@ -20,6 +20,18 @@ interface ProductDetailsProps {
     shortDesc?: string | null; price: number; compareAt?: number | null;
     petType: string; category: string; subscriptionDiscount: number;
     isFeatured: boolean; stock: number;
+    brand?: string | null;
+    rating?: number | null;
+    reviewCount?: number | null;
+    badges?: string[];
+    stockQuantity?: number | null;
+    weight?: number | null;
+    weightUnit?: string | null;
+    ageRange?: string | null;
+    petSize?: string | null;
+    nutritionalProtein?: string | null;
+    nutritionalFat?: string | null;
+    nutritionalFiber?: string | null;
     images: { url: string; alt?: string | null }[];
     faqs: { id: string; question: string; answer: string }[];
   };
@@ -33,12 +45,15 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   const [showToast, setShowToast] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
 
-  const inStock = product.stock > 0;
-  const lowStock = product.stock > 0 && product.stock <= 10;
+  const stockQty = product.stockQuantity || product.stock;
+  const inStock = stockQty > 0;
+  const lowStock = inStock && stockQty <= 10;
   const subscriptionPrice = calculateSubscriptionPrice(product.price, product.subscriptionDiscount);
   const currentPrice = purchaseType === "subscription" ? subscriptionPrice : product.price;
   const hasDiscount = product.compareAt && product.compareAt > product.price;
+  const discountPercent = hasDiscount ? Math.round((1 - product.price / product.compareAt!) * 100) : 0;
   const benefitsList = product.benefits?.split("\n").filter(Boolean) || [];
+  const hasNutritionalInfo = product.nutritionalProtein || product.nutritionalFat || product.nutritionalFiber;
 
   function handleAddToCart() {
     if (!inStock) return;
@@ -77,26 +92,92 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       {/* Info */}
       <div className="space-y-6">
         <div>
-          <Badge>{product.petType === "DOG" ? "🐕 כלב" : "🐈 חתול"} / {product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category.toLowerCase()}</Badge>
-          <h1 className="text-3xl md:text-4xl font-bold text-text-primary tracking-tight mt-2">{product.name}</h1>
-          <div className="flex items-center gap-2 mt-3">
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-black text-text-primary" />)}
+          {/* Brand & Category */}
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            {product.brand && (
+              <span className="text-base font-bold text-accent uppercase tracking-wide bg-accent/10 px-3 py-1 rounded-lg">
+                {product.brand}
+              </span>
+            )}
+            <Badge className="bg-gray-100 text-text-primary border border-gray-200">
+              {product.petType === "DOG" ? "🐕 כלבים" : "🐈 חתולים"}
+            </Badge>
+            <Badge className="bg-gray-100 text-text-primary border border-gray-200">
+              {product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category === "TOYS" ? "צעצועים" : "אביזרים"}
+            </Badge>
+          </div>
+          
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary tracking-tight leading-tight">{product.name}</h1>
+          
+          {/* Rating & Reviews */}
+          {product.rating && (
+            <div className="flex items-center gap-3 mt-4 pb-4 border-b border-gray-200">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star 
+                    key={i} 
+                    className={`h-5 w-5 ${i < Math.floor(product.rating!) ? 'fill-amber-400 text-amber-400' : 'fill-gray-200 text-gray-200'}`} 
+                  />
+                ))}
+              </div>
+              <span className="text-lg font-bold text-text-primary">{product.rating}</span>
+              {product.reviewCount && (
+                <span className="text-sm text-text-secondary">מבוסס על {product.reviewCount} ביקורות</span>
+              )}
             </div>
-            <span className="text-sm text-text-secondary">4.8 מתוך 5 (127 ביקורות)</span>
+          )}
+          
+          {/* Product Badges */}
+          {product.badges && product.badges.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {product.badges.map((badge, idx) => (
+                <span key={idx} className="text-sm font-bold px-4 py-2 rounded-full bg-gradient-to-r from-accent to-accent-400 text-white shadow-sm">
+                  ✓ {badge}
+                </span>
+              ))}
+            </div>
+          )}
+          
+          {/* Additional Info */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4 text-sm">
+            {product.weight && (
+              <div className="bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
+                <div className="text-xs text-text-muted">משקל</div>
+                <div className="font-bold text-text-primary">{product.weight} {product.weightUnit}</div>
+              </div>
+            )}
+            {product.ageRange && (
+              <div className="bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
+                <div className="text-xs text-text-muted">טווח גיל</div>
+                <div className="font-bold text-text-primary">{product.ageRange}</div>
+              </div>
+            )}
+            {product.petSize && (
+              <div className="bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
+                <div className="text-xs text-text-muted">גודל מומלץ</div>
+                <div className="font-bold text-text-primary">{product.petSize}</div>
+              </div>
+            )}
           </div>
         </div>
 
         {lowStock && (
-          <div className="flex items-center gap-2 text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-sm">
+          <div className="flex items-center gap-2 text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-sm font-medium">
             <CircleAlert className="h-4 w-4 shrink-0" />
-            <span>נשארו רק {product.stock} במלאי — הזמינו בהקדם!</span>
+            <span>⚠️ נשארו רק {stockQty} יחידות במלאי — הזמינו בהקדם!</span>
           </div>
         )}
         {!inStock && (
-          <div className="flex items-center gap-2 text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-sm">
+          <div className="flex items-center gap-2 text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-sm font-medium">
             <CircleAlert className="h-4 w-4 shrink-0" />
-            <span>אזל מהמלאי</span>
+            <span>❌ אזל מהמלאי - הירשמו לעדכון כשיחזור</span>
+          </div>
+        )}
+        
+        {inStock && !lowStock && (
+          <div className="flex items-center gap-2 text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-sm font-medium">
+            <Check className="h-4 w-4 shrink-0" />
+            <span>✓ במלאי ({stockQty} יחידות) - משלוח מהיר</span>
           </div>
         )}
 
@@ -104,16 +185,23 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
         {/* Purchase Type */}
         <div className="space-y-3">
-          <button onClick={() => setPurchaseType("onetime")} className={cn("w-full flex items-center justify-between p-4 rounded-xl border-2 transition-all text-right", purchaseType === "onetime" ? "border-accent bg-bg" : "border-border hover:border-gray-300")}>
+          <button onClick={() => setPurchaseType("onetime")} className={cn("w-full flex items-center justify-between p-5 rounded-xl border-2 transition-all text-right", purchaseType === "onetime" ? "border-accent bg-accent/5" : "border-gray-200 hover:border-gray-300 bg-white")}>
             <div className="flex items-center gap-3">
               <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center", purchaseType === "onetime" ? "border-accent" : "border-gray-300")}>
-                {purchaseType === "onetime" && <div className="w-2.5 h-2.5 rounded-full bg-black" />}
+                {purchaseType === "onetime" && <div className="w-2.5 h-2.5 rounded-full bg-accent" />}
               </div>
-              <p className="font-medium text-text-primary">רכישה חד פעמית</p>
+              <div>
+                <p className="font-bold text-text-primary">רכישה חד פעמית</p>
+                {hasDiscount && (
+                  <p className="text-xs text-emerald-600 font-medium">חסכו {discountPercent}%</p>
+                )}
+              </div>
             </div>
             <div className="text-left">
-              <p className="font-bold text-lg text-text-primary">{formatPrice(product.price)}</p>
-              {hasDiscount && <p className="text-sm text-text-secondary line-through">{formatPrice(product.compareAt!)}</p>}
+              <p className="font-bold text-2xl text-text-primary">{formatPrice(product.price)}</p>
+              {hasDiscount && (
+                <p className="text-sm text-text-muted line-through">{formatPrice(product.compareAt!)}</p>
+              )}
             </div>
           </button>
 
@@ -204,6 +292,36 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           <div className="pt-4 border-t border-border">
             <h3 className="text-lg font-semibold text-text-primary mb-3">רכיבים</h3>
             <p className="text-sm text-text-secondary leading-relaxed">{product.ingredients}</p>
+          </div>
+        )}
+        
+        {/* Nutritional Information */}
+        {hasNutritionalInfo && (
+          <div className="pt-4 border-t border-border">
+            <h3 className="text-lg font-semibold text-text-primary mb-3">מידע תזונתי (ניתוח מובטח)</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {product.nutritionalProtein && (
+                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 border border-blue-200">
+                  <div className="text-xs text-text-muted mb-1">חלבון</div>
+                  <div className="text-2xl font-bold text-blue-700">{product.nutritionalProtein}</div>
+                  <div className="text-xs text-text-secondary mt-1">מינימום</div>
+                </div>
+              )}
+              {product.nutritionalFat && (
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200">
+                  <div className="text-xs text-text-muted mb-1">שומן</div>
+                  <div className="text-2xl font-bold text-amber-700">{product.nutritionalFat}</div>
+                  <div className="text-xs text-text-secondary mt-1">מינימום</div>
+                </div>
+              )}
+              {product.nutritionalFiber && (
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200">
+                  <div className="text-xs text-text-muted mb-1">סיבים</div>
+                  <div className="text-2xl font-bold text-green-700">{product.nutritionalFiber}</div>
+                  <div className="text-xs text-text-secondary mt-1">מקסימום</div>
+                </div>
+              )}
+            </div>
           </div>
         )}
 

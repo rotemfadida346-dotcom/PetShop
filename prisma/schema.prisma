@@ -104,18 +104,29 @@ model Product {
   shortDesc   String?
   price       Float
   compareAt   Float?
-  currency    String        @default("USD")
+  currency    String        @default("ILS")
   petType     PetType
   category    ProductCategory
+  subcategory String?       // תת-קטגוריה (מזון יבש, מזון רטוב וכו')
+  brand       String?       // מותג (Royal Canin, Hill's, KONG וכו')
   images      ProductImage[]
   faqs        ProductFaq[]
   tags        String[]
+  badges      String[]      @default([]) // תגים מיוחדים (הנמכר ביותר, משלוח חינם)
   isActive    Boolean       @default(true)
   isFeatured  Boolean       @default(false)
   stock       Int           @default(0)
+  stockQuantity Int         @default(0) // כמות במלאי
   weight      Float?
-  weightUnit  String?       @default("lbs")
+  weightUnit  String?       @default("kg")
   sku         String?       @unique
+  rating      Float?        @default(4.5) // דירוג ממוצע
+  reviewCount Int           @default(0) // מספר ביקורות
+  ageRange    String?       // טווח גיל מומלץ
+  petSize     String?       // גודל חיית מחמד
+  nutritionalProtein String? // % חלבון
+  nutritionalFat     String? // % שומן
+  nutritionalFiber   String? // % סיבים
   stripePriceId     String?
   stripeProductId   String?
   subscriptionDiscount Float @default(10) // percentage discount for subscriptions
