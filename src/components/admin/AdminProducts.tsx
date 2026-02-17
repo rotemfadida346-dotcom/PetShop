@@ -5,7 +5,8 @@ import { formatPrice, cn } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { Plus, Pencil, Trash2, Save, X, Tag, ChevronUp, Package } from "lucide-react";
+import ImageUploadManager from "./ImageUploadManager";
+import { Plus, Pencil, Trash2, Save, X, Tag, ChevronUp, Package, Image as ImageIcon } from "lucide-react";
 
 interface Product {
   id: string; name: string; slug: string; price: number; compareAt: number | null;
@@ -28,10 +29,13 @@ export default function AdminProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [editing, setEditing] = useState<string | null>(null);
   const [editData, setEditData] = useState<Partial<Product>>({});
+  const [editingImages, setEditingImages] = useState<string | null>(null);
+  const [editImagesData, setEditImagesData] = useState<Array<{url: string; alt: string; position: number}>>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [showNew, setShowNew] = useState(false);
   const [newProduct, setNewProduct] = useState(makeEmpty("FOOD"));
+  const [newProductImages, setNewProductImages] = useState<Array<{url: string; alt: string; position: number}>>([]);
   const [saving, setSaving] = useState(false);
 
   function makeEmpty(category: string) {
@@ -73,9 +77,44 @@ export default function AdminProducts() {
     catch (e) { console.error(e); }
   }
 
+  async function startEditImages(slug: string) {
+    setEditingImages(slug);
+    // Fetch product with images
+    try {
+      const res = await fetch(`/api/products/${slug}`);
+      const { product } = await res.json();
+      setEditImagesData(product.images || []);
+    } catch (e) {
+      console.error(e);
+      setEditImagesData([]);
+    }
+  }
+
+  async function saveImages(slug: string) {
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/products/${slug}/images`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ images: editImagesData }),
+      });
+      if (res.ok) {
+        alert("התמונות עודכנו בהצלחה!");
+        setEditingImages(null);
+      } else {
+        alert("שגיאה בעדכון תמונות");
+      }
+    } catch (e) {
+      console.error(e);
+      alert("שגיאה בעדכון תמונות");
+    }
+    setSaving(false);
+  }
+
   function openNewInCategory(cat: string) {
     const actualCat = cat === "ALL" ? "FOOD" : cat;
     setNewProduct(makeEmpty(actualCat));
+    setNewProductImages([]);
     setShowNew(true);
   }
 
@@ -92,12 +131,14 @@ export default function AdminProducts() {
         description: newProduct.description || newProduct.name, shortDesc: newProduct.shortDesc || null,
         benefits: newProduct.benefits || null, ingredients: newProduct.ingredients || null,
         subscriptionDiscount: newProduct.subscriptionDiscount || 0, isActive: true, isFeatured: false, tags: [],
+        images: newProductImages,
       };
       const res = await fetch("/api/products", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       if (res.ok) {
         const { product } = await res.json();
         setProducts([product, ...products]);
         setNewProduct(makeEmpty(newProduct.category));
+        setNewProductImages([]);
         setShowNew(false);
         setActiveCategory(newProduct.category);
       } else { const err = await res.json(); alert(err.error || "שגיאה ביצירת מוצר"); }
@@ -170,9 +211,21 @@ export default function AdminProducts() {
               <textarea value={newProduct.ingredients || ""} onChange={(e) => setNewProduct({ ...newProduct, ingredients: e.target.value })} placeholder="רשימת רכיבים" rows={2} className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15 resize-y" /></div>
           </div>
 
+          {/* Image Manager */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <ImageUploadManager 
+              images={newProductImages} 
+              onChange={setNewProductImages}
+              productName={newProduct.name}
+            />
+          </div>
+
           <div className="mt-6 flex items-center gap-3">
-            <Button onClick={createProduct} isLoading={saving}><Save className="h-4 w-4" />צור מוצר</Button>
-            <Button variant="ghost" onClick={() => setShowNew(false)}><X className="h-4 w-4" />ביטול</Button>
+            <Button onClick={createProduct} isLoading={saving}><Save className="h-4 w-4" />צור מוצר ({newProductImages.length} תמונות)</Button>
+            <Button variant="ghost" onClick={() => {
+              setShowNew(false);
+              setNewProductImages([]);
+            }}><X className="h-4 w-4" />ביטול</Button>
           </div>
         </div>
       )}
@@ -248,7 +301,8 @@ export default function AdminProducts() {
                             <><button onClick={() => saveEdit(product.slug)} className="p-2 text-accent hover:bg-accent/10 rounded-lg transition-all" title="שמור"><Save className="h-4 w-4" /></button>
                               <button onClick={() => setEditing(null)} className="p-2 text-text-muted hover:bg-surface-hover rounded-lg transition-all" title="ביטול"><X className="h-4 w-4" /></button></>
                           ) : (
-                            <><button onClick={() => startEdit(product)} className="p-2 text-text-muted hover:text-accent hover:bg-accent/10 rounded-lg transition-all" title="עריכה"><Pencil className="h-4 w-4" /></button>
+                            <><button onClick={() => startEditImages(product.slug)} className="p-2 text-text-muted hover:text-blue-500 hover:bg-blue-500/10 rounded-lg transition-all" title="ערוך תמונות"><ImageIcon className="h-4 w-4" /></button>
+                              <button onClick={() => startEdit(product)} className="p-2 text-text-muted hover:text-accent hover:bg-accent/10 rounded-lg transition-all" title="עריכה"><Pencil className="h-4 w-4" /></button>
                               <button onClick={() => deleteProduct(product.slug, product.id)} className="p-2 text-text-muted hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all" title="מחיקה"><Trash2 className="h-4 w-4" /></button></>
                           )}
                         </div>
@@ -258,6 +312,106 @@ export default function AdminProducts() {
                 })}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Images Modal/Section */}
+      {editingImages && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-text-primary flex items-center gap-2">
+                  <ImageIcon className="h-6 w-6 text-accent" />
+                  ניהול תמונות
+                </h2>
+                <p className="text-sm text-text-secondary mt-1">
+                  {products.find(p => p.slug === editingImages)?.name}
+                </p>
+              </div>
+              <button
+                onClick={() => setEditingImages(null)}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <ImageUploadManager
+                images={editImagesData}
+                onChange={setEditImagesData}
+                productName={products.find(p => p.slug === editingImages)?.name}
+              />
+              
+              <div className="mt-6 pt-6 border-t border-gray-200 flex items-center gap-3">
+                <Button 
+                  onClick={() => saveImages(editingImages)} 
+                  isLoading={saving}
+                  className="bg-accent hover:bg-accent-400"
+                >
+                  <Save className="h-4 w-4" />
+                  שמור תמונות ({editImagesData.length})
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  onClick={() => setEditingImages(null)}
+                >
+                  ביטול
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Images Modal */}
+      {editingImages && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-text-primary flex items-center gap-2">
+                  <ImageIcon className="h-6 w-6 text-accent" />
+                  ניהול תמונות מוצר
+                </h2>
+                <p className="text-sm text-text-secondary mt-1">
+                  {products.find(p => p.slug === editingImages)?.name}
+                </p>
+              </div>
+              <button
+                onClick={() => setEditingImages(null)}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <ImageUploadManager
+                images={editImagesData}
+                onChange={setEditImagesData}
+                productName={products.find(p => p.slug === editingImages)?.name}
+              />
+              
+              <div className="mt-6 pt-6 border-t border-gray-200 flex items-center gap-3">
+                <Button 
+                  onClick={() => saveImages(editingImages)} 
+                  isLoading={saving}
+                  className="bg-accent hover:bg-accent-400"
+                >
+                  <Save className="h-4 w-4" />
+                  שמור {editImagesData.length} תמונות
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  onClick={() => setEditingImages(null)}
+                >
+                  ביטול
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       )}

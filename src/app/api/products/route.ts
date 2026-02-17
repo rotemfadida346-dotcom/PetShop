@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { getProducts, createProduct } from "@/lib/db/products";
 import { filterProducts as filterMock } from "@/lib/mock-data";
 
@@ -35,10 +36,29 @@ export async function GET(request: NextRequest) {
   }
 }
 
+interface ImageInput {
+  url: string;
+  alt: string;
+  position: number;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const product = await createProduct(body);
+    
+    // Handle images array - convert to Prisma create format
+    const productData: Record<string, unknown> = { ...body };
+    if (body.images && Array.isArray(body.images)) {
+      productData.images = {
+        create: (body.images as ImageInput[]).map((img: ImageInput) => ({
+          url: img.url,
+          alt: img.alt || "",
+          position: img.position || 0,
+        }))
+      };
+    }
+    
+    const product = await createProduct(productData as Prisma.ProductCreateInput);
     return NextResponse.json({ product }, { status: 201 });
   } catch (error) {
     console.error("Create product error:", error);
