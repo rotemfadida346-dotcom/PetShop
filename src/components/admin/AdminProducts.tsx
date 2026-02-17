@@ -239,21 +239,41 @@ export default function AdminProducts() {
               <textarea value={newProduct.ingredients || ""} onChange={(e) => setNewProduct({ ...newProduct, ingredients: e.target.value })} placeholder="רשימת רכיבים" rows={2} className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15 resize-y" /></div>
           </div>
 
-          {/* Image Manager - PROMINENT */}
-          <div className="mt-8 pt-8 border-t-4 border-accent/20">
-            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 mb-4 border-2 border-blue-200">
-              <h3 className="font-bold text-blue-900 mb-1 flex items-center gap-2">
-                📸 תמונות המוצר
-              </h3>
-              <p className="text-sm text-blue-800">
-                הוסף 2-4 תמונות למוצר. לחץ על הכפתורים הצבעוניים להוספה מהירה של placeholders!
-              </p>
+          {/* ============== IMAGE MANAGER - IMPOSSIBLE TO MISS ============== */}
+          <div className="mt-8 mb-8">
+            {/* GIANT ATTENTION-GRABBING HEADER */}
+            <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-white rounded-2xl p-8 mb-6 shadow-2xl border-4 border-yellow-500">
+              <div className="text-center">
+                <div className="text-6xl mb-4">📸🎨🖼️</div>
+                <h2 className="text-4xl font-black mb-3 drop-shadow-lg">
+                  תמונות המוצר - לחץ כאן! ⬇️
+                </h2>
+                <p className="text-xl font-bold mb-2">
+                  לחץ על הכפתורים הצבעוניים למטה להוספת תמונות!
+                </p>
+                <p className="text-lg opacity-90">
+                  ירוק = מזון כלבים | סגול = מזון חתולים | אדום = צעצועים
+                </p>
+              </div>
             </div>
-            <ImageUploadManager 
-              images={newProductImages} 
-              onChange={setNewProductImages}
-              productName={newProduct.name}
-            />
+
+            {/* THE ACTUAL IMAGE MANAGER */}
+            <div className="bg-white rounded-2xl p-8 border-4 border-blue-500 shadow-xl">
+              <ImageUploadManager 
+                images={newProductImages} 
+                onChange={setNewProductImages}
+                productName={newProduct.name}
+              />
+            </div>
+            
+            {/* Image Count Display */}
+            {newProductImages.length > 0 && (
+              <div className="mt-4 bg-green-50 border-2 border-green-500 rounded-xl p-4 text-center">
+                <p className="text-lg font-bold text-green-700">
+                  ✅ הוספת {newProductImages.length} תמונות - מעולה!
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="mt-8 pt-6 border-t-2 border-gray-300 flex items-center gap-3">
