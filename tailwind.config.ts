@@ -9,36 +9,55 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Improved contrast palette - better readability
-        bg: { DEFAULT: "#F9FAFB", light: "#F3F4F6", warm: "#F5F5F5" },
-        surface: { DEFAULT: "#E5E7EB", light: "#F3F4F6", hover: "#D1D5DB" },
-        card: { DEFAULT: "#FFFFFF", hover: "#F9FAFB", border: "#E5E7EB" },
-        // Accent — warm sage/teal green
-        accent: {
-          DEFAULT: "#5CB8A4",
-          50: "#0F2922",
-          100: "#15372E",
-          200: "#1D5046",
-          300: "#28725F",
-          400: "#3A9C85",
-          500: "#5CB8A4",
-          600: "#7CCBB8",
-          700: "#A3DDD0",
-          800: "#C8ECE4",
-          900: "#E8F7F3",
+        // NEW: Nature-inspired Green & Blue palette
+        primary: {
+          green: "#2E8B57",      // Deep sea green
+          blue: "#4682B4",        // Steel blue
+          white: "#FFFFFF",       // Clean white
         },
-        // Text layers - high contrast for readability
+        secondary: {
+          lightGreen: "#90EE90",  // Light green
+          softBlue: "#87CEEB",    // Sky blue
+          cream: "#F8F8FF",       // Soft cream white
+        },
+        accent: {
+          DEFAULT: "#2E8B57",     // Primary green
+          forest: "#228B22",      // Forest green
+          navy: "#191970",        // Navy blue
+          mint: "#98FB98",        // Mint green
+          50: "#F0F9F4",
+          100: "#D9F2E5",
+          200: "#A8E6C8",
+          300: "#76D9AB",
+          400: "#45CC8E",
+          500: "#2E8B57",
+          600: "#257046",
+          700: "#1C5435",
+          800: "#133823",
+          900: "#0A1C12",
+        },
+        // Improved contrast palette
+        bg: { DEFAULT: "#F8F8FF", light: "#FFFFFF", warm: "#F5F5F5" },
+        surface: { DEFAULT: "#90EE90", light: "#F3F4F6", hover: "#76D9AB" },
+        card: { DEFAULT: "#FFFFFF", hover: "#F9FAFB", border: "#E5E7EB" },
+        // Text layers
         text: {
-          primary: "#111827",
-          secondary: "#4B5563",
+          primary: "#2F4F4F",     // Dark gray-greenish
+          secondary: "#708090",    // Medium gray
           muted: "#9CA3AF",
+          light: "#F5F5F5",       // Light gray
           inverse: "#FFFFFF",
         },
+        // Semantic colors
+        success: "#32CD32",       // Success green
+        info: "#1E90FF",          // Info blue
+        warning: "#FF8C00",       // Warning orange
+        error: "#DC143C",         // Error red
         // Semantic
         border: { DEFAULT: "#E5E7EB", light: "#F3F4F6" },
         // Pet categories
-        dog: { bg: "#251E14", text: "#E8A44A", accent: "#D4933A" },
-        cat: { bg: "#1C1826", text: "#B48AE8", accent: "#9B6FD9" },
+        dog: { bg: "#E8F5E9", text: "#2E8B57", accent: "#228B22" },
+        cat: { bg: "#E1F5FE", text: "#4682B4", accent: "#1E90FF" },
       },
       fontFamily: {
         sans: ["Assistant", "Inter", "sans-serif"],
