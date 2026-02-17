@@ -9,6 +9,7 @@ import { CheckCircle, Package, ArrowLeft, Mail, Truck, Clock, MessageCircle } fr
 export default function CheckoutSuccessPage() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId") || "ORD-XXXXX";
+  const total = searchParams.get("total") || "0";
 
   return (
     <div className="bg-gradient-to-b from-green-50 via-white to-gray-50 min-h-screen">
@@ -25,9 +26,15 @@ export default function CheckoutSuccessPage() {
             <p className="text-lg text-text-secondary mb-2">
               תודה רבה על ההזמנה. אנחנו כבר עובדים על זה!
             </p>
-            <div className="inline-block bg-gray-100 rounded-lg px-4 py-2 mt-4">
-              <p className="text-sm text-text-muted">מספר הזמנה</p>
-              <p className="text-xl font-bold text-text-primary">{orderId}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 max-w-md mx-auto">
+              <div className="bg-gray-100 rounded-lg px-4 py-3 text-center">
+                <p className="text-sm text-text-muted mb-1">מספר הזמנה</p>
+                <p className="text-lg font-bold text-text-primary">{orderId}</p>
+              </div>
+              <div className="bg-emerald-50 rounded-lg px-4 py-3 text-center border-2 border-emerald-200">
+                <p className="text-sm text-emerald-600 mb-1">סכום ששולם</p>
+                <p className="text-lg font-bold text-emerald-700">₪{total}</p>
+              </div>
             </div>
           </div>
 
