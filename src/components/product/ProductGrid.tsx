@@ -1,3 +1,4 @@
+import { memo } from "react";
 import ProductCard from "./ProductCard";
 
 interface ProductGridProps {
@@ -17,7 +18,7 @@ interface ProductGridProps {
   columns?: 2 | 3 | 4;
 }
 
-export default function ProductGrid({
+function ProductGrid({
   products,
   columns = 4,
 }: ProductGridProps) {
@@ -35,3 +36,5 @@ export default function ProductGrid({
     </div>
   );
 }
+
+export default memo(ProductGrid);

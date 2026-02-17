@@ -7,6 +7,9 @@ import { getFeaturedProducts } from "@/lib/db/products";
 import { getFeaturedProducts as getMockFeatured } from "@/lib/mock-data";
 import { Truck, ShieldCheck, Star, ArrowLeft, MessageCircle, MapPin, RefreshCw } from "lucide-react";
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 export default async function HomePage() {
   let featuredProducts: Parameters<typeof ProductGrid>[0]["products"];
   try { featuredProducts = await getFeaturedProducts(); }

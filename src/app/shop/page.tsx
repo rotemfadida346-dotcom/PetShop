@@ -8,6 +8,9 @@ import { filterProducts as filterMock } from "@/lib/mock-data";
 
 export const metadata: Metadata = { title: "חנות" };
 
+// Revalidate this page every 30 seconds for fresh product data
+export const revalidate = 30;
+
 interface ShopPageProps { searchParams: { pet?: string; category?: string; subscription?: string; search?: string; sort?: string; page?: string } }
 
 export default async function ShopPage({ searchParams }: ShopPageProps) {

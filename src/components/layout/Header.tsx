@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useCartStore } from "@/store/cart";
 import Container from "@/components/ui/Container";
 import { ShoppingBag, Menu, X, Search, User, Shield } from "lucide-react";
@@ -10,6 +10,9 @@ import { NAV_LINKS } from "@/lib/constants";
 export default function Header() {
   const [open, setOpen] = useState(false);
   const count = useCartStore((s) => s.getItemCount());
+  
+  const toggleMenu = useCallback(() => setOpen(prev => !prev), []);
+  const closeMenu = useCallback(() => setOpen(false), []);
 
   return (
     <header className="sticky top-0 z-50">
@@ -19,7 +22,7 @@ export default function Header() {
       <div className="bg-bg-warm/80 backdrop-blur-xl border-b border-border">
         <Container>
           <nav className="flex items-center justify-between h-16 lg:h-[68px]">
-            <button onClick={() => setOpen(!open)} className="lg:hidden p-2 -mr-2 text-text-muted hover:text-text-primary transition-colors" aria-label="תפריט">
+            <button onClick={toggleMenu} className="lg:hidden p-2 -mr-2 text-text-muted hover:text-text-primary transition-colors" aria-label="תפריט">
               {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
             <Link href="/" className="flex items-center gap-2.5 group">
@@ -44,7 +47,7 @@ export default function Header() {
           <div className="lg:hidden border-t border-border">
             <Container>
               <div className="py-3 space-y-0.5">
-                {NAV_LINKS.map((l) => <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-body font-medium text-text-secondary hover:text-accent hover:bg-surface rounded-xl transition-all">{l.label}</Link>)}
+                {NAV_LINKS.map((l) => <Link key={l.href} href={l.href} onClick={closeMenu} className="block px-4 py-2.5 text-body font-medium text-text-secondary hover:text-accent hover:bg-surface rounded-xl transition-all">{l.label}</Link>)}
               </div>
             </Container>
           </div>

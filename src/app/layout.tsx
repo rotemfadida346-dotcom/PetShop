@@ -5,7 +5,13 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 
-const assistant = Assistant({ subsets: ["latin", "hebrew"], variable: "--font-assistant", weight: ["300", "400", "500", "600", "700", "800"] });
+const assistant = Assistant({ 
+  subsets: ["latin", "hebrew"], 
+  variable: "--font-assistant", 
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: 'swap',
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: { default: `${SITE_NAME} - חנות חיות מחמד`, template: `%s | ${SITE_NAME}` },

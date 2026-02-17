@@ -1,6 +1,12 @@
 import { redirect } from "next/navigation";
+import dynamic from "next/dynamic";
 import { getAdminUser } from "@/lib/admin-auth";
-import AdminDashboard from "@/components/admin/AdminDashboard";
+import Loading from "@/components/ui/Loading";
+
+const AdminDashboard = dynamic(() => import("@/components/admin/AdminDashboard"), {
+  loading: () => <Loading />,
+  ssr: false,
+});
 
 export const metadata = { title: "לוח בקרה - ניהול" };
 

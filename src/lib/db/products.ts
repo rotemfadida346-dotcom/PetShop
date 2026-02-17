@@ -26,7 +26,7 @@ interface FilterParams {
 
 export async function getProducts(params: FilterParams = {}) {
   const { pet, category, subscription, search, sort, page = 1, limit = 12 } = params;
-
+  
   const where: Prisma.ProductWhereInput = { isActive: true };
 
   if (pet) where.petType = pet as Prisma.EnumPetTypeFilter;

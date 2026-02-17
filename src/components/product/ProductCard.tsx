@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
@@ -14,7 +15,7 @@ interface ProductCardProps {
   };
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
   const hasDiscount = product.compareAt && product.compareAt > product.price;
   const isDog = product.petType === "DOG";
   const cat = product.category === "FOOD" ? "מזון" : product.category === "TREATS" ? "חטיפים" : product.category === "LITTER" ? "חול" : product.category === "TOYS" ? "צעצועים" : "אביזרים";
@@ -50,3 +51,5 @@ export default function ProductCard({ product }: ProductCardProps) {
     </Link>
   );
 }
+
+export default memo(ProductCard);
