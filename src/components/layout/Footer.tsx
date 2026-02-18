@@ -19,7 +19,7 @@ export default function Footer() {
       <Container>
         <div className="py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5"><div className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center"><span className="text-white font-bold text-sm">P</span></div><span className="text-lg font-extrabold text-white">Pawsome</span></div>
+            <div className="flex items-center gap-2.5"><div className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center"><span className="text-white font-bold text-sm">P</span></div><span className="text-lg font-extrabold text-white">PawStory</span></div>
             <p className="text-sm text-gray-300 leading-relaxed">
               חנות ישראלית למוצרי חיות מחמד איכותיים. 
               שירות אישי, משלוחים מהירים עד הבית, וצוות תמיכה שזמין בשבילכם.
@@ -42,13 +42,13 @@ export default function Footer() {
         <div className="border-t border-gray-800 py-6">
           <div className="flex flex-col items-center gap-4 mb-4">
             <p className="text-center text-gray-400 text-sm max-w-2xl">
-              <strong className="text-white">Pawsome</strong> — חנות ישראלית למוצרי חיות מחמד איכותיים. 
+              <strong className="text-white">PawStory</strong> — חנות ישראלית למוצרי חיות מחמד איכותיים. 
               אנחנו מאמינים בשירות אישי, משלוחים מהירים, ומוצרים שנבחרו בקפידה לחיות המחמד האהובות עליכם. 
               כל הזמנה מטופלת באהבה ובמקצועיות. 🐾
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-            <p className="flex items-center gap-1">&copy; {new Date().getFullYear()} Pawsome. נוצר עם <Heart className="h-3 w-3 text-accent fill-accent" /> לחיות מחמד בישראל.</p>
+            <p className="flex items-center gap-1">&copy; {new Date().getFullYear()} PawStory. נוצר עם <Heart className="h-3 w-3 text-accent fill-accent" /> לחיות מחמד בישראל.</p>
             <div className="flex items-center gap-4">
               <Link href="/privacy" className="hover:text-accent transition-colors">מדיניות פרטיות</Link>
               <Link href="/terms" className="hover:text-accent transition-colors">תנאי שימוש</Link>

@@ -186,7 +186,7 @@ export default async function HomePage() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-3">
-              למה לקוחות בוחרים ב-Pawsome?
+              למה לקוחות בוחרים ב-PawStory?
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
               אנחנו לא רק חנות - אנחנו שותפים שלכם לטיפול בחיות המחמד

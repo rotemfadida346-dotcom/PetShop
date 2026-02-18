@@ -62,7 +62,7 @@ export default function Header() {
               </div>
               <div>
                 <h1 className="text-2xl font-extrabold bg-gradient-to-r from-primary-green to-primary-blue bg-clip-text text-transparent">
-                  Pawsome
+                  PawStory
                 </h1>
                 <span className="text-[10px] text-text-secondary">החנות הפרימיום לחיות המחמד</span>
               </div>

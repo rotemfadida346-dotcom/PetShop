@@ -3,7 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import AdminLoginForm from "@/components/admin/AdminLoginForm";
 
-export const metadata: Metadata = { title: "התחברות לפאנל ניהול - Pawsome Admin" };
+export const metadata: Metadata = { title: "התחברות לפאנל ניהול - PawStory Admin" };
 
 export default function AdminLoginPage() {
   return (
@@ -20,7 +20,7 @@ export default function AdminLoginPage() {
                 <circle cx="75" cy="45" r="6" fill="white" opacity="0.6"/>
               </svg>
             </div>
-            <h1 className="text-3xl font-bold text-text-primary mb-2">Pawsome Admin</h1>
+            <h1 className="text-3xl font-bold text-text-primary mb-2">PawStory Admin</h1>
             <p className="text-text-secondary mb-6">פאנל ניהול החנות</p>
             
             {/* Credentials Box */}

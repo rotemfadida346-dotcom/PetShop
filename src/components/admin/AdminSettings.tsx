@@ -67,7 +67,7 @@ export default function AdminSettings() {
         <div className="bg-card rounded-2xl border border-card-border p-6">
           <h2 className="text-heading-md text-text-primary mb-4">פרטי החנות</h2>
           <div className="space-y-4 max-w-md">
-            <Input label="שם החנות" defaultValue="Pawsome" />
+            <Input label="שם החנות" defaultValue="PawStory" />
             <Input label="אימייל" defaultValue="hello@pawsome.co.il" />
             <Input label="טלפון" defaultValue="03-1234567" />
           </div>

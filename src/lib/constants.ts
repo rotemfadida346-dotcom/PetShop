@@ -1,5 +1,5 @@
-export const SITE_NAME = "Pawsome";
-export const SITE_DESCRIPTION = "חנות חיות מחמד חכמה – מבחר מוצרים איכותיים לכלבים וחתולים. מזון, צעצועים, מיטות, אביזרים ועוד.";
+export const SITE_NAME = "PawStory";
+export const SITE_DESCRIPTION = "PawStory - החנות הפרימיום לחיות מחמד בישראל. מבחר מוצרים איכותיים לכלבים וחתולים: מזון, צעצועים, אביזרים ועוד. משלוחים מהירים וייעוץ מקצועי.";
 export const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export const CURRENCY = "₪";

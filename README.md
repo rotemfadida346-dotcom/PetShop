@@ -1,4 +1,4 @@
-# Pawsome - Premium Pet Nutrition eCommerce
+# PawStory - Premium Pet Nutrition eCommerce
 
 A production-ready eCommerce platform for premium dog & cat products, built with modern web technologies and deployed on Vercel with Supabase.
 

@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "מדיניות פרטיות",
-  description: "מדיניות הפרטיות של Pawsome - איך אנחנו אוספים, משתמשים ומגנים על המידע האישי שלכם.",
+  description: "מדיניות הפרטיות של PawStory - איך אנחנו אוספים, משתמשים ומגנים על המידע האישי שלכם.",
 };
 
 export default function PrivacyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-text-primary">1. מבוא</h2>
             <p className="text-text-secondary leading-relaxed">
-              ב-Pawsome, אנחנו מחויבים להגן על הפרטיות שלכם. מדיניות פרטיות זו מסבירה איך אנחנו אוספים, משתמשים, חולקים ומגנים על המידע האישי שלכם כאשר אתם משתמשים באתר שלנו.
+              ב-PawStory, אנחנו מחויבים להגן על הפרטיות שלכם. מדיניות פרטיות זו מסבירה איך אנחנו אוספים, משתמשים, חולקים ומגנים על המידע האישי שלכם כאשר אתם משתמשים באתר שלנו.
             </p>
           </section>
 
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
               אם יש לכם שאלות או דאגות לגבי מדיניות הפרטיות, צרו קשר:
             </p>
             <div className="bg-surface rounded-xl p-6 border border-border">
-              <p className="text-text-primary"><strong>Pawsome</strong></p>
+              <p className="text-text-primary"><strong>PawStory</strong></p>
               <p className="text-text-secondary mt-2">אימייל: <a href="mailto:hello@pawsome.co.il" className="text-accent hover:underline">hello@pawsome.co.il</a></p>
             </div>
           </section>

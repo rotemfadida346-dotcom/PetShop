@@ -4,7 +4,7 @@ import { Truck, Package, MapPin, Clock, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "מדיניות משלוחים",
-  description: "מידע על משלוחים, עלויות, זמני אספקה ומעקב הזמנות ב-Pawsome.",
+  description: "מידע על משלוחים, עלויות, זמני אספקה ומעקב הזמנות ב-PawStory.",
 };
 
 export default function ShippingPage() {

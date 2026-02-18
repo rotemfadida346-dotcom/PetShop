@@ -18,7 +18,7 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">P</span>
                 </div>
-                <span className="text-3xl font-extrabold text-text-primary">Pawsome</span>
+                <span className="text-3xl font-extrabold text-text-primary">PawStory</span>
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-6">
@@ -39,12 +39,12 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-text-primary mb-6 text-center">הסיפור שלנו 📖</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-text-secondary leading-relaxed mb-4">
-                הכל התחיל כשאני, המייסד של Pawsome, חיפשתי מזון איכותי ללוקי - הגולדן רטריבר האהוב שלי. 
+                הכל התחיל כשאני, המייסד של PawStory, חיפשתי מזון איכותי ללוקי - הגולדן רטריבר האהוב שלי. 
                 הבנתי שבישראל חסר מקום אחד שבו אפשר למצוא מוצרים פרימיום באמת, עם שירות אישי ומקצועי.
               </p>
               <p className="text-text-secondary leading-relaxed mb-4">
                 אחרי חודשים של מחקר, פגישות עם וטרינרים ותזונאים, ובדיקת עשרות מותגים - 
-                פתחנו את Pawsome בשנת 2024. החזון היה פשוט: <strong className="text-text-primary">לייבא ולהנגיש את המוצרים הטובים ביותר לבעלי חיות מחמד בישראל.</strong>
+                פתחנו את PawStory בשנת 2024. החזון היה פשוט: <strong className="text-text-primary">לייבא ולהנגיש את המוצרים הטובים ביותר לבעלי חיות מחמד בישראל.</strong>
               </p>
               <p className="text-text-secondary leading-relaxed mb-4">
                 היום, אנחנו גאים לשרת למעלה מ-5,000 משפחות בכל רחבי הארץ. 
@@ -106,7 +106,7 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">למה לבחור ב-Pawsome?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">למה לבחור ב-PawStory?</h2>
             <p className="text-lg text-text-secondary max-w-2xl mx-auto">אנחנו לא רק חנות - אנחנו שותפים בטיפול בחיות המחמד שלכם</p>
           </div>
           
@@ -215,7 +215,7 @@ export default function AboutPage() {
           <div className="text-center">
             <div className="text-5xl mb-6">🐾</div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              מוכנים להצטרף למשפחת Pawsome?
+              מוכנים להצטרף למשפחת PawStory?
             </h2>
             <p className="text-lg text-gray-300 max-w-md mx-auto mb-8">
               הצטרפו לאלפי בעלי חיות מחמד שכבר נהנים ממוצרים איכותיים ושירות מעולה. 

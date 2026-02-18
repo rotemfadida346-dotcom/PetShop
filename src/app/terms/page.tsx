@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "תנאי שימוש",
-  description: "תנאי השימוש של Pawsome - הכללים וההתחייבויות בעת שימוש באתר ובשירותים שלנו.",
+  description: "תנאי השימוש של PawStory - הכללים וההתחייבויות בעת שימוש באתר ובשירותים שלנו.",
 };
 
 export default function TermsPage() {
@@ -23,7 +23,7 @@ export default function TermsPage() {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-text-primary">1. קבלת התנאים</h2>
             <p className="text-text-secondary leading-relaxed">
-              באמצעות גישה לאתר Pawsome ושימוש בו, אתם מסכימים להיות מחויבים לתנאי השימוש הללו. אם אינכם מסכימים לתנאים אלו, אנא אל תשתמשו באתר.
+              באמצעות גישה לאתר PawStory ושימוש בו, אתם מסכימים להיות מחויבים לתנאי השימוש הללו. אם אינכם מסכימים לתנאים אלו, אנא אל תשתמשו באתר.
             </p>
           </section>
 
@@ -89,14 +89,14 @@ export default function TermsPage() {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-text-primary">8. קניין רוחני</h2>
             <p className="text-text-secondary leading-relaxed">
-              כל התוכן באתר, כולל טקסט, גרפיקה, לוגו, תמונות וקוד, הוא רכושה של Pawsome ומוגן על ידי חוקי זכויות יוצרים וקניין רוחני. אינכם רשאים להעתיק, לשכפל או להפיץ תוכן ללא אישור בכתב.
+              כל התוכן באתר, כולל טקסט, גרפיקה, לוגו, תמונות וקוד, הוא רכושה של PawStory ומוגן על ידי חוקי זכויות יוצרים וקניין רוחני. אינכם רשאים להעתיק, לשכפל או להפיץ תוכן ללא אישור בכתב.
             </p>
           </section>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-text-primary">9. הגבלת אחריות</h2>
             <p className="text-text-secondary leading-relaxed">
-              Pawsome לא תהיה אחראית לנזקים עקיפים, מקריים, מיוחדים או תוצאתיים הנובעים משימוש באתר או מהמוצרים. השימוש באתר הוא על אחריותכם.
+              PawStory לא תהיה אחראית לנזקים עקיפים, מקריים, מיוחדים או תוצאתיים הנובעים משימוש באתר או מהמוצרים. השימוש באתר הוא על אחריותכם.
             </p>
           </section>
 
@@ -120,7 +120,7 @@ export default function TermsPage() {
               אם יש לכם שאלות לגבי תנאי השימוש, צרו קשר:
             </p>
             <div className="bg-surface rounded-xl p-6 border border-border">
-              <p className="text-text-primary"><strong>Pawsome</strong></p>
+              <p className="text-text-primary"><strong>PawStory</strong></p>
               <p className="text-text-secondary mt-2">אימייל: <a href="mailto:hello@pawsome.co.il" className="text-accent hover:underline">hello@pawsome.co.il</a></p>
             </div>
           </section>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SignUpForm from "@/components/auth/SignUpForm";
 
-export const metadata: Metadata = { title: "הרשמה - הצטרפו ל-Pawsome" };
+export const metadata: Metadata = { title: "הרשמה - הצטרפו ל-PawStory" };
 
 export default function SignUpPage() {
   return (
@@ -21,7 +21,7 @@ export default function SignUpPage() {
                 <circle cx="75" cy="45" r="6" fill="white" opacity="0.6"/>
               </svg>
             </div>
-            <h1 className="text-3xl font-bold text-text-primary mb-2">הצטרפו ל-Pawsome! 🐾</h1>
+            <h1 className="text-3xl font-bold text-text-primary mb-2">הצטרפו ל-PawStory! 🐾</h1>
             <p className="text-text-secondary">צרו חשבון חינם ותהנו ממבצעים ייחודיים</p>
           </div>
 

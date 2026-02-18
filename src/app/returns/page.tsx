@@ -4,7 +4,7 @@ import { RotateCcw, CheckCircle2, XCircle, Package, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "מדיניות החזרות",
-  description: "מידע על החזרת מוצרים, החזרים כספיים ותהליך ההחזרה ב-Pawsome.",
+  description: "מידע על החזרת מוצרים, החזרים כספיים ותהליך ההחזרה ב-PawStory.",
 };
 
 export default function ReturnsPage() {

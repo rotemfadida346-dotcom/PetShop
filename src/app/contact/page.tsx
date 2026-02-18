@@ -5,7 +5,7 @@ import { Mail, MessageCircle, Phone, MapPin, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "צור קשר",
-  description: "יש לכם שאלות? נשמח לעזור! צרו קשר עם צוות Pawsome.",
+  description: "יש לכם שאלות? נשמח לעזור! צרו קשר עם צוות PawStory.",
 };
 
 export default function ContactPage() {
