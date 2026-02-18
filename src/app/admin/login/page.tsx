@@ -29,22 +29,41 @@ export default function AdminLoginPage() {
                 <span className="text-2xl">🔑</span>
                 פרטי התחברות:
               </p>
-              <div className="bg-white rounded-lg p-4 space-y-2 border border-emerald-200">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-text-secondary">אימייל:</span>
-                  <code className="text-sm font-bold text-primary-green bg-emerald-50 px-3 py-1 rounded">
-                    admin@pawsome.com
-                  </code>
+              <div className="space-y-3">
+                <div className="bg-white rounded-lg p-4 space-y-2 border-2 border-emerald-400">
+                  <p className="text-xs font-bold text-emerald-700 mb-2">אפשרות 1 - Admin ראשי:</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-text-secondary">אימייל:</span>
+                    <code className="text-sm font-bold text-primary-green bg-emerald-50 px-3 py-1 rounded">
+                      admin@pawsome.com
+                    </code>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-text-secondary">סיסמה:</span>
+                    <code className="text-sm font-bold text-primary-green bg-emerald-50 px-3 py-1 rounded">
+                      admin123456
+                    </code>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-text-secondary">סיסמה:</span>
-                  <code className="text-sm font-bold text-primary-green bg-emerald-50 px-3 py-1 rounded">
-                    admin123456
-                  </code>
+                
+                <div className="bg-white rounded-lg p-4 space-y-2 border-2 border-blue-400">
+                  <p className="text-xs font-bold text-blue-700 mb-2">אפשרות 2 - המייל שלך:</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-text-secondary">אימייל:</span>
+                    <code className="text-sm font-bold text-primary-blue bg-blue-50 px-3 py-1 rounded">
+                      rotemfadida346@gmail.com
+                    </code>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-text-secondary">סיסמה:</span>
+                    <code className="text-sm font-bold text-primary-blue bg-blue-50 px-3 py-1 rounded">
+                      admin123456
+                    </code>
+                  </div>
                 </div>
               </div>
               <p className="text-xs text-emerald-700 mt-3 text-center">
-                💡 פרטים אלו יעבדו מיד - ללא צורך בחיבור למסד נתונים
+                💡 שני האימיילים יעבדו - בחר את המועדף עליך!
               </p>
             </div>
           </div>

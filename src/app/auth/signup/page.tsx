@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
-import SignUpForm from "@/components/auth/SignUpForm";
+import ModernSignUpForm from "@/components/auth/ModernSignUpForm";
 
 export const metadata: Metadata = { title: "הרשמה - הצטרפו ל-PawStory" };
 
@@ -39,7 +39,7 @@ export default function SignUpPage() {
 
           {/* Sign Up Card */}
           <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 p-8 mb-6">
-            <SignUpForm />
+            <ModernSignUpForm />
           </div>
 
           {/* Sign In Link */}

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Container from "@/components/ui/Container";
-import SignInForm from "@/components/auth/SignInForm";
+import ModernSignInForm from "@/components/auth/ModernSignInForm";
 
 export const metadata: Metadata = { title: "התחברות" };
 
@@ -28,7 +28,7 @@ export default function SignInPage() {
 
           {/* Sign In Card */}
           <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 p-8 mb-6">
-            <SignInForm />
+            <ModernSignInForm />
           </div>
 
           {/* Sign Up Link */}

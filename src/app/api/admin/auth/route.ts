@@ -8,13 +8,22 @@ const JWT_SECRET = new TextEncoder().encode(
 );
 
 // Temporary hardcoded admin credentials (until database is connected)
-const TEMP_ADMIN = {
-  email: "admin@pawsome.com",
-  password: "admin123456", // Plain text for now - will hash when DB connected
-  name: "Admin",
-  role: "ADMIN",
-  id: "temp-admin-id",
-};
+const TEMP_ADMINS = [
+  {
+    email: "admin@pawsome.com",
+    password: "admin123456",
+    name: "Admin",
+    role: "ADMIN",
+    id: "temp-admin-1",
+  },
+  {
+    email: "rotemfadida346@gmail.com", // Your personal email
+    password: "admin123456", // Same password - you can change it
+    name: "Rotem Fadida",
+    role: "ADMIN",
+    id: "temp-admin-2",
+  },
+];
 
 export async function POST(request: NextRequest) {
   try {
@@ -41,11 +50,12 @@ export async function POST(request: NextRequest) {
 
     // If no database user found, check temp credentials
     if (!user) {
-      if (email !== TEMP_ADMIN.email || password !== TEMP_ADMIN.password) {
+      const tempAdmin = TEMP_ADMINS.find(admin => admin.email === email && admin.password === password);
+      if (!tempAdmin) {
         return NextResponse.json({ error: "פרטי התחברות שגויים" }, { status: 401 });
       }
       // Use temp admin
-      user = TEMP_ADMIN;
+      user = tempAdmin;
     }
 
     const token = await new SignJWT({
