@@ -321,6 +321,208 @@ export const MOCK_PRODUCTS = [
     faqs: [],
     reviews: [],
   },
+  
+  // ── NOW FRESH & GO! SOLUTIONS PRODUCTS ────────────────────────────────
+  {
+    id: "11",
+    name: "NOW Fresh – Grain Free (הודו, סלמון וברווז)",
+    slug: "now-fresh-grain-free-turkey-salmon-duck",
+    shortDesc: "מזון ללא דגנים עם בשר טרי ודגים לכלבים מכל הגילאים",
+    description:
+      "NOW Fresh Grain Free הוא מזון פרימיום ללא דגנים המכיל רק בשר ודגים טריים - הודו, סלמון וברווז. פותח במיוחד לכלבים עם רגישויות לדגנים או לכאלה שאתם רוצים לתת להם תזונה מבוססת חלבון איכותי בלבד.",
+    benefits:
+      "עשיר בחלבון איכותי מבשר ודגים טריים\nתומך בשמירה על עור בריא ופרווה מבריקה\nללא דגנים - מתאים לכלבים עם רגישויות\nמכיל אומגה 3 ו-6 לבריאות העור והפרווה\nעשיר בנוגדי חמצון לחיזוק מערכת החיסון\nמונע בעיות עור ואלרגיות הקשורות לדגנים",
+    ingredients:
+      "בשר הודו טרי, בשר סלמון טרי, בשר ברווז טרי, תפוחי אדמה, אפונה, שמן קנולה, תפוחים, גזר, דלעת, אוכמניות, חמוציות, ויטמינים ומינרלים.",
+    whoIsFor:
+      "מתאים לכלבים מכל הגילאים והגזעים, במיוחד לכלבים עם רגישויות לדגנים, בעיות עור כרוניות, או אלרגיות מזון. מושלם לכלבים פעילים הזקוקים לאנרגיה מתמשכת.",
+    price: 245.00,
+    compareAt: 289.00,
+    petType: "DOG" as const,
+    category: "FOOD" as const,
+    isFeatured: true,
+    isActive: true,
+    stock: 12,
+    subscriptionDiscount: 12,
+    tags: ["now-fresh", "grain-free", "turkey", "salmon", "duck", "all-ages"],
+    images: [
+      { url: "https://placehold.co/800x800/2E8B57/FFFFFF?text=NOW+Fresh+Grain+Free&font=assistant", alt: "NOW Fresh - Grain Free מזון ללא דגנים", position: 0 },
+      { url: "https://placehold.co/800x800/228B22/FFFFFF?text=Turkey+Salmon+Duck&font=assistant", alt: "הודו, סלמון וברווז", position: 1 },
+    ],
+    faqs: [
+      {
+        id: "nf1",
+        question: "האם מתאים גם לגורים?",
+        answer: "כן! NOW Fresh Grain Free מתאים לכלבים מכל הגילאים - גם גורים וגם בוגרים. הנוסחה מאוזנת לכל שלבי החיים.",
+      },
+      {
+        id: "nf2",
+        question: "האם באמת ללא דגנים?",
+        answer: "כן, 100% ללא דגנים. במקום דגנים משתמשים בתפוחי אדמה ואפונה כמקור פחמימות.",
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: "12",
+    name: "NOW Fresh – Good Gravy (בשר בקר + דגנים עתיקים)",
+    slug: "now-fresh-good-gravy-beef-ancient-grains",
+    shortDesc: "מזון מצופה ציר טעים במיוחד עם בשר בקר ודגנים עתיקים",
+    description:
+      "NOW Fresh Good Gravy הוא מזון ייחודי המצופה בציר טבעי טעים שכלבים פשוט מתים עליו! מכיל בשר בקר איכותי ודגנים עתיקים בריאים כמו קינואה, דורה ושיפון. מושלם לכלבים בררנים או כאלה שצריכים עידוד לאכול.",
+    benefits:
+      "מצופה בציר טבעי - טעים במיוחד לכלבים בררנים\nבשר בקר איכותי כמקור חלבון ראשי\nדגנים עתיקים עשירים בסיבים ותזונה\nתומך במערכת עיכול בריאה\nמונע בעיות תיאבון וסירוב לאכול\nעוזר לשמור על משקל בריא ואנרגיה",
+    ingredients:
+      "בשר בקר, קמח בקר, דגנים עתיקים (קינואה, דורה, שיפון), אורז חום, שומן עוף, ציר טבעי, ירקות מיובשים, ויטמינים ומינרלים.",
+    whoIsFor:
+      "מתאים לכלבים בוגרים מכל הגזעים. מושלם במיוחד לכלבים בררנים, כלבים שאוכלים לאט, או כאלה שצריכים עידוד לאכול. גם מצוין לכלבים מבוגרים עם תיאבון מופחת.",
+    price: 198.00,
+    compareAt: 235.00,
+    petType: "DOG" as const,
+    category: "FOOD" as const,
+    isFeatured: false,
+    isActive: true,
+    stock: 18,
+    subscriptionDiscount: 10,
+    tags: ["now-fresh", "good-gravy", "beef", "ancient-grains", "picky-eaters"],
+    images: [
+      { url: "https://placehold.co/800x800/8B4513/FFFFFF?text=NOW+Good+Gravy&font=assistant", alt: "NOW Fresh Good Gravy - בשר בקר", position: 0 },
+      { url: "https://placehold.co/800x800/A0522D/FFFFFF?text=Beef+Ancient+Grains&font=assistant", alt: "בשר בקר ודגנים עתיקים", position: 1 },
+    ],
+    faqs: [
+      {
+        id: "gg1",
+        question: "למה יש ציר על המזון?",
+        answer: "הציר הטבעי נותן טעם עשיר במיוחד שכלבים אוהבים. זה עוזר במיוחד לכלבים בררנים או כאלה עם תיאבון מופחת.",
+      },
+      {
+        id: "gg2",
+        question: "מה זה דגנים עתיקים?",
+        answer: "דגנים עתיקים כמו קינואה, דורה ושיפון הם דגנים מתקופות קדומות, עשירים בחלבון, סיבים וויטמינים. הם מתעכלים טוב יותר מדגנים מודרניים.",
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: "13",
+    name: "NOW Fresh – Wet Food (בשר טחון ואורז)",
+    slug: "now-fresh-wet-food-ground-beef-rice",
+    shortDesc: "מזון רטוב פרימיום עם בשר טחון ואורז לכלבים בוגרים",
+    description:
+      "NOW Fresh Wet Food הוא מזון רטוב מלא ומאוזן עם בשר בקר טחון טרי ואורז. מושלם כארוחה מלאה או כתוספת למזון יבש. עשיר בלחות, טעים במיוחד ומספק תזונה מלאה.",
+    benefits:
+      "בשר בקר טחון טרי - חלבון איכותי\nעשיר בלחות - תומך בתפקוד הכליות\nטעם עשיר שכלבים אוהבים\nתזונה מלאה ומאוזנת\nמונע בעיות שיניים ועיכול\nעוזר לשמור על בריאות הכליות והשתן",
+    ingredients:
+      "בשר בקר טחון, אורז, ציר עוף, גזר, אפונה, שמן דגים, ויטמינים ומינרלים.",
+    whoIsFor:
+      "מתאים לכלבים בוגרים מכל הגזעים. מומלץ במיוחד לכלבים מבוגרים, כלבים שלא שותים מספיק מים, או כאלה עם בעיות שיניים. ניתן לשלב עם מזון יבש או להגיש כארוחה מלאה.",
+    price: 14.90,
+    compareAt: null,
+    petType: "DOG" as const,
+    category: "FOOD" as const,
+    isFeatured: false,
+    isActive: true,
+    stock: 45,
+    subscriptionDiscount: 15,
+    tags: ["now-fresh", "wet-food", "beef", "rice", "senior-friendly"],
+    images: [
+      { url: "https://placehold.co/800x800/CD853F/FFFFFF?text=NOW+Wet+Food&font=assistant", alt: "NOW Fresh מזון רטוב", position: 0 },
+      { url: "https://placehold.co/800x800/DEB887/FFFFFF?text=Ground+Beef+Rice&font=assistant", alt: "בשר טחון ואורז", position: 1 },
+    ],
+    faqs: [
+      {
+        id: "wf1",
+        question: "כמה פחיות ביום?",
+        answer: "לכלב במשקל 5 ק״ג מומלץ 2-3 פחיות ביום. ניתן לשלב עם מזון יבש - פחית אחת + מנה של מזון יבש.",
+      },
+      {
+        id: "wf2",
+        question: "מתאים לגורים?",
+        answer: "המוצר מיועד לכלבים בוגרים. לגורים יש נוסחאות ייעודיות עם יותר קלוריות וסידן.",
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: "14",
+    name: "GO! Solutions – Sensitivities (ברווז LID)",
+    slug: "go-solutions-sensitivities-duck-lid",
+    shortDesc: "מזון LID (מקור חלבון מוגבל) לכלבים עם רגישויות ואלרגיות",
+    description:
+      "GO! Solutions Sensitivities עם ברווז הוא מזון LID (Limited Ingredient Diet) מיוחד לכלבים עם רגישויות מזון ואלרגיות. מכיל רק ברווז כמקור חלבון יחיד ומספר מצומצם של מרכיבים איכותיים. פותח בשיתוף וטרינרים לכלבים רגישים.",
+    benefits:
+      "ברווז כמקור חלבון יחיד - מפחית אלרגיות\nמספר מצומצם של מרכיבים - פחות חשיפה לאלרגנים\nללא דגנים, תירס, חיטה או סויה\nתומך בעור בריא ופרווה מבריקה\nמונע תגובות אלרגיות, גרד וזיהומי עור\nעוזר לשפר את בריאות מערכת העיכול",
+    ingredients:
+      "קמח ברווז, פחמימות פשוטות (תפוחי אדמה, אפונה), שומן ברווז, סיבי סלק, שמן קנולה, תפוחים מיובשים, ויטמינים ומינרלים.",
+    whoIsFor:
+      "מתאים במיוחד לכלבים עם אלרגיות מזון, רגישות לדגנים, בעיות עור כרוניות (גרד, אדמומיות), או זיהומי אוזניים חוזרים. מומלץ על ידי וטרינרים לכלבים רגישים מכל הגילאים והגזעים.",
+    price: 269.00,
+    compareAt: 315.00,
+    petType: "DOG" as const,
+    category: "FOOD" as const,
+    isFeatured: true,
+    isActive: true,
+    stock: 9,
+    subscriptionDiscount: 15,
+    tags: ["go-solutions", "sensitivities", "duck", "lid", "grain-free", "hypoallergenic"],
+    images: [
+      { url: "https://placehold.co/800x800/4682B4/FFFFFF?text=GO!+Sensitivities&font=assistant", alt: "GO! Solutions Sensitivities - ברווז", position: 0 },
+      { url: "https://placehold.co/800x800/5F9EA0/FFFFFF?text=Duck+LID&font=assistant", alt: "מזון LID לרגישויות", position: 1 },
+    ],
+    faqs: [
+      {
+        id: "lid1",
+        question: "מה זה LID?",
+        answer: "LID = Limited Ingredient Diet (דיאטה מוגבלת ברכיבים). זה אומר שהמזון מכיל רק מקור חלבון אחד (ברווז) ומספר מצומצם של רכיבים נוספים, מה שמפחית משמעותית את הסיכוי לאלרגיה.",
+      },
+      {
+        id: "lid2",
+        question: "תוך כמה זמן רואים שיפור?",
+        answer: "רוב הכלבים מראים שיפור בעור ובפרווה תוך 4-6 שבועות. חשוב לתת רק את המזון הזה (ללא חטיפים או תוספות אחרות) כדי לראות תוצאות.",
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: "15",
+    name: "GO! Solutions – Carnivore (עוף, הודו וברווז)",
+    slug: "go-solutions-carnivore-chicken-turkey-duck",
+    shortDesc: "מזון עתיר חלבון ללא דגנים לכלבים פעילים",
+    description:
+      "GO! Solutions Carnivore הוא מזון פרימיום ללא דגנים עם 3 מקורות חלבון איכותיים - עוף, הודו וברווז. עם 32% חלבון, זהו מזון אידיאלי לכלבים פעילים, כלבי עבודה, או כלבים שצריכים תזונה עתירת חלבון לבניית שרירים חזקים.",
+    benefits:
+      "32% חלבון - הכי גבוה בשוק!\nללא דגנים - רק בשר, דגים וירקות\n3 מקורות חלבון איכותיים\nתומך בצמיחה ותחזוקה של שרירים\nמונע חוסר תזונה וחולשת שרירים\nעוזר לשמור על רמת אנרגיה גבוהה",
+    ingredients:
+      "בשר עוף, קמח הודו, קמח ברווז, בטטה, עדשים, אפונה, שומן עוף, שמן סלמון, חמוציות, אוכמניות, ויטמינים ומינרלים.",
+    whoIsFor:
+      "מתאים לכלבים בוגרים פעילים, כלבי עבודה, כלבי ספורט, או כלבים במשקל תקין שזקוקים לאנרגיה רבה. מומלץ גם לכלבים שמאבדים משקל או צריכים לבנות מסת שריר.",
+    price: 239.00,
+    compareAt: 279.00,
+    petType: "DOG" as const,
+    category: "FOOD" as const,
+    isFeatured: true,
+    isActive: true,
+    stock: 14,
+    subscriptionDiscount: 12,
+    tags: ["go-solutions", "carnivore", "high-protein", "grain-free", "active-dogs"],
+    images: [
+      { url: "https://placehold.co/800x800/8B0000/FFFFFF?text=GO!+Carnivore&font=assistant", alt: "GO! Solutions Carnivore", position: 0 },
+      { url: "https://placehold.co/800x800/A52A2A/FFFFFF?text=High+Protein+32%25&font=assistant", alt: "עתיר חלבון 32%", position: 1 },
+    ],
+    faqs: [
+      {
+        id: "car1",
+        question: "למי מתאים 32% חלבון?",
+        answer: "מזון עם 32% חלבון מתאים לכלבים פעילים מאוד, כלבי עבודה, כלבי ספורט, או כלבים שצריכים לבנות/לשמור על מסת שריר. לא מומלץ לכלבים עם בעיות כליות.",
+      },
+      {
+        id: "car2",
+        question: "האם יכול לגרום לעלייה במשקל?",
+        answer: "המזון מתאים לכלבים פעילים. אם הכלב לא פעיל מאוד, כדאי לצמצם את המנה או לבחור מזון עם פחות שומן וחלבון.",
+      },
+    ],
+    reviews: [],
+  },
 ];
 
 export function getProductBySlug(slug: string) {
