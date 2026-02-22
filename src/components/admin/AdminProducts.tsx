@@ -238,6 +238,7 @@ export default function AdminProducts() {
               <p className="text-xs text-text-muted mt-1">JPG, PNG, WEBP - עד 5MB</p>
               {newProduct.imageUrl && (
                 <div className="mt-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={newProduct.imageUrl} alt="תצוגה מקדימה" className="h-20 w-20 object-cover rounded-lg border-2 border-gray-300" />
                 </div>
               )}

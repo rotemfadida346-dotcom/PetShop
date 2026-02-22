@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
       
       const product = await createProduct(productData as Prisma.ProductCreateInput);
       return NextResponse.json({ product }, { status: 201 });
-    } catch (dbError) {
+    } catch {
       // Database not connected - return mock success response
       console.log("Database not connected, returning mock product");
       
