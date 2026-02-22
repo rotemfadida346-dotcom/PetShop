@@ -41,7 +41,7 @@ export default function AdminProducts() {
   const [saving, setSaving] = useState(false);
 
   function makeEmpty(category: string) {
-    return { name: "", price: 0, compareAt: null as number | null, stock: 0, petType: "DOG", category, description: "", shortDesc: "", benefits: "", ingredients: "", subscriptionDiscount: 10 };
+    return { name: "", price: 0, compareAt: null as number | null, stock: 0, petType: "DOG", category, description: "", shortDesc: "", benefits: "", ingredients: "", subscriptionDiscount: 10, weight: undefined as number | undefined, imageUrl: "" };
   }
 
   useEffect(() => {
@@ -217,8 +217,10 @@ export default function AdminProducts() {
             <Input label="תיאור קצר" value={newProduct.shortDesc || ""} onChange={(e) => setNewProduct({ ...newProduct, shortDesc: e.target.value })} placeholder="משפט אחד שמתאר את המוצר" />
             <Input label="מחיר (₪) *" type="number" value={newProduct.price || ""} onChange={(e) => setNewProduct({ ...newProduct, price: parseFloat(e.target.value) || 0 })} />
             <Input label="מחיר לפני הנחה (₪)" type="number" value={newProduct.compareAt || ""} onChange={(e) => setNewProduct({ ...newProduct, compareAt: e.target.value ? parseFloat(e.target.value) : null })} placeholder="ריק = ללא הנחה" />
+            <Input label="משקל (ק״ג)" type="number" step="0.1" value={newProduct.weight || ""} onChange={(e) => setNewProduct({ ...newProduct, weight: e.target.value ? parseFloat(e.target.value) : undefined })} placeholder="למשל: 3.6" />
             <Input label="מלאי" type="number" value={newProduct.stock || ""} onChange={(e) => setNewProduct({ ...newProduct, stock: parseInt(e.target.value) || 0 })} />
             <Input label="הנחת מנוי (%)" type="number" value={newProduct.subscriptionDiscount || ""} onChange={(e) => setNewProduct({ ...newProduct, subscriptionDiscount: parseFloat(e.target.value) || 0 })} />
+            <Input label="URL תמונה" type="url" value={newProduct.imageUrl || ""} onChange={(e) => setNewProduct({ ...newProduct, imageUrl: e.target.value })} placeholder="https://..." />
             <div>
               <label className="mb-1.5 block text-body-sm font-semibold text-text-primary">סוג חיה</label>
               <select value={newProduct.petType} onChange={(e) => setNewProduct({ ...newProduct, petType: e.target.value })} className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15">
@@ -242,75 +244,10 @@ export default function AdminProducts() {
               <textarea value={newProduct.ingredients || ""} onChange={(e) => setNewProduct({ ...newProduct, ingredients: e.target.value })} placeholder="רשימת רכיבים" rows={2} className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15 resize-y" /></div>
           </div>
 
-          {/* ============== IMAGE MANAGER - IMPOSSIBLE TO MISS ============== */}
-          <div className="mt-8 mb-8">
-            {/* GIANT ATTENTION-GRABBING HEADER */}
-            <div className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-white rounded-2xl p-8 mb-6 shadow-2xl border-4 border-yellow-500">
-              <div className="text-center">
-                <div className="text-6xl mb-4">📸🎨🖼️</div>
-                <h2 className="text-4xl font-black mb-3 drop-shadow-lg">
-                  תמונות המוצר - לחץ כאן! ⬇️
-                </h2>
-                <p className="text-xl font-bold mb-2">
-                  לחץ על הכפתורים הצבעוניים למטה להוספת תמונות!
-                </p>
-                <p className="text-lg opacity-90">
-                  ירוק = מזון כלבים | סגול = מזון חתולים | אדום = צעצועים
-                </p>
-              </div>
-            </div>
-
-            {/* THE ACTUAL IMAGE MANAGER */}
-            <div className="bg-white rounded-2xl p-8 border-4 border-blue-500 shadow-xl">
-              <ImageUploadManager 
-                images={newProductImages} 
-                onChange={setNewProductImages}
-                productName={newProduct.name}
-              />
-            </div>
-            
-            {/* Image Count Display */}
-            {newProductImages.length > 0 && (
-              <div className="mt-4 bg-green-50 border-2 border-green-500 rounded-xl p-4 text-center">
-                <p className="text-lg font-bold text-green-700">
-                  ✅ הוספת {newProductImages.length} תמונות - מעולה!
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* ============== WEIGHT VARIANTS MANAGER ============== */}
-          <div className="mt-8 mb-8">
-            <div className="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 text-white rounded-2xl p-8 mb-6 shadow-2xl border-4 border-purple-500">
-              <div className="text-center">
-                <div className="text-6xl mb-4">⚖️📦🏷️</div>
-                <h2 className="text-4xl font-black mb-3 drop-shadow-lg">
-                  משקלים ומחירים - כאן! ⬇️
-                </h2>
-                <p className="text-xl font-bold mb-2">
-                  הוסף משקלים שונים למוצר (3.6 ק״ג, 7.3 ק״ג וכו׳)
-                </p>
-                <p className="text-lg opacity-90">
-                  כל משקל עם מחיר משלו!
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 border-4 border-purple-500 shadow-xl">
-              <WeightVariantsManager
-                variants={newProductWeights}
-                onChange={setNewProductWeights}
-              />
-            </div>
-          </div>
-
-          <div className="mt-8 pt-6 border-t-2 border-gray-300 flex items-center gap-3">
+          <div className="mt-6 flex items-center gap-3">
             <Button onClick={createProduct} isLoading={saving} size="lg" className="font-bold">
               <Save className="h-4 w-4" />
-              {newProductImages.length > 0 
-                ? `צור מוצר עם ${newProductImages.length} תמונות`
-                : "צור מוצר (ללא תמונות)"
-              }
+              צור מוצר
             </Button>
             <Button variant="ghost" onClick={() => {
               setShowNew(false);
