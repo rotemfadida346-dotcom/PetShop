@@ -1,0 +1,22 @@
+<svg width="180" height="60" viewBox="0 0 180 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Paw Print with Dog Face -->
+  <g transform="translate(15, 5)">
+    <!-- Main pad -->
+    <ellipse cx="15" cy="25" rx="12" ry="15" fill="#2E8B57"/>
+    <!-- Toe pads -->
+    <ellipse cx="5" cy="12" rx="7" ry="9" fill="#2E8B57"/>
+    <ellipse cx="25" cy="12" rx="7" ry="9" fill="#2E8B57"/>
+    <ellipse cx="0" cy="20" rx="5" ry="7" fill="#4682B4"/>
+    <ellipse cx="30" cy="20" rx="5" ry="7" fill="#4682B4"/>
+    
+    <!-- Cute dog face in center -->
+    <circle cx="15" cy="25" r="8" fill="white"/>
+    <circle cx="12" cy="23" r="1.5" fill="#2E8B57"/>
+    <circle cx="18" cy="23" r="1.5" fill="#2E8B57"/>
+    <path d="M 15 25 Q 15 27 13 27" stroke="#2E8B57" stroke-width="1" fill="none"/>
+    <path d="M 15 25 Q 15 27 17 27" stroke="#2E8B57" stroke-width="1" fill="none"/>
+  </g>
+  
+  <!-- PawStory Text -->
+  <text x="55" y="40" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#2E8B57">PawStory</text>
+</svg>

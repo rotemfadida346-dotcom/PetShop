@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Home,
@@ -192,21 +193,21 @@ export default function ModernNavBar() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0 flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-green to-primary-blue rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow">
-                <svg viewBox="0 0 100 100" className="w-8 h-8">
-                  <path d="M50 20c-8 0-15 7-15 15s7 15 15 15 15-7 15-15-7-15-15-15z" fill="white"/>
-                  <circle cx="35" cy="30" r="8" fill="white" opacity="0.8"/>
-                  <circle cx="65" cy="30" r="8" fill="white" opacity="0.8"/>
-                  <circle cx="25" cy="45" r="6" fill="white" opacity="0.6"/>
-                  <circle cx="75" cy="45" r="6" fill="white" opacity="0.6"/>
-                </svg>
-              </div>
-              <div>
-                <h1 className="text-2xl font-extrabold bg-gradient-to-r from-primary-green to-primary-blue bg-clip-text text-transparent">
-                  PawStory
-                </h1>
-                <span className="text-[10px] text-text-secondary">החנות הפרימיום לחיות מחמד</span>
+            <Link 
+              href="/" 
+              className="group flex-shrink-0 transition-transform hover:scale-105"
+              aria-label="PawStory - עמוד הבית"
+            >
+              <div className="relative">
+                <Image
+                  src="/logo.svg"
+                  alt="PawStory - החנות הפרימיום לחיות מחמד"
+                  width={180}
+                  height={60}
+                  priority
+                  className="h-auto w-auto object-contain transition-opacity group-hover:opacity-90"
+                  quality={100}
+                />
               </div>
             </Link>
 

@@ -15,9 +15,21 @@ const assistant = Assistant({
 });
 
 export const metadata: Metadata = {
-  title: { default: `${SITE_NAME} - חנות חיות מחמד`, template: `%s | ${SITE_NAME}` },
+  title: { default: `${SITE_NAME} - החנות הפרימיום לחיות מחמד`, template: `%s | ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+  },
+  openGraph: {
+    title: `${SITE_NAME} - החנות הפרימיום לחיות מחמד`,
+    description: SITE_DESCRIPTION,
+    images: ["/logo.svg"],
+    locale: "he_IL",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
