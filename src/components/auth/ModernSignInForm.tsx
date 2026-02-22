@@ -21,7 +21,7 @@ export default function ModernSignInForm() {
 
     try {
       await login(email, password);
-    } catch (err) {
+    } catch {
       setError("התחברות נכשלה. אנא בדוק את הפרטים ונסה שוב.");
     } finally {
       setIsLoading(false);
