@@ -58,7 +58,17 @@ export default function AdminProducts() {
 
   function startEdit(product: Product) {
     setEditing(product.id);
-    setEditData({ name: product.name, price: product.price, compareAt: product.compareAt, stock: product.stock, subscriptionDiscount: product.subscriptionDiscount });
+    setEditData({ 
+      name: product.name, 
+      price: product.price, 
+      compareAt: product.compareAt, 
+      stock: product.stock, 
+      subscriptionDiscount: product.subscriptionDiscount,
+      description: product.description,
+      shortDesc: product.shortDesc,
+      benefits: product.benefits,
+      ingredients: product.ingredients
+    });
   }
 
   async function saveEdit(slug: string) {
