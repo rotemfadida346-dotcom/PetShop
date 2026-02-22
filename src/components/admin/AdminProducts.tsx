@@ -6,7 +6,6 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import ImageUploadManager from "./ImageUploadManager";
-import WeightVariantsManager from "./WeightVariantsManager";
 import { Plus, Pencil, Trash2, Save, X, Tag, ChevronUp, Package, Image as ImageIcon } from "lucide-react";
 
 interface Product {
@@ -37,7 +36,6 @@ export default function AdminProducts() {
   const [showNew, setShowNew] = useState(false);
   const [newProduct, setNewProduct] = useState(makeEmpty("FOOD"));
   const [newProductImages, setNewProductImages] = useState<Array<{url: string; alt: string; position: number}>>([]);
-  const [newProductWeights, setNewProductWeights] = useState<Array<{id: string; weight: string; unit: string; price: number; compareAt: number | null; stock: number; isDefault: boolean}>>([]);
   const [saving, setSaving] = useState(false);
 
   function makeEmpty(category: string) {
@@ -117,7 +115,6 @@ export default function AdminProducts() {
     const actualCat = cat === "ALL" ? "FOOD" : cat;
     setNewProduct(makeEmpty(actualCat));
     setNewProductImages([]);
-    setNewProductWeights([]);
     setShowNew(true);
   }
 
