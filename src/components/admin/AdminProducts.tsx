@@ -217,7 +217,31 @@ export default function AdminProducts() {
             <Input label="משקל (ק״ג)" type="number" step="0.1" value={newProduct.weight || ""} onChange={(e) => setNewProduct({ ...newProduct, weight: e.target.value ? parseFloat(e.target.value) : undefined })} placeholder="למשל: 3.6" />
             <Input label="מלאי" type="number" value={newProduct.stock || ""} onChange={(e) => setNewProduct({ ...newProduct, stock: parseInt(e.target.value) || 0 })} />
             <Input label="הנחת מנוי (%)" type="number" value={newProduct.subscriptionDiscount || ""} onChange={(e) => setNewProduct({ ...newProduct, subscriptionDiscount: parseFloat(e.target.value) || 0 })} />
-            <Input label="URL תמונה" type="url" value={newProduct.imageUrl || ""} onChange={(e) => setNewProduct({ ...newProduct, imageUrl: e.target.value })} placeholder="https://..." />
+            <div>
+              <label className="mb-1.5 block text-body-sm font-semibold text-text-primary">תמונת מוצר</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    // Convert to base64 for preview/storage
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                      setNewProduct({ ...newProduct, imageUrl: reader.result as string });
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }}
+                className="block w-full text-sm text-text-primary file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary-green file:text-white hover:file:bg-accent-forest cursor-pointer border border-border rounded-xl bg-surface px-4 py-2.5"
+              />
+              <p className="text-xs text-text-muted mt-1">JPG, PNG, WEBP - עד 5MB</p>
+              {newProduct.imageUrl && (
+                <div className="mt-2">
+                  <img src={newProduct.imageUrl} alt="תצוגה מקדימה" className="h-20 w-20 object-cover rounded-lg border-2 border-gray-300" />
+                </div>
+              )}
+            </div>
             <div>
               <label className="mb-1.5 block text-body-sm font-semibold text-text-primary">סוג חיה</label>
               <select value={newProduct.petType} onChange={(e) => setNewProduct({ ...newProduct, petType: e.target.value })} className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15">
