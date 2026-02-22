@@ -36,6 +36,7 @@ export default function AdminProducts() {
   const [showNew, setShowNew] = useState(false);
   const [newProduct, setNewProduct] = useState(makeEmpty("FOOD"));
   const [newProductImages, setNewProductImages] = useState<Array<{url: string; alt: string; position: number}>>([]);
+  const [newProductWeights, setNewProductWeights] = useState<Array<{id: string; weight: string; unit: string; price: number; compareAt: number | null; stock: number; isDefault: boolean}>>([]);
   const [saving, setSaving] = useState(false);
 
   function makeEmpty(category: string) {
@@ -115,6 +116,7 @@ export default function AdminProducts() {
     const actualCat = cat === "ALL" ? "FOOD" : cat;
     setNewProduct(makeEmpty(actualCat));
     setNewProductImages([]);
+    setNewProductWeights([]);
     setShowNew(true);
   }
 
@@ -274,6 +276,31 @@ export default function AdminProducts() {
                 </p>
               </div>
             )}
+          </div>
+
+          {/* ============== WEIGHT VARIANTS MANAGER ============== */}
+          <div className="mt-8 mb-8">
+            <div className="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 text-white rounded-2xl p-8 mb-6 shadow-2xl border-4 border-purple-500">
+              <div className="text-center">
+                <div className="text-6xl mb-4">⚖️📦🏷️</div>
+                <h2 className="text-4xl font-black mb-3 drop-shadow-lg">
+                  משקלים ומחירים - כאן! ⬇️
+                </h2>
+                <p className="text-xl font-bold mb-2">
+                  הוסף משקלים שונים למוצר (3.6 ק״ג, 7.3 ק״ג וכו׳)
+                </p>
+                <p className="text-lg opacity-90">
+                  כל משקל עם מחיר משלו!
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 border-4 border-purple-500 shadow-xl">
+              <WeightVariantsManager
+                variants={newProductWeights}
+                onChange={setNewProductWeights}
+              />
+            </div>
           </div>
 
           <div className="mt-8 pt-6 border-t-2 border-gray-300 flex items-center gap-3">
