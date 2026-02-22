@@ -6,6 +6,7 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import ImageUploadManager from "./ImageUploadManager";
+import WeightVariantsManager from "./WeightVariantsManager";
 import { Plus, Pencil, Trash2, Save, X, Tag, ChevronUp, Package, Image as ImageIcon } from "lucide-react";
 
 interface Product {
