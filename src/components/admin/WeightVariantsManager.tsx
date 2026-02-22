@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Plus, Trash2, Package } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -33,7 +32,7 @@ export default function WeightVariantsManager({ variants, onChange }: WeightVari
     onChange([...variants, newVariant]);
   };
 
-  const updateVariant = (id: string, field: keyof WeightVariant, value: any) => {
+  const updateVariant = (id: string, field: keyof WeightVariant, value: string | number | boolean | null) => {
     onChange(
       variants.map((v) =>
         v.id === id ? { ...v, [field]: value } : v
@@ -83,7 +82,7 @@ export default function WeightVariantsManager({ variants, onChange }: WeightVari
         </div>
       ) : (
         <div className="space-y-3">
-          {variants.map((variant, index) => (
+          {variants.map((variant) => (
             <div
               key={variant.id}
               className={`p-4 rounded-xl border-2 ${
