@@ -35,50 +35,50 @@ const navItems: NavItem[] = [
     label: "ראשי",
     href: "/",
     icon: <Home size={24} />,
-    color: "hover:bg-primary-green/10 hover:text-primary-green",
-    isActive: true,
-  },
-  {
-    label: "מבצעים",
-    href: "/subscriptions",
-    icon: <Percent size={24} />,
-    color: "hover:bg-error/10 hover:text-error",
+    color: "hover:bg-gradient-to-br hover:from-primary-green/20 hover:to-primary-green/10 hover:text-primary-green hover:shadow-md",
     isActive: true,
   },
   {
     label: "כלבים",
     href: "/shop?pet=DOG",
     icon: <Dog size={24} />,
-    color: "hover:bg-amber-50 hover:text-amber-600",
+    color: "hover:bg-gradient-to-br hover:from-amber-100 hover:to-orange-50 hover:text-amber-700 hover:shadow-md",
     isActive: true,
   },
   {
     label: "חתולים",
     href: "/shop?pet=CAT",
     icon: <Cat size={24} />,
-    color: "hover:bg-purple-50 hover:text-purple-600",
+    color: "hover:bg-gradient-to-br hover:from-purple-100 hover:to-pink-50 hover:text-purple-700 hover:shadow-md",
     isActive: true,
   },
   {
     label: "מכרסמים",
     href: "/rodents",
     icon: <Rabbit size={24} />,
-    color: "hover:bg-orange-50 hover:text-orange-600",
+    color: "hover:bg-gradient-to-br hover:from-orange-100 hover:to-yellow-50 hover:text-orange-600 hover:shadow-md",
     isActive: false,
   },
   {
     label: "ציפורים",
     href: "/birds",
     icon: <Bird size={24} />,
-    color: "hover:bg-sky-50 hover:text-sky-600",
+    color: "hover:bg-gradient-to-br hover:from-sky-100 hover:to-blue-50 hover:text-sky-600 hover:shadow-md",
     isActive: false,
   },
   {
     label: "דגים",
     href: "/fish",
     icon: <Fish size={24} />,
-    color: "hover:bg-blue-50 hover:text-blue-600",
+    color: "hover:bg-gradient-to-br hover:from-blue-100 hover:to-cyan-50 hover:text-blue-600 hover:shadow-md",
     isActive: false,
+  },
+  {
+    label: "מבצעים",
+    href: "/subscriptions",
+    icon: <Percent size={24} />,
+    color: "hover:bg-gradient-to-br hover:from-red-100 hover:to-pink-50 hover:text-red-600 hover:shadow-lg hover:shadow-red-200/50",
+    isActive: true,
   },
 ];
 
@@ -154,8 +154,8 @@ export default function ModernNavBar() {
 
       {/* Main Navigation */}
       <nav
-        className={`sticky top-0 z-40 bg-white transition-all duration-300 ${
-          isScrolled ? "shadow-lg" : "shadow-md"
+        className={`sticky top-0 z-40 bg-gradient-to-b from-white to-gray-50/50 transition-all duration-300 ${
+          isScrolled ? "shadow-xl shadow-primary-green/10" : "shadow-lg shadow-primary-green/5"
         }`}
       >
         <div className="container mx-auto px-4">
@@ -189,20 +189,20 @@ export default function ModernNavBar() {
                     <Link
                       key={item.label}
                       href={item.href}
-                      className={`group relative flex flex-col items-center gap-1.5 rounded-xl px-4 py-3 transition-all duration-200 ${
+                      className={`group relative flex flex-col items-center gap-1.5 rounded-2xl px-5 py-3.5 transition-all duration-300 ${
                         item.color
                       } ${
                         isActive
-                          ? "bg-primary-green/10 text-primary-green"
-                          : "text-text-primary hover:scale-105"
+                          ? "bg-gradient-to-br from-primary-green/20 to-primary-blue/10 text-primary-green shadow-md scale-105 border-2 border-primary-green/30"
+                          : "text-text-primary hover:scale-110 border-2 border-transparent"
                       }`}
                     >
-                      <div className="transition-transform group-hover:-translate-y-0.5">
+                      <div className={`transition-all duration-300 ${isActive ? 'scale-110' : 'group-hover:-translate-y-1 group-hover:scale-110'}`}>
                         {item.icon}
                       </div>
-                      <span className="text-sm font-medium">{item.label}</span>
+                      <span className="text-sm font-bold">{item.label}</span>
                       {isActive && (
-                        <div className="absolute bottom-0 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-primary-green" />
+                        <div className="absolute bottom-0 left-1/2 h-1.5 w-10 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary-green to-primary-blue shadow-lg shadow-primary-green/50" />
                       )}
                     </Link>
                   );
@@ -212,15 +212,15 @@ export default function ModernNavBar() {
                   <button
                     key={item.label}
                     onClick={() => handleNavClick(item)}
-                    className={`group relative flex flex-col items-center gap-1.5 rounded-xl px-4 py-3 transition-all duration-200 ${item.color} text-text-primary hover:scale-105`}
+                    className={`group relative flex flex-col items-center gap-1.5 rounded-2xl px-5 py-3.5 transition-all duration-300 ${item.color} text-text-secondary hover:scale-110 border-2 border-dashed border-gray-300 hover:border-warning opacity-70 hover:opacity-100`}
                   >
-                    <span className="absolute left-1/2 top-1 -translate-x-1/2 rounded-full bg-warning px-2 py-0.5 text-[10px] font-bold text-yellow-900 shadow-sm">
+                    <span className="absolute left-1/2 top-1 -translate-x-1/2 rounded-full bg-gradient-to-r from-warning to-yellow-500 px-2.5 py-0.5 text-[11px] font-bold text-white shadow-lg animate-pulse">
                       בקרוב
                     </span>
-                    <div className="transition-transform group-hover:-translate-y-0.5 mt-4">
+                    <div className="transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-110 mt-4">
                       {item.icon}
                     </div>
-                    <span className="text-sm font-medium">{item.label}</span>
+                    <span className="text-sm font-bold">{item.label}</span>
                   </button>
                 );
               })}
