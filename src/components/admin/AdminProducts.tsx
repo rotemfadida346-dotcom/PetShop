@@ -400,60 +400,10 @@ export default function AdminProducts() {
         </div>
       )}
 
-      {/* Edit Images Modal/Section */}
-      {editingImages && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
-              <div>
-                <h2 className="text-2xl font-bold text-text-primary flex items-center gap-2">
-                  <ImageIcon className="h-6 w-6 text-accent" />
-                  ניהול תמונות
-                </h2>
-                <p className="text-sm text-text-secondary mt-1">
-                  {products.find(p => p.slug === editingImages)?.name}
-                </p>
-              </div>
-              <button
-                onClick={() => setEditingImages(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-            
-            <div className="p-6">
-              <ImageUploadManager
-                images={editImagesData}
-                onChange={setEditImagesData}
-                productName={products.find(p => p.slug === editingImages)?.name}
-              />
-              
-              <div className="mt-6 pt-6 border-t border-gray-200 flex items-center gap-3">
-                <Button 
-                  onClick={() => saveImages(editingImages)} 
-                  isLoading={saving}
-                  className="bg-accent hover:bg-accent-400"
-                >
-                  <Save className="h-4 w-4" />
-                  שמור תמונות ({editImagesData.length})
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  onClick={() => setEditingImages(null)}
-                >
-                  ביטול
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Edit Images Modal */}
       {editingImages && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4 overflow-y-auto" onClick={() => setEditingImages(null)}>
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold text-text-primary flex items-center gap-2">
