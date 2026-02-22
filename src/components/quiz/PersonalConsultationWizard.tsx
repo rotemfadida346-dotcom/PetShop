@@ -289,17 +289,35 @@ export default function PersonalConsultationWizard() {
         </div>
       </div>
 
-      {/* Progress Bar */}
+      {/* Enhanced Progress Bar */}
       <div className="mb-8">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-bold text-text-primary">שלב {currentStep + 1} מתוך {totalSteps}</span>
-          <span className="text-sm text-text-secondary">{Math.round(progress)}%</span>
+          <span className="text-sm font-semibold text-primary-green">{Math.round(progress)}% הושלם</span>
         </div>
-        <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-accent to-accent-400 transition-all duration-500 rounded-full"
+        
+        {/* Progress Bar */}
+        <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-primary-green to-primary-blue transition-all duration-500 ease-in-out"
             style={{ width: `${progress}%` }}
+            role="progressbar"
+            aria-valuenow={currentStep + 1}
+            aria-valuemin={1}
+            aria-valuemax={totalSteps}
           />
+        </div>
+
+        {/* Step Dots */}
+        <div className="mt-3 flex justify-between">
+          {Array.from({ length: totalSteps }, (_, i) => (
+            <div
+              key={i}
+              className={`h-2.5 w-2.5 rounded-full transition-colors duration-300 ${
+                i <= currentStep ? 'bg-primary-green' : 'bg-gray-300'
+              }`}
+            />
+          ))}
         </div>
       </div>
 
