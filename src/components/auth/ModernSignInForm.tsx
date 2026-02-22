@@ -1,29 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
 import Button from "@/components/ui/Button";
 import { Mail, Lock, Eye, EyeOff, AlertCircle } from "lucide-react";
 
 export default function ModernSignInForm() {
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
-    // Simulate login - will connect to NextAuth later
-    setTimeout(() => {
+    try {
+      await login(email, password);
+    } catch (err) {
+      setError("התחברות נכשלה. אנא בדוק את הפרטים ונסה שוב.");
+    } finally {
       setIsLoading(false);
-      router.push("/account");
-    }, 1000);
+    }
   }
 
   return (

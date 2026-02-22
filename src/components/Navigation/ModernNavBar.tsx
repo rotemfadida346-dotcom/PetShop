@@ -17,9 +17,14 @@ import {
   User,
   Menu,
   X,
+  ChevronDown,
+  LogOut,
+  Settings,
+  Package as PackageIcon,
 } from "lucide-react";
 import { useCartStore } from "@/store/cart";
 import { formatPrice } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 import ComingSoonModal from "@/components/Modals/ComingSoonModal";
 
 interface NavItem {
@@ -84,8 +89,10 @@ const navItems: NavItem[] = [
 
 export default function ModernNavBar() {
   const pathname = usePathname();
+  const { user, isLoading, logout } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [comingSoonModal, setComingSoonModal] = useState<{
     isOpen: boolean;
     category: string;
@@ -106,6 +113,19 @@ export default function ModernNavBar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = () => setIsUserMenuOpen(false);
+    if (isUserMenuOpen) {
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
+    }
+  }, [isUserMenuOpen]);
+
+  const handleLogout = () => {
+    logout();
+    setIsUserMenuOpen(false);
+  };
 
   const handleNavClick = (item: NavItem) => {
     if (!item.isActive) {
@@ -142,12 +162,23 @@ export default function ModernNavBar() {
           <span className="hidden md:block text-xs">שעות פעילות: א׳-ה׳ 9:00-18:00 | ו׳ 9:00-13:00</span>
 
           <div className="flex items-center gap-4">
-            <Link href="/auth/signin" className="transition-opacity hover:opacity-80 font-medium">
-              התחבר
-            </Link>
-            <Link href="/auth/signup" className="transition-opacity hover:opacity-80 font-medium">
-              הרשם
-            </Link>
+            {isLoading ? (
+              <div className="h-5 w-20 animate-pulse rounded bg-white/20" />
+            ) : user ? (
+              <span className="font-medium flex items-center gap-2">
+                <User size={16} />
+                שלום, {user.name}
+              </span>
+            ) : (
+              <>
+                <Link href="/auth/signin" className="transition-opacity hover:opacity-80 font-medium">
+                  התחבר
+                </Link>
+                <Link href="/auth/signup" className="transition-opacity hover:opacity-80 font-medium">
+                  הרשם
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -228,6 +259,84 @@ export default function ModernNavBar() {
 
             {/* Right Side Actions */}
             <div className="flex items-center gap-2">
+              {/* User Menu (Desktop) */}
+              {!isLoading && user && (
+                <div className="relative hidden md:block">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsUserMenuOpen(!isUserMenuOpen);
+                    }}
+                    className="flex items-center gap-2 rounded-full border-2 border-gray-200 px-3 py-2 transition-all hover:border-primary-green hover:bg-primary-green/5"
+                  >
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${isUserMenuOpen ? "rotate-180" : ""}`}
+                    />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-green to-primary-blue text-sm font-bold text-white">
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="hidden lg:inline text-sm font-medium">{user.name}</span>
+                  </button>
+
+                  {isUserMenuOpen && (
+                    <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-xl border-2 border-gray-200 bg-white shadow-2xl">
+                      <div className="border-b border-gray-100 p-4 bg-gradient-to-r from-secondary-lightGreen/20 to-secondary-softBlue/20">
+                        <p className="font-bold text-text-primary">{user.name}</p>
+                        <p className="text-xs text-text-secondary">{user.email}</p>
+                      </div>
+
+                      <div className="p-2">
+                        <Link
+                          href="/account"
+                          className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-text-primary transition-colors hover:bg-secondary-cream"
+                          onClick={() => setIsUserMenuOpen(false)}
+                        >
+                          <User size={18} className="text-primary-green" />
+                          <span className="text-sm font-medium">החשבון שלי</span>
+                        </Link>
+                        <Link
+                          href="/account/orders"
+                          className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-text-primary transition-colors hover:bg-secondary-cream"
+                          onClick={() => setIsUserMenuOpen(false)}
+                        >
+                          <PackageIcon size={18} className="text-primary-blue" />
+                          <span className="text-sm font-medium">ההזמנות שלי</span>
+                        </Link>
+                        <Link
+                          href="/account/subscriptions"
+                          className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-text-primary transition-colors hover:bg-secondary-cream"
+                          onClick={() => setIsUserMenuOpen(false)}
+                        >
+                          <svg className="h-[18px] w-[18px] text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                          </svg>
+                          <span className="text-sm font-medium">המנויים שלי</span>
+                        </Link>
+                        <Link
+                          href="/account/settings"
+                          className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-text-primary transition-colors hover:bg-secondary-cream"
+                          onClick={() => setIsUserMenuOpen(false)}
+                        >
+                          <Settings size={18} className="text-text-secondary" />
+                          <span className="text-sm font-medium">הגדרות</span>
+                        </Link>
+                      </div>
+
+                      <div className="border-t border-gray-100 p-2">
+                        <button
+                          onClick={handleLogout}
+                          className="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-error transition-colors hover:bg-red-50"
+                        >
+                          <LogOut size={18} />
+                          <span className="text-sm font-medium">התנתק</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               <Link href="/wishlist" className="hidden md:flex items-center gap-2 px-4 py-2 border-2 border-primary-green text-primary-green rounded-full hover:bg-primary-green hover:text-white transition-all relative">
                 <Heart className="h-4 w-4" />
               </Link>

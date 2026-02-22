@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Assistant } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
 import ModernNavBar from "@/components/Navigation/ModernNavBar";
 import Footer from "@/components/layout/Footer";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
@@ -23,9 +24,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="he" dir="rtl">
       <body className={`${assistant.variable} font-sans antialiased bg-bg text-text-primary`}>
-        <ModernNavBar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <ModernNavBar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
