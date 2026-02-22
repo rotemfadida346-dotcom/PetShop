@@ -312,6 +312,73 @@ export default function AdminProducts() {
         </div>
       </div>
 
+      {/* Edit Product Form (Similar to New Product) */}
+      {editing && (
+        <div className="bg-card rounded-2xl border border-accent/20 shadow-lg p-6 mb-6">
+          {(() => {
+            const productToEdit = products.find(p => p.id === editing);
+            if (!productToEdit) return null;
+            
+            return (
+              <>
+                <h2 className="text-heading-md text-text-primary mb-1 flex items-center gap-2">
+                  <Pencil className="h-5 w-5 text-accent" />
+                  עריכת מוצר: {productToEdit.name}
+                </h2>
+                <p className="text-body-sm text-text-muted mb-5">ערוך את כל פרטי המוצר והשינויים יישמרו.</p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input label="שם מוצר *" value={editData.name || ""} onChange={(e) => setEditData({ ...editData, name: e.target.value })} />
+                  <Input label="תיאור קצר" value={editData.shortDesc || ""} onChange={(e) => setEditData({ ...editData, shortDesc: e.target.value })} />
+                  <Input label="מחיר (₪) *" type="number" value={editData.price || ""} onChange={(e) => setEditData({ ...editData, price: parseFloat(e.target.value) || 0 })} />
+                  <Input label="מחיר לפני הנחה (₪)" type="number" value={editData.compareAt || ""} onChange={(e) => setEditData({ ...editData, compareAt: e.target.value ? parseFloat(e.target.value) : null })} placeholder="ריק = ללא הנחה" />
+                  <Input label="מלאי" type="number" value={editData.stock || ""} onChange={(e) => setEditData({ ...editData, stock: parseInt(e.target.value) || 0 })} />
+                  <Input label="הנחת מנוי (%)" type="number" value={editData.subscriptionDiscount || ""} onChange={(e) => setEditData({ ...editData, subscriptionDiscount: parseFloat(e.target.value) || 0 })} />
+                </div>
+
+                <div className="mt-4 space-y-4">
+                  <div>
+                    <label className="mb-1.5 block text-body-sm font-semibold text-text-primary">תיאור מלא</label>
+                    <textarea 
+                      value={editData.description || ""} 
+                      onChange={(e) => setEditData({ ...editData, description: e.target.value })} 
+                      placeholder="תיאור מפורט של המוצר..." 
+                      rows={3} 
+                      className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15 resize-y" 
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-body-sm font-semibold text-text-primary">יתרונות (שורה לכל יתרון)</label>
+                    <textarea 
+                      value={editData.benefits || ""} 
+                      onChange={(e) => setEditData({ ...editData, benefits: e.target.value })} 
+                      placeholder="יתרון ראשון&#10;יתרון שני&#10;יתרון שלישי" 
+                      rows={3} 
+                      className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15 resize-y" 
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-body-sm font-semibold text-text-primary">רכיבים</label>
+                    <textarea 
+                      value={editData.ingredients || ""} 
+                      onChange={(e) => setEditData({ ...editData, ingredients: e.target.value })} 
+                      placeholder="רשימת רכיבים" 
+                      rows={2} 
+                      className="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15 resize-y" 
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-6 flex items-center gap-3">
+                  <Button onClick={() => saveEdit(productToEdit.slug)}><Save className="h-4 w-4" />שמור שינויים</Button>
+                  <Button variant="ghost" onClick={() => setEditing(null)}><X className="h-4 w-4" />ביטול</Button>
+                </div>
+              </>
+            );
+          })()}
+        </div>
+      )}
+
       {/* Empty state */}
       {filtered.length === 0 ? (
         <div className="bg-card rounded-2xl border border-card-border p-12 text-center">
