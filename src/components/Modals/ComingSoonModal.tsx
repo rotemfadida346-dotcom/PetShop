@@ -22,7 +22,7 @@ export default function ComingSoonModal({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-fade-in"
+        className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
       />
 

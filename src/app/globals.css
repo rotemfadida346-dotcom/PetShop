@@ -91,4 +91,20 @@
   .animate-float-slow {
     animation: float-slow 7s ease-in-out infinite;
   }
+  
+  /* Admin panels - Highest priority z-index */
+  .admin-panel,
+  [data-admin-modal] {
+    z-index: 9999 !important;
+  }
+  
+  /* Navigation - Lower than admin */
+  nav {
+    z-index: 30 !important;
+  }
+  
+  /* Regular modals - Lower than admin */
+  .modal:not([data-admin-modal]) {
+    z-index: 40 !important;
+  }
 }
