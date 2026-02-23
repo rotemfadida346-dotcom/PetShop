@@ -213,7 +213,7 @@ export default async function HomePage() {
               <div className="text-4xl mb-4">💰</div>
               <h3 className="text-xl font-bold text-text-primary mb-2">חיסכון עם מנוי</h3>
               <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-                הירשמו למנוי וחסכו עד 15% על כל הזמנה. משלוח חינם תמיד, ואפשר לבטל בכל רגע.
+                הירשמו למנוי וחסכו עד 10% על כל הזמנה. משלוח חינם תמיד, ואפשר לבטל בכל רגע.
               </p>
             </div>
           </div>
@@ -297,7 +297,7 @@ export default async function HomePage() {
           <div className="text-center relative space-y-6">
             <div className="text-4xl md:text-5xl mb-4">🔄</div>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
-              מנוי וחיסכון — עד 15% על כל הזמנה
+              מנוי וחיסכון — עד 10% על כל הזמנה
             </h2>
             <p className="text-base md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed px-4">
               בחרו את המוצרים האהובים על חיית המחמד שלכם, קבעו תדירות נוחה, והמוצרים יגיעו אוטומטית עד הדלת. 

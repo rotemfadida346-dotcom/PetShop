@@ -148,7 +148,7 @@ export default function PersonalConsultationWizard() {
                     </div>
                     {idx === 0 && (
                       <span className="text-sm font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
-                        חיסכון של 15% ללקוחות חדשים!
+                        חיסכון של 10% ללקוחות חדשים!
                       </span>
                     )}
                   </div>
