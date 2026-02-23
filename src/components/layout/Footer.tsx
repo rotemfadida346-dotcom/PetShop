@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-gray-300">
                 <Mail className="h-4 w-4 text-accent" />
-                <a href="mailto:hello@pawsome.co.il" className="hover:text-accent transition-colors">hello@pawsome.co.il</a>
+                <a href="mailto:support@pawstory.com" className="hover:text-accent transition-colors">support@pawstory.com</a>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">
                 <span className="h-4 w-4 text-accent">📞</span>

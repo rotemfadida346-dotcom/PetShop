@@ -10,7 +10,7 @@ const JWT_SECRET = new TextEncoder().encode(
 // Temporary hardcoded admin credentials (until database is connected)
 const TEMP_ADMINS = [
   {
-    email: "admin@pawsome.com",
+    email: "admin@pawstory.com",
     password: "admin123456",
     name: "Admin",
     role: "ADMIN",

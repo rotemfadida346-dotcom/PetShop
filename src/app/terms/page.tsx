@@ -121,7 +121,7 @@ export default function TermsPage() {
             </p>
             <div className="bg-surface rounded-xl p-6 border border-border">
               <p className="text-text-primary"><strong>PawStory</strong></p>
-              <p className="text-text-secondary mt-2">אימייל: <a href="mailto:hello@pawsome.co.il" className="text-accent hover:underline">hello@pawsome.co.il</a></p>
+              <p className="text-text-secondary mt-2">אימייל: <a href="mailto:support@pawstory.com" className="text-accent hover:underline">support@pawstory.com</a></p>
             </div>
           </section>
         </div>

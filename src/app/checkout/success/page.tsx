@@ -159,9 +159,9 @@ export default function CheckoutSuccessPage() {
                 <p className="text-sm text-gray-300 mb-1">טלפון</p>
                 <p className="font-bold text-xl" dir="ltr">050-9555350</p>
               </a>
-              <a href="mailto:hello@pawsome.co.il" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 transition-colors">
+              <a href="mailto:support@pawstory.com" className="bg-white/10 hover:bg-white/20 rounded-lg p-4 transition-colors">
                 <p className="text-sm text-gray-300 mb-1">אימייל</p>
-                <p className="font-bold">hello@pawsome.co.il</p>
+                <p className="font-bold">support@pawstory.com</p>
               </a>
             </div>
           </div>

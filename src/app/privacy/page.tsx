@@ -79,7 +79,7 @@ export default function PrivacyPage() {
               <li>להתנגד לעיבוד המידע שלכם</li>
             </ul>
             <p className="text-text-secondary leading-relaxed mt-3">
-              כדי לממש את הזכויות שלכם, צרו קשר במייל: <a href="mailto:privacy@pawsome.co.il" className="text-accent hover:underline">privacy@pawsome.co.il</a>
+              כדי לממש את הזכויות שלכם, צרו קשר במייל: <a href="mailto:privacy@pawstory.com" className="text-accent hover:underline">privacy@pawstory.com</a>
             </p>
           </section>
 
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
             </p>
             <div className="bg-surface rounded-xl p-6 border border-border">
               <p className="text-text-primary"><strong>PawStory</strong></p>
-              <p className="text-text-secondary mt-2">אימייל: <a href="mailto:hello@pawsome.co.il" className="text-accent hover:underline">hello@pawsome.co.il</a></p>
+              <p className="text-text-secondary mt-2">אימייל: <a href="mailto:support@pawstory.com" className="text-accent hover:underline">support@pawstory.com</a></p>
             </div>
           </section>
         </div>

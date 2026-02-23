@@ -29,7 +29,7 @@ export default function ContactPage() {
                 <MessageCircle className="h-5 w-5" />
                 וואטסאפ
               </a>
-              <a href="mailto:hello@pawsome.co.il" className="flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors w-full sm:w-auto justify-center">
+              <a href="mailto:support@pawstory.com" className="flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors w-full sm:w-auto justify-center">
                 <Mail className="h-5 w-5" />
                 אימייל
               </a>
@@ -115,7 +115,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-text-primary mb-1">אימייל</h3>
-                      <p className="text-text-secondary text-sm">hello@pawsome.co.il</p>
+                      <p className="text-text-secondary text-sm">support@pawstory.com</p>
                       <p className="text-text-muted text-xs mt-1">נענה תוך 24 שעות</p>
                     </div>
                   </div>

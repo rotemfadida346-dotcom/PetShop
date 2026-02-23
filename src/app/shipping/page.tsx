@@ -176,7 +176,7 @@ export default function ShippingPage() {
               <div className="bg-surface rounded-xl p-6 border border-border">
                 <h3 className="font-semibold text-text-primary mb-3">החבילה איחרה</h3>
                 <p className="text-text-secondary text-sm leading-relaxed">
-                  אם עברו יותר מ-7 ימי עסקים ולא קיבלתם את החבילה, צרו קשר במייל <a href="mailto:hello@pawsome.co.il" className="text-accent hover:underline">hello@pawsome.co.il</a> עם מספר ההזמנה ונברר מה קרה.
+                  אם עברו יותר מ-7 ימי עסקים ולא קיבלתם את החבילה, צרו קשר במייל <a href="mailto:support@pawstory.com" className="text-accent hover:underline">support@pawstory.com</a> עם מספר ההזמנה ונברר מה קרה.
                 </p>
               </div>
 

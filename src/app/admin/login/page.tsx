@@ -35,7 +35,7 @@ export default function AdminLoginPage() {
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-text-secondary">אימייל:</span>
                     <code className="text-sm font-bold text-primary-green bg-emerald-50 px-3 py-1 rounded">
-                      admin@pawsome.com
+                      admin@pawstory.com
                     </code>
                   </div>
                   <div className="flex items-center justify-between">

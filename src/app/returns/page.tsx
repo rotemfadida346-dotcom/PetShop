@@ -87,7 +87,7 @@ export default function ReturnsPage() {
                 { 
                   step: "1", 
                   title: "צרו קשר", 
-                  desc: "שלחו מייל ל-hello@pawsome.co.il עם מספר הזמנה",
+                  desc: "שלחו מייל ל-support@pawstory.com עם מספר הזמנה",
                   icon: Package 
                 },
                 { 
@@ -195,7 +195,7 @@ export default function ReturnsPage() {
                 <h4 className="font-semibold text-red-900">מה לעשות:</h4>
                 <ol className="space-y-2 text-red-800 mr-5">
                   <li>1. צלמו תמונות של המוצר והאריזה</li>
-                  <li>2. שלחו אימייל ל-<a href="mailto:hello@pawsome.co.il" className="underline font-medium">hello@pawsome.co.il</a> תוך 48 שעות</li>
+                  <li>2. שלחו אימייל ל-<a href="mailto:support@pawstory.com" className="underline font-medium">support@pawstory.com</a> תוך 48 שעות</li>
                   <li>3. נשלח לכם החלפה בחינם או נבצע החזר כספי מלא + עלות המשלוח</li>
                 </ol>
               </div>
@@ -234,7 +234,7 @@ export default function ReturnsPage() {
               צוות השירות שלנו כאן לעזור לכם בכל שלב!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:hello@pawsome.co.il">
+              <a href="mailto:support@pawstory.com">
                 <button className="px-8 py-3 bg-white text-accent-200 rounded-lg font-semibold hover:bg-white/90 transition-colors shadow-xl">
                   שלחו מייל
                 </button>

@@ -68,7 +68,7 @@ export default function AdminSettings() {
           <h2 className="text-heading-md text-text-primary mb-4">פרטי החנות</h2>
           <div className="space-y-4 max-w-md">
             <Input label="שם החנות" defaultValue="PawStory" />
-            <Input label="אימייל" defaultValue="hello@pawsome.co.il" />
+            <Input label="אימייל" defaultValue="support@pawstory.com" />
             <Input label="טלפון" defaultValue="03-1234567" />
           </div>
         </div>

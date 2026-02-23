@@ -289,7 +289,7 @@ export default function ModernNavBar() {
 
                       <div className="p-2">
                         {/* Admin Panel - Only for authorized users */}
-                        {user && (user.email === "rotemfadida346@gmail.com" || user.email === "admin@pawsome.com") && (
+                        {user && (user.email === "rotemfadida346@gmail.com" || user.email === "admin@pawstory.com") && (
                           <>
                             <Link
                               href="/admin"
